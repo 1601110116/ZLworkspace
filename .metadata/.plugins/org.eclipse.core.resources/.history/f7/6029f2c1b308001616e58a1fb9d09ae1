@@ -1,0 +1,325 @@
+/*
+ * Visualize.cpp
+ *
+ *  Created on: Mar 10, 2016
+ *      Author: zlstudio
+ */
+
+#include "Visualize.h"
+
+#define DRAWCELLS 1
+
+double cell_size=20;
+
+
+double Distance=20;
+
+double scale=1;
+
+int n=0;
+
+///Ex
+
+double Ex_size=1;
+double dt_size=1;
+double ExRecord[20000];
+double ExShow[20000];
+double ExMax=0;
+int Exdx=0;
+
+bool isHostView=false;
+
+#define GridViewSizeX 500
+#define GridViewSizeY 500
+
+#define ExViewX 470
+#define ExViewY 300
+
+#define dt 1
+
+
+Visualize::Visualize(Grid* grid,int ID):OpenGL_Interactive("Node",250*ID+200,300,250,500),
+		GridViewPort(10,10,GridViewSizeX,GridViewSizeY),
+		ExViewPort(20+GridViewSizeX,10,ExViewX,ExViewY)
+{
+	aimGrid=grid;
+
+	rx=90;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	idleFn=NULL;
+}
+
+Visualize::Visualize(Grid* grid):OpenGL_Interactive("Node",400,300,1000,600),
+		GridViewPort(10,10,GridViewSizeX,GridViewSizeY),
+		ExViewPort(20+GridViewSizeX,10,ExViewX,ExViewY)
+{
+	aimGrid=grid;
+
+	rx=90;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	idleFn=NULL;
+}
+
+Visualize::Visualize(HostGrid* grid):OpenGL_Interactive("Node",400,300,1000,600),
+		GridViewPort(10,10,GridViewSizeX,GridViewSizeY),
+		ExViewPort(20+GridViewSizeX,10,ExViewX,ExViewY)
+{
+	aimGrid=grid;
+	Hostgrid=grid;
+
+	rx=90;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	idleFn=NULL;
+
+	isHostView=true;
+}
+
+Visualize::~Visualize() {
+	// TODO Auto-generated destructor stub
+}
+
+void Visualize::idle(){
+
+	if(isHostView){
+		Hostgrid->askReport();
+	}else{
+		idleFn();
+	}
+
+
+	ExRecord[n]=aimGrid->Y_indexer[0][0][0]->x;
+
+	ExMax=fabs(ExRecord[0]);
+
+	ExShow[n]=log10(fabs(ExRecord[n]/ExMax));
+	ostringstream tmpchar;
+
+	tmpchar<<"Ex: "<<ExRecord[n]<<" E0: "<<ExMax;
+
+	cout<<ExRecord[n]<<endl;
+
+
+	glutSetWindowTitle(tmpchar.str().c_str());
+
+	//if(fabs(ExRecord[n])>ExMax&&fabs(ExRecord[n])<10)ExMax=fabs(ExRecord[n]);
+
+	n++;
+
+	if(n>20000)n=0;
+
+	display();
+
+}
+
+void Visualize::init(){
+
+	double aspect=double(_width)/_height;
+
+	cout<<aspect<<endl;
+
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+
+	glMatrixMode(GL_PROJECTION);
+
+	glOrtho(-Distance*2*aspect, Distance*2*aspect, -Distance*2, Distance*2, -Distance*4, Distance*4);
+
+	glMatrixMode(GL_MODELVIEW);
+
+	cout<<"init"<<endl;
+
+}
+
+void Visualize::display(){
+
+	clear();
+
+	drawFrame();
+	drawGrid();
+	drawParticles();
+	drawField();
+
+
+	glFlush();
+
+	glutSwapBuffers();
+}
+
+void Visualize::drawFrame(){
+	setCenter(0,0,0);
+
+	glColor3f(.1, .5, .1);
+
+	drawRect(GridViewPort);
+
+	drawRect(ExViewPort);
+}
+
+void Visualize::drawField(){
+
+	glColor3f(.1, .1, .9);
+
+	setCenter(ExViewPort.x,ExViewPort.y+ExViewPort.height/2,0);
+	moveTo(0,0);
+	lineTo(ExViewX,0);
+	lineEnd();
+
+
+	glColor3f(.9, .9, .1);
+	moveTo(0,ExShow[Exdx]*ExViewPort.height/4*Ex_size);
+	//moveTo(0,0);
+
+	for (int i = Exdx; i < n; ++i) {
+		lineTo((i-Exdx)*dt_size,ExShow[i]*ExViewPort.height/4*Ex_size);
+	}
+	lineEnd();
+}
+
+void Visualize::drawGrid(){
+
+	glColor3f(.1, .1, .1);
+
+	setCenter(GridViewSizeX/2,GridViewSizeY/2,0);
+
+	seeFrom(Distance,ry,rx);
+
+#if(DRAWCELLS)
+	Cell* cell_iterator;
+
+	for_each_Cell(aimGrid,cell_iterator){
+		setCenter(GridViewSizeX/2,GridViewSizeY/2,0);
+
+		seeFrom(Distance,ry,rx);
+
+		glTranslated(-aimGrid->gridX()*cell_size/2,-aimGrid->gridY()*cell_size/2,-aimGrid->gridZ()*cell_size/2);
+
+		glTranslated(cell_iterator->x()*cell_size+cell_size/2,cell_iterator->y()*cell_size+cell_size/2,cell_iterator->z()*cell_size+cell_size/2);
+		glutWireCube(cell_size);
+	}end_for_each_Cell
+#endif
+
+	glColor3f(.2, .3, .2);
+
+	setCenter(GridViewSizeX/2,GridViewSizeY/2,0);
+
+	seeFrom(Distance,ry,rx);
+	glTranslated(-aimGrid->gridX()*cell_size/2,-aimGrid->gridY()*cell_size/2,-aimGrid->gridZ()*cell_size/2);
+
+	glBegin(GL_LINE_LOOP);
+
+	glVertex3d(0,0,0);
+	glVertex3d(aimGrid->gridX()*cell_size,0,0);
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,0);
+	glVertex3d(0,aimGrid->gridY()*cell_size,0);
+
+	glEnd();
+
+
+	glBegin(GL_LINE_LOOP);
+
+	glVertex3d(0,0,aimGrid->gridZ()*cell_size);
+	glVertex3d(aimGrid->gridX()*cell_size,0,aimGrid->gridZ()*cell_size);
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+	glVertex3d(0,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+
+	glEnd();
+
+	glBegin(GL_LINES);
+
+	glVertex3d(0,0,0);
+	glVertex3d(0,0,aimGrid->gridZ()*cell_size);
+
+	glVertex3d(aimGrid->gridX()*cell_size,0,0);
+	glVertex3d(aimGrid->gridX()*cell_size,0,aimGrid->gridZ()*cell_size);
+
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,0);
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+
+	glVertex3d(0,aimGrid->gridY()*cell_size,0);
+	glVertex3d(0,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+
+	glEnd();
+
+}
+
+
+void Visualize::drawParticles(){
+	glColor3f(1.0, 0., 0.);
+
+	glBegin(GL_POINTS);
+
+	Particle* particle_iterator;
+	Vector3D pos;
+
+	for_each_Particle(aimGrid,particle_iterator){
+		pos=particle_iterator->Position*(cell_size);
+
+		glVertex3d(pos.x,pos.y,pos.z);
+
+	}end_for_each_Particle(particle_iterator);
+
+	glEnd();
+
+}
+
+bool GridDragging=false;
+bool ExDragging=false;
+
+void Visualize::LeftDrag(int sx,int sy,int ex,int ey){
+	if(GridDragging){
+		rx=srx+ex-sx;
+		ry=sry+ey-sy;
+		if(ry>=90)ry=90;
+		if(ry<=-90)ry=-90;
+	}else if(ExDragging){
+		Exdx=srx-(ex-sx)/dt_size;
+		Ex_size=sry*(1+(sy-ey)*0.01);
+		if(Exdx<0)Exdx=0;
+		if(Ex_size<1e-12)Ex_size=1e-12;
+	}
+}
+void Visualize::LeftButtonDown(int x, int y){
+	if(GridViewPort.hitTest(x,y)){
+		srx=rx;
+		sry=ry;
+		GridDragging=true;
+	}else if(ExViewPort.hitTest(x,y)){
+		srx=Exdx;
+		sry=Ex_size;
+		ExDragging=true;
+	}
+}
+
+void Visualize::LeftButtonUp(int x,int y){
+	ExDragging=false;
+	GridDragging=false;
+}
+
+void Visualize::reshape(int w,int h){
+
+}
+
+void Visualize::WheelUp(int x, int y){
+	double delta=1.05;
+	if(GridViewPort.hitTest(x,y)){
+		cell_size*=delta;
+	}else if(ExViewPort.hitTest(x,y)){
+		dt_size*=delta;
+	}
+}
+void Visualize::WheelDown(int x, int y){
+	double delta=0.95;
+	if(GridViewPort.hitTest(x,y)){
+		cell_size*=delta;
+	}else if(ExViewPort.hitTest(x,y)){
+		dt_size*=delta;
+	}
+}

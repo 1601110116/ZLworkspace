@@ -1,0 +1,17 @@
+/*
+ * LowBPhysicsList.hh
+ *
+ *  Created on: Dec 8, 2015
+ *      Author: zlstudio
+ */
+
+#ifndef LOWBPHYSICSLIST_HH_
+#define LOWBPHYSICSLIST_HH_ 1
+
+class LowBPhysicsList : public G4VuserPhysicsList {
+public:
+	LowBPhysicsList();
+	virtual ~LowBPhysicsList();
+};
+
+#endif /* LOWBPHYSICSLIST_HH_ */

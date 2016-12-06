@@ -1,0 +1,23 @@
+/*
+ * ParticleDistributer.h
+ *
+ *  Created on: Mar 5, 2016
+ *      Author: zlstudio
+ */
+
+#ifndef PARTICALDISTRIBUTER_H_
+#define PARTICALDISTRIBUTER_H_
+
+#include <Particle.h>
+#include <Grid.h>
+#include <iostream>
+
+using namespace std;
+
+class ParticleDistributer {
+	public:
+		 static void Distributer_Random(Grid* grid, Particle* p, int amount);
+		 static void (Grid* grid, Particle* p, int amount, int node);
+};
+
+#endif /* PARTICALDISTRIBUTER_H_ */

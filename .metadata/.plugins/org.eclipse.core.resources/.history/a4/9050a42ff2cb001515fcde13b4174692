@@ -1,0 +1,465 @@
+//
+// ********************************************************************
+// * License and Disclaimer                                           *
+// *                                                                  *
+// * The  Geant4 software  is  copyright of the Copyright Holders  of *
+// * the Geant4 Collaboration.  It is provided  under  the terms  and *
+// * conditions of the Geant4 Software License,  included in the file *
+// * LICENSE and available at  http://cern.ch/geant4/license .  These *
+// * include a list of copyright holders.                             *
+// *                                                                  *
+// * Neither the authors of this software system, nor their employing *
+// * institutes,nor the agencies providing financial support for this *
+// * work  make  any representation or  warranty, express or implied, *
+// * regarding  this  software system or assume any liability for its *
+// * use.  Please see the license in the file  LICENSE  and URL above *
+// * for the full disclaimer and the limitation of liability.         *
+// *                                                                  *
+// * This  code  implementation is the result of  the  scientific and *
+// * technical work of the GEANT4 collaboration.                      *
+// * By using,  copying,  modifying or  distributing the software (or *
+// * any work based  on the software)  you  agree  to acknowledge its *
+// * use  in  resulting  scientific  publications,  and indicate your *
+// * acceptance of all terms of the Geant4 Software license.          *
+// ********************************************************************
+//
+// $Id: B1DetectorConstruction.cc 90623 2015-06-05 09:24:30Z gcosmo $
+//
+/// \file B1DetectorConstruction.cc
+/// \brief Implementation of the B1DetectorConstruction class
+#include "iostream"
+
+#include "B1DetectorConstruction.hh"
+
+#include "G4RunManager.hh"
+#include "G4NistManager.hh"
+
+#include "G4Element.hh"
+
+#include "G4Box.hh"
+#include "G4Tubs.hh"
+
+#include "G4Orb.hh"
+#include "G4Sphere.hh"
+#include "G4Trd.hh"
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4MaterialPropertiesTable.hh"
+#include "G4SubtractionSolid.hh"
+#include "G4UnionSolid.hh"
+#include "G4PhysicalConstants.hh"
+#include "G4CSGSolid.hh"
+
+#include "B1Run.hh"
+#include "Mode.hh"
+
+//Standard 1.4e4/MeV
+#define Anth_Yield 1.4e2/MeV
+#define YIELDRATIO 1.0
+#define Cut 10.0*m
+#define SQRT3 std::sqrt(3)
+
+
+extern G4double Thinkness;
+
+G4Material* SCINT_Plastic;
+G4Material* Plastic;
+G4Material* Null_Plastic;
+G4Material* Vacuum;
+G4Material* Air;
+G4Material* WLSF_Core_Plastic;
+G4Material* WLSF_Clad_Plastic;
+G4Material* SMP_CRYSTAL;
+G4Material* SMP_SHELL;
+
+G4double hc = 1239.84191 * eV * nm;
+G4double scint_Length = 423.0 * nm;//2.94eV
+G4double WLSE_Length = 492.0 * nm;//2.52eV
+
+B1DetectorConstruction::B1DetectorConstruction():G4VUserDetectorConstruction(), fScoringVolume(0) {
+
+	Init_Materials();
+
+#if SCINT
+	Init_Plastic();
+	Init_SCINT();
+	Init_AIR();
+	Init_WLSF();
+	Init_SMP();
+#endif
+
+}
+
+
+B1DetectorConstruction::~B1DetectorConstruction() {
+}
+
+
+G4VPhysicalVolume* B1DetectorConstruction::Construct() {
+
+	std::cout<<">>Building Detector : Thickness : "<<Thinkness<<std::endl;
+
+	G4double worldWidth = 1.0 * m;
+	G4double worldLength = 1.0 * m;
+	G4double worldHeight = 1.0 * m;
+
+	G4double SensitiveThickness = Thinkness/2.0 * mm;
+	G4double PlasticThickness = 2.5*mm;
+	G4double DectectorRadius = 5.0 * cm;
+
+	G4double sourceThickness = 0.25 * mm;
+	G4double sourceRadius = 2.0 * cm;
+
+	//Shapes
+	G4Box* myWorld = new G4Box("world", worldWidth, worldLength, worldHeight);
+	G4Box* myEnv = new G4Box("Env", worldWidth*0.5, worldLength*0.5, worldHeight*0.5);
+
+	G4Box* mySource = new G4Box("source", sourceRadius, sourceRadius,sourceThickness);
+
+	/**********Detector***********/
+#if Plan==0
+	G4Box* Plastic_Layor = new G4Box("Plastic", DectectorRadius,DectectorRadius,PlasticThickness);
+	G4Box* Sensitive_Layor = new G4Box("Scintillator", DectectorRadius, DectectorRadius, SensitiveThickness);
+#elif Plan==1
+	G4Tubs* Plastic_Layor = new G4Tubs("Plastic", 0.,DectectorRadius,PlasticThickness,0.,twopi);
+	G4Tubs* Sensitive_Layor = new G4Tubs("Scintillator", 0., DectectorRadius, SensitiveThickness, 0. ,twopi);
+#elif Plan==2
+	G4Trd* Sensitive_Layor=new G4Trd("Scintillator",DectectorRadius,0.,SensitiveThickness,SensitiveThickness,DectectorRadius*std::sqrt(3)/2);
+#endif
+
+
+
+
+
+	//Wave Length Shift Fiber
+
+	G4double fiber_radius=0.5*mm;
+	G4double thickness_ratio=0.02;
+
+#if Thick
+	G4double center=DectectorRadius-fiber_radius-10.0;
+#else
+	G4double center=DectectorRadius+fiber_radius;
+#endif
+
+#if Plan==0
+	G4double fiber_Length=6.0*cm;
+	G4Box* WLSF_Core = new G4Box("WLSF_Core", fiber_Length,fiber_radius*(1-thickness_ratio), fiber_radius*(1-thickness_ratio));
+	G4Box* WLSF_Clad = new G4Box("WLSF_Clad", fiber_Length,fiber_radius, fiber_radius);
+#elif Plan==1
+
+	G4double start_theta=std::acos(1-1/(DectectorRadius+2*fiber_radius));
+
+	G4double fiber_Length=2.0*cm;
+	G4Tubs* WLSF_Core_A = new G4Tubs("WLSF_Core_A", DectectorRadius+fiber_radius*thickness_ratio, DectectorRadius+fiber_radius*2-fiber_radius*thickness_ratio, SensitiveThickness-fiber_radius*thickness_ratio, start_theta ,pi-start_theta);
+	G4Tubs* WLSF_Clad_A = new G4Tubs("WLSF_Clad_A", DectectorRadius, DectectorRadius+fiber_radius*2, SensitiveThickness, start_theta ,pi-start_theta);
+	G4Box* WLSF_Core_B = new G4Box("WLSF_Core_B", fiber_radius*(1-thickness_ratio),fiber_Length, fiber_radius*(1-thickness_ratio));
+	G4Box* WLSF_Clad_B = new G4Box("WLSF_Clad_B", fiber_radius, fiber_Length,fiber_radius);
+
+	G4RotationMatrix* Fiber_Union_rotation=new G4RotationMatrix();
+
+	G4UnionSolid* WLSF_Clad = new G4UnionSolid("WLSF_Clad", WLSF_Clad_A, WLSF_Clad_B, Fiber_Union_rotation, G4ThreeVector(-DectectorRadius-fiber_radius,-fiber_Length,0.));
+	G4UnionSolid* WLSF_Core = new G4UnionSolid("WLSF_Core", WLSF_Core_A, WLSF_Core_B, Fiber_Union_rotation, G4ThreeVector(-DectectorRadius-fiber_radius,-fiber_Length,0.));
+
+#elif Plan==2
+
+	G4double fiber_Band_Radius=2.0*cm;
+
+	G4double fiber_Length=DectectorRadius;
+
+	G4Tubs* WLSF_Core_A = new G4Tubs("WLSF_Core_A", fiber_Band_Radius-fiber_radius*(2-thickness_ratio), fiber_Band_Radius-fiber_radius*thickness_ratio, SensitiveThickness-fiber_radius*thickness_ratio, 0 ,pi/3);
+	G4Tubs* WLSF_Clad_A = new G4Tubs("WLSF_Clad_A", fiber_Band_Radius-fiber_radius*2, fiber_Band_Radius, SensitiveThickness, 0. ,pi/3);
+	G4Box* WLSF_Core_B = new G4Box("WLSF_Core_B", fiber_radius*(1-thickness_ratio),DectectorRadius, fiber_radius*(1-thickness_ratio));
+	G4Box* WLSF_Clad_B = new G4Box("WLSF_Clad_B", fiber_radius, DectectorRadius,fiber_radius);
+
+	G4RotationMatrix* Fiber_Union_rotation=new G4RotationMatrix();
+
+	G4UnionSolid* WLSF_Clad = new G4UnionSolid("WLSF_Clad", WLSF_Clad_B, WLSF_Clad_A, Fiber_Union_rotation, G4ThreeVector(-fiber_Band_Radius+fiber_radius,DectectorRadius,0.));
+	G4UnionSolid* WLSF_Core = new G4UnionSolid("WLSF_Core", WLSF_Core_B, WLSF_Core_A, Fiber_Union_rotation, G4ThreeVector(-fiber_Band_Radius+fiber_radius,DectectorRadius,0.));
+
+
+#endif
+
+	G4LogicalVolume* WLSF_Core_Logical = new G4LogicalVolume(WLSF_Core, WLSF_Core_Plastic, "WLSF_Core");
+	G4LogicalVolume* WLSF_Clad_Logical = new G4LogicalVolume(WLSF_Clad, WLSF_Clad_Plastic, "WLSF_Clad");
+
+	G4VPhysicalVolume* WLSF_Assembly=new G4PVPlacement(0, G4ThreeVector(0., 0., 0.),WLSF_Core_Logical, "WLSF_CORE", WLSF_Clad_Logical, false, 0);
+
+
+
+#if Thick
+	G4SubtractionSolid* Detector_1=new G4SubtractionSolid("Detector",Plastic_Layor,WLSF_Clad,0,G4ThreeVector(0., -center, 0.));
+	G4SubtractionSolid* Detector=new G4SubtractionSolid("Detector",Detector_1,WLSF_Clad,0,G4ThreeVector(0., center, 0.));
+#else
+	G4CSGSolid* Detector=Plastic_Layor;
+#endif
+
+
+	//Logic
+	G4LogicalVolume* World_Logic = new G4LogicalVolume(myWorld, Vacuum, "world");
+	G4LogicalVolume* myEnv_Logic = new G4LogicalVolume(myEnv, Air, "Env");
+	G4LogicalVolume* Detector_Logic = new G4LogicalVolume(Detector, Plastic, "Detector");
+	G4LogicalVolume* Sensitive_Logic = new G4LogicalVolume(Sensitive_Layor, SCINT_Plastic, "Sensitive_Layor");
+	G4LogicalVolume* mySource_Logic = new G4LogicalVolume(mySource, Vacuum, "source");
+
+
+	//Placement
+#if Plan==0
+   #if Thick
+	G4VPhysicalVolume* WLSF_Placement1=new G4PVPlacement(0, G4ThreeVector(0., center, 0.), WLSF_Clad_Logical, "WLSF1", myEnv_Logic, false, 0);
+	G4VPhysicalVolume* WLSF_Placement2=new G4PVPlacement(0, G4ThreeVector(0., -center, 0.), WLSF_Clad_Logical, "WLSF2", myEnv_Logic, false, 0);
+   #else
+	G4VPhysicalVolume* WLSF_Placement1=new G4PVPlacement(0, G4ThreeVector(0., center, 0.), WLSF_Clad_Logical, "WLSF1", myEnv_Logic, false, 0);
+	G4VPhysicalVolume* WLSF_Placement2=new G4PVPlacement(0, G4ThreeVector(0., -center, 0.), WLSF_Clad_Logical, "WLSF2", myEnv_Logic, false, 0);
+   #endif
+#elif Plan==1
+	G4RotationMatrix* Rotation  = new G4RotationMatrix();
+	Rotation->rotateZ(pi);
+	G4VPhysicalVolume* WLSF_Placement1=new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), WLSF_Clad_Logical, "WLSF1", World_Logic, false, 0);
+	G4VPhysicalVolume* WLSF_Placement2=new G4PVPlacement(Rotation, G4ThreeVector(0., 0., 0.), WLSF_Clad_Logical, "WLSF2", World_Logic, false, 0);
+#elif Plan==2
+	G4RotationMatrix* Fiber_Rotation1  = new G4RotationMatrix();
+	Fiber_Rotation1->rotateZ(pi/6);
+	G4ThreeVector(-fiber_Band_Radius/8*SQRT3-DectectorRadius/2-fiber_radius/SQRT3*2, -fiber_Band_Radius/8*3, 0.);
+	G4VPhysicalVolume* WLSF_Placement1=new G4PVPlacement(Fiber_Rotation1, 	G4ThreeVector(-DectectorRadius/2-fiber_radius/2, -fiber_radius/2*SQRT3, 0.), WLSF_Clad_Logical, "WLSF1", World_Logic, false, 0);
+
+	G4RotationMatrix* Fiber_Rotation2  = new G4RotationMatrix();
+	Fiber_Rotation2->rotateZ(-pi/2);
+	G4VPhysicalVolume* WLSF_Placement2=new G4PVPlacement(Fiber_Rotation2, G4ThreeVector(fiber_Band_Radius/4*SQRT3, -DectectorRadius*SQRT3/2-fiber_radius, 0.), WLSF_Clad_Logical, "WLSF1", World_Logic, false, 0);
+
+	G4RotationMatrix* Fiber_Rotation3  = new G4RotationMatrix();
+	Fiber_Rotation3->rotateZ(pi*5/6);
+	G4VPhysicalVolume* WLSF_Placement3=new G4PVPlacement(Fiber_Rotation3, G4ThreeVector(-fiber_Band_Radius/8*SQRT3+DectectorRadius/2+fiber_radius/SQRT3*2, fiber_Band_Radius/8*3, 0.), WLSF_Clad_Logical, "WLSF1", World_Logic, false, 0);
+
+#endif
+
+	G4VPhysicalVolume* myWorld_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), World_Logic, "World", 0, false, 0);
+	G4VPhysicalVolume* myEnv_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), myEnv_Logic, "Environment", World_Logic, false, 0);
+	G4VPhysicalVolume* mySource_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., -5.0 * cm), mySource_Logic, "Source", World_Logic, false, 0);
+
+
+#if Plan!=2
+   #if Thick
+	G4VPhysicalVolume* Detector_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), Detector_Logic, "Detector", myEnv_Logic, false, 0);
+	G4VPhysicalVolume* Detector_Sensitive= new G4PVPlacement(0, G4ThreeVector(0., 0., -PlasticThickness-SensitiveThickness), Sensitive_Logic, "Plastic", myEnv_Logic, false, 0);
+   #else
+	G4VPhysicalVolume* Detector_Sensitive= new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), Sensitive_Logic, "Plastic", myEnv_Logic, false, 0);
+   #endif
+#else
+	G4RotationMatrix* Detector_rotation=new G4RotationMatrix();
+	Detector_rotation->rotateX(pi/2);
+	G4VPhysicalVolume* Detector_Physics = new G4PVPlacement(Detector_rotation, G4ThreeVector(0., 0., 0.), myLowBDetector_Logic, "Plastic", myEnv_Logic, false, 0);
+#endif
+
+	/*************SMP**************/
+
+#if Plan==0
+	G4Box* SMP=new G4Box("SMP",1.,fiber_radius,fiber_radius);
+	G4Box* SMP_Shell=new G4Box("SMP_Shell",2,fiber_radius+2,fiber_radius+2);
+
+	G4LogicalVolume* SMP_Logical=new G4LogicalVolume(SMP, SMP_CRYSTAL, "SMP");
+	G4LogicalVolume* SMP_Shell_Logical=new G4LogicalVolume(SMP_Shell, SMP_SHELL, "SMP_Shell");
+
+	G4VPhysicalVolume* SMP_Assembly=new G4PVPlacement(0, G4ThreeVector(-1.,0., 0.),SMP_Logical, "WLSF_CORE1", SMP_Shell_Logical, false, 0);
+
+	G4VPhysicalVolume* SMP_Placement1=new G4PVPlacement(0, G4ThreeVector(6.2*cm, center, 0.), SMP_Shell_Logical, "SMP", myEnv_Logic, false, 0);
+
+	//Rotation
+	G4RotationMatrix* rotm  = new G4RotationMatrix();
+	rotm->rotateY(pi);
+
+	G4VPhysicalVolume* SMP_Placement2=new G4PVPlacement(rotm,G4ThreeVector(-6.2*cm, center, 0.), SMP_Shell_Logical, "SMP", myEnv_Logic, false, 0);
+	G4VPhysicalVolume* SMP_Placement3=new G4PVPlacement(0, G4ThreeVector(6.2*cm, -center, 0.), SMP_Shell_Logical, "SMP", myEnv_Logic, false, 0);
+	G4VPhysicalVolume* SMP_Placement4=new G4PVPlacement(rotm,G4ThreeVector(-6.2*cm, -center, 0.), SMP_Shell_Logical, "SMP", myEnv_Logic, false, 0);
+#else
+
+	//Rotation
+	G4RotationMatrix* rotm  = new G4RotationMatrix();
+	rotm->rotateZ(pi);
+
+	G4double SMP_Thickness=4*mm;
+
+	G4Box* SMP=new G4Box("SMP",fiber_radius,1.,fiber_radius);
+	G4Box* SMP_Shell=new G4Box("SMP_Shell",fiber_radius+2,SMP_Thickness,fiber_radius+2);
+
+	G4LogicalVolume* SMP_Logical=new G4LogicalVolume(SMP, SMP_CRYSTAL, "SMP");
+	G4LogicalVolume* SMP_Shell_Logical=new G4LogicalVolume(SMP_Shell, SMP_SHELL, "SMP_Shell");
+
+	G4VPhysicalVolume* SMP_Assembly=new G4PVPlacement(0, G4ThreeVector(0.,-SMP_Thickness+1., 0.),SMP_Logical, "WLSF_CORE1", SMP_Shell_Logical, false, 0);
+
+	G4VPhysicalVolume* SMP_Placement1=new G4PVPlacement(0, G4ThreeVector(center,SMP_Thickness+2*fiber_Length, 0.), SMP_Shell_Logical, "SMP", World_Logic, false, 0);
+	G4VPhysicalVolume* SMP_Placement2=new G4PVPlacement(rotm, G4ThreeVector(-center,-SMP_Thickness-2*fiber_Length, 0.), SMP_Shell_Logical, "SMP", World_Logic, false, 0);
+
+#endif
+
+
+	// Set Shape2 as scoring volume
+	//
+	fScoringVolume = Sensitive_Logic;
+
+	std::cout<<"Construction Complete"<<std::endl;
+
+	//
+	//always return the physical World
+	//
+	return myWorld_Physics;
+}
+
+
+void B1DetectorConstruction::Init_Materials(){
+	//Materials
+	std::cout<<"Initializing Materials...";
+
+	G4NistManager* nist = G4NistManager::Instance();
+
+	G4Element* H = nist->FindOrBuildElement(1, false);
+	G4Element* C = nist->FindOrBuildElement(6, false);
+	G4Element* N = nist->FindOrBuildElement(7, false);
+	G4Element* O = nist->FindOrBuildElement(8, false);
+	G4Element *SI=nist->FindOrBuildElement(14,false);
+
+	Vacuum=nist->FindOrBuildMaterial("G4_AIR",false);
+
+	Air=new G4Material("AIR",0.0012*g/cm3,2);
+	Air->AddElement(N,0.75);
+	Air->AddElement(O,0.25);
+
+	SCINT_Plastic = new G4Material("SCINT_Plastic", 1.032 * g / cm3, 2);
+
+	SCINT_Plastic->AddElement(H, (G4int) 1103);
+	SCINT_Plastic->AddElement(C, (G4int) 1000);
+
+	Plastic= new G4Material("SCINT_Plastic", 1.032 * g / cm3, 2);
+
+	Plastic->AddElement(H, (G4int) 1103);
+	Plastic->AddElement(C, (G4int) 1000);
+
+	WLSF_Core_Plastic = new G4Material("WLSF_Core_Plastic", 1.05 * g / cm3, 2);
+
+	WLSF_Core_Plastic->AddElement(C, 485);
+	WLSF_Core_Plastic->AddElement(H, 482);
+
+	WLSF_Clad_Plastic = new G4Material("WLSF_Clad_Plastic", 1.05 * g / cm3, 2);
+
+	WLSF_Clad_Plastic->AddElement(C, 485);
+	WLSF_Clad_Plastic->AddElement(H, 482);
+
+	SMP_CRYSTAL = new G4Material("SMP_CRYSTAL",2.33*g/cm3,1);
+
+	SMP_CRYSTAL->AddElement(SI,1);
+
+	SMP_SHELL=new G4Material("SMP_Shell",2.33*g/cm3,1);
+
+	SMP_SHELL->AddElement(SI,1);
+
+	std::cout<<"Complete"<<std::endl;
+}
+
+void B1DetectorConstruction::Init_WLSF(){
+
+	//CORE
+	G4MaterialPropertiesTable* Core_MPT = new G4MaterialPropertiesTable();
+
+	//Income : 3 eV
+	//Outcome : 2.52eV
+
+	const G4int Core_Entries = 2;
+
+	G4double Core_PhotonEnergy[Core_Entries] = { hc / scint_Length,hc / WLSE_Length };
+
+	G4double Core_RIndex[Core_Entries] = {1.6 ,1.6};
+	G4double Core_Absorb[Core_Entries] = {0.01 * mm, Cut};
+	G4double Core_Emission[Core_Entries] = {0.0,1.0};
+
+	Core_MPT->AddProperty("RINDEX", Core_PhotonEnergy, Core_RIndex, Core_Entries);
+	Core_MPT->AddProperty("WLSABSLENGTH", Core_PhotonEnergy, Core_Absorb, Core_Entries);
+	Core_MPT->AddProperty("WLSCOMPONENT", Core_PhotonEnergy, Core_Emission, Core_Entries);
+	Core_MPT->AddConstProperty("WLSTIMECONSTANT", 0.5 * ns);
+
+	WLSF_Core_Plastic->SetMaterialPropertiesTable(Core_MPT);
+
+	//CLAD
+
+	G4MaterialPropertiesTable* Clad_MPT = new G4MaterialPropertiesTable();
+
+	const G4int Clad_Entries = 2;
+
+	G4double Clad_PhotonEnergy[Clad_Entries] = {hc / scint_Length,hc / WLSE_Length};
+	G4double Clad_RIndex[Clad_Entries] = {1.42 ,1.42};
+	G4double Clad_Absorb[Clad_Entries] = {Cut, 0.01 * mm};
+
+	Clad_MPT->AddProperty("RINDEX", Clad_PhotonEnergy, Clad_RIndex, Clad_Entries);
+	//Clad_MPT->AddProperty("ABSLENGTH", Clad_PhotonEnergy, Clad_Absorb, Clad_Entries);
+
+
+	WLSF_Clad_Plastic->SetMaterialPropertiesTable(Clad_MPT);
+}
+void B1DetectorConstruction::Init_Plastic(){
+	const G4int NUMENTRIES = 1;
+	G4double Plastic_PP[NUMENTRIES] = { hc / scint_Length };
+
+	G4double Abs_Length[NUMENTRIES] = { Cut };
+	G4double Reflect_Index[NUMENTRIES] = { 1.58 };
+
+	G4MaterialPropertiesTable* Plastic_MPT = new G4MaterialPropertiesTable();
+
+	Plastic_MPT->AddProperty("ABSLENGTH", Plastic_PP, Abs_Length, NUMENTRIES);
+	Plastic_MPT->AddProperty("RINDEX", Plastic_PP, Reflect_Index, NUMENTRIES);
+
+	Plastic->SetMaterialPropertiesTable(Plastic_MPT);
+}
+void B1DetectorConstruction::Init_SCINT(){
+	const G4int NUMENTRIES = 1;
+	G4double Scnt_PP[NUMENTRIES] = { hc / scint_Length };
+
+	G4double Scnt_FAST[NUMENTRIES] = { 1.0 };
+	G4double Scnt_SLOW[NUMENTRIES] = { 0.0 };
+	G4double Abs_Length[NUMENTRIES] = { Cut };
+	G4double Reflect_Index[NUMENTRIES] = { 1.58 };
+
+	G4MaterialPropertiesTable* Scnt_MPT = new G4MaterialPropertiesTable();
+
+	Scnt_MPT->AddProperty("FASTCOMPONENT", Scnt_PP, Scnt_FAST, NUMENTRIES);
+	Scnt_MPT->AddProperty("SLOWCOMPONENT", Scnt_PP, Scnt_SLOW, NUMENTRIES);
+	Scnt_MPT->AddProperty("ABSLENGTH", Scnt_PP, Abs_Length, NUMENTRIES);
+	Scnt_MPT->AddProperty("RINDEX", Scnt_PP, Reflect_Index, NUMENTRIES);
+
+	//for Anth, S=1.4e4/Mev
+	Scnt_MPT->AddConstProperty("SCINTILLATIONYIELD", Anth_Yield*0.65);
+	Scnt_MPT->AddConstProperty("RESOLUTIONSCALE", 1.0);
+	Scnt_MPT->AddConstProperty("FASTTIMECONSTANT", 1. * ns);
+	Scnt_MPT->AddConstProperty("SLOWTIMECONSTANT", 10. * ns);
+	Scnt_MPT->AddConstProperty("YIELDRATIO", YIELDRATIO);
+
+	SCINT_Plastic->SetMaterialPropertiesTable(Scnt_MPT);
+}
+void B1DetectorConstruction::Init_AIR(){
+	G4MaterialPropertiesTable* AIR_MPT = new G4MaterialPropertiesTable();
+
+	const G4int AIR_NUMENTRIES = 2;
+
+	G4double AIR_PP[AIR_NUMENTRIES] = {hc / scint_Length,hc / WLSE_Length};
+	G4double AIR_Abs_Length[AIR_NUMENTRIES] = {0.1*mm,Cut};
+	G4double Air_Reflect_Index[AIR_NUMENTRIES] = {1.0,1.0};
+
+	//AIR_MPT->AddProperty("ABSLENGTH", AIR_PP, AIR_Abs_Length, AIR_NUMENTRIES);
+
+	AIR_MPT->AddProperty("RINDEX", AIR_PP, Air_Reflect_Index, AIR_NUMENTRIES);
+
+	Air->SetMaterialPropertiesTable(AIR_MPT);
+}
+void B1DetectorConstruction::Init_SMP(){
+	G4MaterialPropertiesTable* SMP_MPT = new G4MaterialPropertiesTable();
+
+	const G4int SMP_NUMBER = 2;
+	G4double SMP_PP[SMP_NUMBER] = {hc / scint_Length , hc / WLSE_Length};
+
+	G4double SMP_Reflect_Index[SMP_NUMBER] = {1.6 ,1.6};
+	G4double SMP_Abs_Length[SMP_NUMBER] = {Cut ,0.01*mm};
+
+	SMP_MPT->AddProperty("RINDEX", SMP_PP, SMP_Reflect_Index, SMP_NUMBER);
+	SMP_MPT->AddProperty("ABSLENGTH", SMP_PP, SMP_Abs_Length, SMP_NUMBER);
+
+	SMP_CRYSTAL->SetMaterialPropertiesTable(SMP_MPT);
+}

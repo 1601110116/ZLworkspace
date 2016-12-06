@@ -1,0 +1,27 @@
+//============================================================================
+// Name        : ZLOMP.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+
+
+#include <HostGrid.h>
+#include <Visualizer.h>
+
+using namespace std;
+
+int main(int argc, char**argv){
+
+	HostGrid* grid=new HostGrid(20,20,20,4);
+
+	Visualizer* stage=new Visualizer(grid);
+
+	InitStage(stage);
+
+
+	return 0;
+}

@@ -1,0 +1,15 @@
+15:03:49 **** Incremental Build of configuration Debug for project MinusExercises ****
+make all 
+Building file: ../minus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"minus.d" -MT"minus.d" -o "minus.o" "../minus.cpp"
+Finished building: ../minus.cpp
+ 
+Building target: MinusExercises
+Invoking: Cross G++ Linker
+g++  -o "MinusExercises"  ./minus.o   
+Finished building target: MinusExercises
+ 
+
+15:03:50 Build Finished (took 264ms)
+

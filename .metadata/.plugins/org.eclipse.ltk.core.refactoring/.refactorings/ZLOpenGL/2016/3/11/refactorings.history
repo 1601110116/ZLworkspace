@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;ZLOpenGL/src/OpenGLUI.h&apos; to &apos;OpenGL_Interactive.h&apos;" description="Rename resource &apos;OpenGLUI.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/OpenGLUI.h" name="OpenGL_Interactive.h" stamp="1457415251939" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;ZLOpenGL/src/OpenGLUI.cpp&apos; to &apos;OpenGL_Interactive.cpp&apos;" description="Rename resource &apos;OpenGLUI.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/OpenGLUI.cpp" name="OpenGL_Interactive.cpp" stamp="1457415266666" updateReferences="true"/>
+</session>

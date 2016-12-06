@@ -1,0 +1,18 @@
+/*
+ * Electron.cpp
+ *
+ *  Created on: Mar 4, 2016
+ *      Author: zlstudio
+ */
+
+#include "Electron.h"
+
+Electron::Electron():mass(1.0),charge(-1) {
+	// TODO Auto-generated constructor stub
+
+}
+
+Electron::~Electron() {
+	// TODO Auto-generated destructor stub
+}
+

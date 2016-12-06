@@ -1,0 +1,72 @@
+//============================================================================
+// Name        : LePlasma.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Plasma
+//============================================================================
+
+#include <iostream>
+#include <omp.h>
+#include <mpi.h>
+
+#include <Vector3D.h>
+#include <Cell.h>
+#include <Electron.h>
+#include <Grid.h>
+#include <ParticleDistributer.h>
+#include <ExternalField.h>
+#include <RunManager.h>
+#include <Eular.h>
+#include <MPIGrid.h>
+#include <MPIRunManager.h>
+#include <RunManager.h>
+#include <StepForward.h>
+
+
+using namespace std;
+
+////////////////////////////////////////////////////////
+////
+////    LePlasma for calculate only
+////
+/////////////////////////////////////////////////////////
+
+int main(int argc, char**argv){
+
+	double dt=0.05;
+
+	MPI_Init(&argc, &argv);
+
+	int totalNodes,thisID;
+
+	MPIRunManager::Init_Prarllel(totalNodes,thisID);
+
+	MPIGrid* grid=new MPIGrid(20,20,20,totalNodes,thisID);
+
+	ParticleDistributer::Distributer_Random(grid,new Electron(),100+thisID);
+
+//	ExternalField::setExternalField(grid);
+
+	Eular::grid=grid;
+
+	MPIRunManager* run=new MPIRunManager(grid,Eular::nextStep,dt);
+
+	//new StepForward(grid);
+
+	//RunManager* run=new RunManager(grid,StepForward::iterate,dt);
+
+	double t=omp_get_wtime();
+
+	for (int i = 0; i < 1000; ++i) {
+	//	if(thisID==0)cout<<" run "<<i<<endl;
+		run->stepNext();
+	}
+
+	cout<<"Node "<<thisID<<" Total Time: "<<omp_get_wtime()-t<<endl;
+	//if(thisID==0)grid->showGridMap();
+
+	MPI_Finalize();
+
+	return 0;
+}

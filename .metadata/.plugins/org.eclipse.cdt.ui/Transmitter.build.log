@@ -1,0 +1,32 @@
+17:09:24 **** Build of configuration Debug for project Transmitter ****
+make all 
+Building file: ../src/Transmitter.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/LePlasma/Socket" -I"/home/zlstudio/workspace/Transmitter/src" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Transmitter.d" -MT"src/Transmitter.d" -o "src/Transmitter.o" "../src/Transmitter.cpp"
+../src/Transmitter.cpp: In function ‘void* recv_thread(void*)’:
+../src/Transmitter.cpp:85:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/Transmitter.cpp: In function ‘void* send_thread(void*)’:
+../src/Transmitter.cpp:115:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Finished building: ../src/Transmitter.cpp
+ 
+Building file: /home/zlstudio/workspace/LePlasma/Socket/inet.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/LePlasma/Socket" -I"/home/zlstudio/workspace/Transmitter/src" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Socket/inet.d" -MT"Socket/inet.d" -o "Socket/inet.o" "/home/zlstudio/workspace/LePlasma/Socket/inet.cpp"
+/home/zlstudio/workspace/LePlasma/Socket/inet.cpp: In function ‘bool Recv(int, void*, int)’:
+/home/zlstudio/workspace/LePlasma/Socket/inet.cpp:97:32: warning: pointer of type ‘void *’ used in arithmetic [-Wpointer-arith]
+   bufferLen=recv(socket,buffer+recvLen,len-recvLen,0);
+                                ^
+Finished building: /home/zlstudio/workspace/LePlasma/Socket/inet.cpp
+ 
+Building target: Transmitter
+Invoking: Cross G++ Linker
+g++  -o "Transmitter"  ./src/Transmitter.o  ./Socket/inet.o   -lpthread
+Finished building target: Transmitter
+ 
+
+17:09:24 Build Finished (took 413ms)
+

@@ -1,0 +1,3164 @@
+22:12:38 **** Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src_cal/CSPIC.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/CSPIC.d" -MT"src_cal/CSPIC.d" -o "src_cal/CSPIC.o" "../src_cal/CSPIC.cpp"
+In file included from ../src_cal/CSPIC.cpp:21:0:
+/home/ylang/workspace/LePlasma_Visual/include_cal/indexCache.h:49:1: warning: multi-line comment [-Wcomment]
+ //#define Cache_for_each_Particle_around(grid1,iterator,vertex,ll,mm,nn)\
+ ^
+Finished building: ../src_cal/CSPIC.cpp
+ 
+Building file: ../LePlasma_Visual.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LePlasma_Visual.d" -MT"LePlasma_Visual.d" -o "LePlasma_Visual.o" "../LePlasma_Visual.cpp"
+In file included from ../LePlasma_Visual.cpp:14:0:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:20:15: warning: ‘_stage’ defined but not used [-Wunused-variable]
+ static Stage* _stage;
+               ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:22:13: warning: ‘void MouseHandler(int, int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseHandler(int button,int state,int x,int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:23:13: warning: ‘void MouseDragHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseDragHandler(int x,int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:24:13: warning: ‘void MouseMoveHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseMoveHandler(int x,int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:26:13: warning: ‘void KeyDownHandler(unsigned char, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void KeyDownHandler(unsigned char key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:27:13: warning: ‘void KeyUpHandler(unsigned char, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void KeyUpHandler(unsigned char key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:29:13: warning: ‘void SpecialKeyDownHandler(int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void SpecialKeyDownHandler(int key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:30:13: warning: ‘void SpecialKeyUpHandler(int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void SpecialKeyUpHandler(int key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:32:13: warning: ‘L_draging’ defined but not used [-Wunused-variable]
+ static bool L_draging;
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:33:13: warning: ‘R_draging’ defined but not used [-Wunused-variable]
+ static bool R_draging;
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:34:13: warning: ‘M_draging’ defined but not used [-Wunused-variable]
+ static bool M_draging;
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:36:12: warning: ‘L_startDragX’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+            ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:36:25: warning: ‘L_startDragY’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+                         ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:37:12: warning: ‘R_startDragX’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+            ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:37:25: warning: ‘R_startDragY’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+                         ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:38:12: warning: ‘M_startDragX’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+            ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:38:25: warning: ‘M_startDragY’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+                         ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:42:20: warning: ‘void _reshape(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _reshape(int w, int h);
+                    ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:43:20: warning: ‘void _display()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _display();
+                    ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:44:20: warning: ‘void _idle()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _idle();
+                    ^
+Finished building: ../LePlasma_Visual.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:12:42 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:14:31 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:107:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:110:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:110:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:149:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:149:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:161:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:161:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:183:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:184:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:184:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:308:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:335:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:338:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:338:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:15:41 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:15:55 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:16:04 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:16:14 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:16:22 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:16:25 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:16:32 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:16:41 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:17:03 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:17:06 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:17:49 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:17:52 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:19:09 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:108:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:184:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:185:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:185:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:309:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:336:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:339:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:339:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:19:21 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:108:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:184:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:185:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:185:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:309:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:336:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:339:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:339:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:19:22 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:19:33 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:108:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:184:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:185:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:185:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:309:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:336:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:339:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:339:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:19:35 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:19:51 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:108:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:184:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:185:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:185:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:309:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:336:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:339:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:339:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:19:54 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:20:09 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:108:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:184:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:185:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:185:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:309:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:336:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:339:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:339:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:20:11 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:20:19 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:108:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:111:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:150:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:162:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:184:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:185:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:185:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:309:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:336:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:339:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:339:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:20:22 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:20:38 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+08:19:59 **** Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:34:10 **** Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:107:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:110:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:110:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:149:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:149:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:161:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:161:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:183:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:184:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:184:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:308:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:335:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:338:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:338:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:34:38 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:34:47 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:36:12 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src/GridViewer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/GridViewer.d" -MT"src/GridViewer.d" -o "src/GridViewer.o" "../src/GridViewer.cpp"
+In file included from ../src/GridViewer.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h: In constructor ‘GridViewer::GridViewer(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:31:9: warning: ‘GridViewer::grid’ will be initialized after [-Wreorder]
+   Grid* grid;
+         ^
+/home/ylang/workspace/LePlasma_Visual/include/GridViewer.h:28:10: warning:   ‘double GridViewer::cellSize’ [-Wreorder]
+   double cellSize;
+          ^
+../src/GridViewer.cpp:10:1: warning:   when initialized here [-Wreorder]
+ GridViewer::GridViewer(Grid* grid):grid(grid),cellSize(20) {
+ ^
+Finished building: ../src/GridViewer.cpp
+ 
+Building file: ../src/Plot.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Plot.d" -MT"src/Plot.d" -o "src/Plot.o" "../src/Plot.cpp"
+Finished building: ../src/Plot.cpp
+ 
+Building file: ../src/Visualize.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "../src/Visualize.cpp"
+../src/Visualize.cpp: In function ‘void* refresh_thread(void*)’:
+../src/Visualize.cpp:107:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*, int)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:110:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:69:8: warning: ‘Visualize::isHostView’ will be initialized after [-Wreorder]
+   bool isHostView;
+        ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:110:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid,int ID):Stage("Node",320*ID+10,200,320,200),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(Grid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:149:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:149:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(Grid* grid):Stage("Node",400,300,1100,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h: In constructor ‘Visualize::Visualize(HostGrid*)’:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:64:10: warning: ‘Visualize::ry’ will be initialized after [-Wreorder]
+   int rx,ry;
+          ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:54:10: warning:   ‘Sprite Visualize::GridViewPort’ [-Wreorder]
+   Sprite GridViewPort;
+          ^
+../src/Visualize.cpp:161:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+In file included from ../src/Visualize.cpp:16:0:
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:67:13: warning: ‘Visualize::Hostgrid’ will be initialized after [-Wreorder]
+   HostGrid* Hostgrid;
+             ^
+/home/ylang/workspace/LePlasma_Visual/include/Visualize.h:47:18: warning:   ‘void (* Visualize::idleFn)()’ [-Wreorder]
+   void (*idleFn)();
+                  ^
+../src/Visualize.cpp:161:1: warning:   when initialized here [-Wreorder]
+ Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,770),rx(0),ry(180),
+ ^
+../src/Visualize.cpp: In member function ‘void Visualize::initAnalysisView()’:
+../src/Visualize.cpp:183:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                       ^
+../src/Visualize.cpp:184:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                             ^
+../src/Visualize.cpp:184:56: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseDrag_evt(const MouseEvent&)’:
+../src/Visualize.cpp:308:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp: In member function ‘virtual void Visualize::mouseWheel_evt(const MouseEvent&)’:
+../src/Visualize.cpp:335:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExPlot.setCoordinate(PlotRange{Exdx*dt_scale,(Exdx+ExViewW)*dt_scale,-Ex_size,Ex_size});
+                        ^
+../src/Visualize.cpp:338:30: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                              ^
+../src/Visualize.cpp:338:57: warning: narrowing conversion of ‘((Visualize*)this)->Visualize::aimGrid->Grid::gridX()’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+   ExDistribute.setCoordinate(PlotRange{0,aimGrid->gridX(),-E_scale,E_scale});
+                                                         ^
+Finished building: ../src/Visualize.cpp
+ 
+Building file: ../src/XYZIndicator.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/XYZIndicator.d" -MT"src/XYZIndicator.d" -o "src/XYZIndicator.o" "../src/XYZIndicator.cpp"
+Finished building: ../src/XYZIndicator.cpp
+ 
+Building file: ../LeFrame/src/DisplayObject.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/DisplayObject.d" -MT"LeFrame/src/DisplayObject.d" -o "LeFrame/src/DisplayObject.o" "../LeFrame/src/DisplayObject.cpp"
+Finished building: ../LeFrame/src/DisplayObject.cpp
+ 
+Building file: ../LeFrame/src/EventDispatcher.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/EventDispatcher.d" -MT"LeFrame/src/EventDispatcher.d" -o "LeFrame/src/EventDispatcher.o" "../LeFrame/src/EventDispatcher.cpp"
+Finished building: ../LeFrame/src/EventDispatcher.cpp
+ 
+Building file: ../LeFrame/src/EventListener.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/EventListener.d" -MT"LeFrame/src/EventListener.d" -o "LeFrame/src/EventListener.o" "../LeFrame/src/EventListener.cpp"
+Finished building: ../LeFrame/src/EventListener.cpp
+ 
+Building file: ../LeFrame/src/GLEnvironment.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/GLEnvironment.d" -MT"LeFrame/src/GLEnvironment.d" -o "LeFrame/src/GLEnvironment.o" "../LeFrame/src/GLEnvironment.cpp"
+../LeFrame/src/GLEnvironment.cpp: In function ‘void _reshape(int, int)’:
+../LeFrame/src/GLEnvironment.cpp:86:51: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  GLEventManager::dispatcherList[RESIZE]->dispatch(WindowEvent{w,h});
+                                                   ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void _idle()’:
+../LeFrame/src/GLEnvironment.cpp:93:56: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  GLEventManager::dispatcherList[ENTER_FRAME]->dispatch(Event{});
+                                                        ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void MouseHandler(int, int, int, int)’:
+../LeFrame/src/GLEnvironment.cpp:117:57: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[MOUSE_DOWN]->dispatch(MouseEvent{x,y});
+                                                         ^
+../LeFrame/src/GLEnvironment.cpp:121:55: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[MOUSE_UP]->dispatch(MouseEvent{x,y});
+                                                       ^
+../LeFrame/src/GLEnvironment.cpp:127:64: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[MIDDLE_MOUSE_DOWN]->dispatch(MouseEvent{x,y});
+                                                                ^
+../LeFrame/src/GLEnvironment.cpp:131:62: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[MIDDLE_MOUSE_UP]->dispatch(MouseEvent{x,y});
+                                                              ^
+../LeFrame/src/GLEnvironment.cpp:137:63: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[RIGHT_MOUSE_DOWN]->dispatch(MouseEvent{x,y});
+                                                               ^
+../LeFrame/src/GLEnvironment.cpp:142:61: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[RIGHT_MOUSE_UP]->dispatch(MouseEvent{x,y});
+                                                             ^
+../LeFrame/src/GLEnvironment.cpp:145:58: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[MOUSE_WHEEL]->dispatch(MouseEvent{x,y,0,0,1});
+                                                          ^
+../LeFrame/src/GLEnvironment.cpp:148:58: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+    GLEventManager::dispatcherList[MOUSE_WHEEL]->dispatch(MouseEvent{x,y,0,0,-1});
+                                                          ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void MouseDragHandler(int, int)’:
+../LeFrame/src/GLEnvironment.cpp:156:56: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   GLEventManager::dispatcherList[MOUSE_DRAG]->dispatch(MouseEvent{x,y,L_startDragX,L_startDragY});
+                                                        ^
+../LeFrame/src/GLEnvironment.cpp:159:62: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   GLEventManager::dispatcherList[RIGHT_MOUSE_DRAG]->dispatch(MouseEvent{x,y,R_startDragX,R_startDragY});
+                                                              ^
+../LeFrame/src/GLEnvironment.cpp:162:63: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   GLEventManager::dispatcherList[MIDDLE_MOUSE_DRAG]->dispatch(MouseEvent{x,y,M_startDragX,M_startDragY});
+                                                               ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void MouseMoveHandler(int, int)’:
+../LeFrame/src/GLEnvironment.cpp:168:55: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  GLEventManager::dispatcherList[MOUSE_MOVE]->dispatch(MouseEvent{x,y});
+                                                       ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void KeyDownHandler(unsigned char, int, int)’:
+../LeFrame/src/GLEnvironment.cpp:173:53: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  GLEventManager::dispatcherList[KEY_DOWN]->dispatch(KeyBoardEvent{key,x,y});
+                                                     ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void KeyUpHandler(unsigned char, int, int)’:
+../LeFrame/src/GLEnvironment.cpp:176:51: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  GLEventManager::dispatcherList[KEY_UP]->dispatch(KeyBoardEvent{key,x,y});
+                                                   ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void SpecialKeyDownHandler(int, int, int)’:
+../LeFrame/src/GLEnvironment.cpp:183:53: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  GLEventManager::dispatcherList[KEY_DOWN]->dispatch(KeyBoardEvent{key_id,x,y});
+                                                     ^
+../LeFrame/src/GLEnvironment.cpp: In function ‘void SpecialKeyUpHandler(int, int, int)’:
+../LeFrame/src/GLEnvironment.cpp:189:51: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  GLEventManager::dispatcherList[KEY_UP]->dispatch(KeyBoardEvent{key_id,x,y});
+                                                   ^
+Finished building: ../LeFrame/src/GLEnvironment.cpp
+ 
+Building file: ../LeFrame/src/GLEventManager.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/GLEventManager.d" -MT"LeFrame/src/GLEventManager.d" -o "LeFrame/src/GLEventManager.o" "../LeFrame/src/GLEventManager.cpp"
+Finished building: ../LeFrame/src/GLEventManager.cpp
+ 
+Building file: ../LeFrame/src/Graphics.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/Graphics.d" -MT"LeFrame/src/Graphics.d" -o "LeFrame/src/Graphics.o" "../LeFrame/src/Graphics.cpp"
+In file included from ../LeFrame/src/Graphics.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Graphics.h: In constructor ‘Graphics::Graphics()’:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Graphics.h:132:9: warning: ‘Graphics::TextFont’ will be initialized after [-Wreorder]
+   void* TextFont;
+         ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Graphics.h:131:7: warning:   ‘int Graphics::Texth’ [-Wreorder]
+   int Texth;
+       ^
+../LeFrame/src/Graphics.cpp:16:1: warning:   when initialized here [-Wreorder]
+ Graphics::Graphics():TextFont(GLUT_BITMAP_HELVETICA_12),Texth(12){
+ ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::lineStyle(int, unsigned int, double)’:
+../LeFrame/src/Graphics.cpp:46:24: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   lineStyles.push_back(LineStyle{width,r,g,b,a});
+                        ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::pointStyle(int, unsigned int, double)’:
+../LeFrame/src/Graphics.cpp:69:25: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+   pointStyles.push_back(LineStyle{width,r,g,b,a});
+                         ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::drawRect(double, double, double, double)’:
+../LeFrame/src/Graphics.cpp:88:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,0,true,changeNext});
+                    ^
+../LeFrame/src/Graphics.cpp:89:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y,0});
+                    ^
+../LeFrame/src/Graphics.cpp:90:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y-height,0});
+                    ^
+../LeFrame/src/Graphics.cpp:91:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y-height,0});
+                    ^
+../LeFrame/src/Graphics.cpp:92:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,0});
+                    ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::drawPoint(double, double)’:
+../LeFrame/src/Graphics.cpp:104:19: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  points.push_back(Point{x,-y,0,P_changeNext});
+                   ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::drawPoint(double, double, double)’:
+../LeFrame/src/Graphics.cpp:111:19: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  points.push_back(Point{x,-y,-z,P_changeNext});
+                   ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::moveTo(double, double)’:
+../LeFrame/src/Graphics.cpp:118:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,0,true,changeNext});
+                    ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::lineTo(double, double)’:
+../LeFrame/src/Graphics.cpp:125:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,0,false,changeNext});
+                    ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::moveTo(double, double, double)’:
+../LeFrame/src/Graphics.cpp:132:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,-z,true,changeNext});
+                    ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::lineTo(double, double, double)’:
+../LeFrame/src/Graphics.cpp:139:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,-z,false,changeNext});
+                    ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::drawBox(double, double, double, double, double, double)’:
+../LeFrame/src/Graphics.cpp:146:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,-z,true,changeNext});
+                    ^
+../LeFrame/src/Graphics.cpp:147:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y,-z});
+                    ^
+../LeFrame/src/Graphics.cpp:148:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y-height,-z});
+                    ^
+../LeFrame/src/Graphics.cpp:149:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y-height,-z});
+                    ^
+../LeFrame/src/Graphics.cpp:150:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,-z});
+                    ^
+../LeFrame/src/Graphics.cpp:152:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp:153:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp:154:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y-height,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp:155:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y-height,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp:156:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp:159:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y,-z,true});
+                    ^
+../LeFrame/src/Graphics.cpp:160:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp:162:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y-height,-z,true});
+                    ^
+../LeFrame/src/Graphics.cpp:163:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x+width,-y-height,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp:165:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y-height,-z,true});
+                    ^
+../LeFrame/src/Graphics.cpp:166:20: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  strokes.push_back(Stroke{x,-y-height,-z-length});
+                    ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::printAt(int, int, const char*)’:
+../LeFrame/src/Graphics.cpp:192:18: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  texts.push_back(Text{s,TextFont,x,-y,TextColor[0],TextColor[1],TextColor[2],Texth});
+                  ^
+../LeFrame/src/Graphics.cpp: In member function ‘void Graphics::printAt(int, int, const string&)’:
+../LeFrame/src/Graphics.cpp:197:18: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  texts.push_back(Text{s,TextFont,x,-y,TextColor[0],TextColor[1],TextColor[2],Texth});
+                  ^
+Finished building: ../LeFrame/src/Graphics.cpp
+ 
+Building file: ../LeFrame/src/Rect.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/Rect.d" -MT"LeFrame/src/Rect.d" -o "LeFrame/src/Rect.o" "../LeFrame/src/Rect.cpp"
+Finished building: ../LeFrame/src/Rect.cpp
+ 
+Building file: ../LeFrame/src/Sprite.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/Sprite.d" -MT"LeFrame/src/Sprite.d" -o "LeFrame/src/Sprite.o" "../LeFrame/src/Sprite.cpp"
+Finished building: ../LeFrame/src/Sprite.cpp
+ 
+Building file: ../LeFrame/src/Stage.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/Stage.d" -MT"LeFrame/src/Stage.d" -o "LeFrame/src/Stage.o" "../LeFrame/src/Stage.cpp"
+In file included from ../LeFrame/src/Stage.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Stage.h: In constructor ‘Stage::Stage(const char*, int, int, int, int)’:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Stage.h:28:19: warning: ‘Stage::stageWidth’ will be initialized after [-Wreorder]
+   int stageHeight,stageWidth;
+                   ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Stage.h:28:7: warning:   ‘int Stage::stageHeight’ [-Wreorder]
+   int stageHeight,stageWidth;
+       ^
+../LeFrame/src/Stage.cpp:10:1: warning:   when initialized here [-Wreorder]
+ Stage::Stage(const char* title,int x,int y,int w,int h):
+ ^
+In file included from ../LeFrame/src/Stage.cpp:8:0:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Stage.h: In constructor ‘Stage::Stage()’:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Stage.h:28:19: warning: ‘Stage::stageWidth’ will be initialized after [-Wreorder]
+   int stageHeight,stageWidth;
+                   ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/Stage.h:28:7: warning:   ‘int Stage::stageHeight’ [-Wreorder]
+   int stageHeight,stageWidth;
+       ^
+../LeFrame/src/Stage.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Stage::Stage():title(title),
+ ^
+../LeFrame/src/Stage.cpp:20:1: warning: ‘Stage::title’ is initialized with itself [-Winit-self]
+Finished building: ../LeFrame/src/Stage.cpp
+ 
+Building file: ../LeFrame/src/TextField.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LeFrame/src/TextField.d" -MT"LeFrame/src/TextField.d" -o "LeFrame/src/TextField.o" "../LeFrame/src/TextField.cpp"
+../LeFrame/src/TextField.cpp: In member function ‘int TextField::textWidth()’:
+../LeFrame/src/TextField.cpp:27:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../LeFrame/src/TextField.cpp: In member function ‘void TextField::setText(const string&)’:
+../LeFrame/src/TextField.cpp:57:31: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int i = 0; i < str.size(); ++i) {
+                               ^
+Finished building: ../LeFrame/src/TextField.cpp
+ 
+Building file: ../LePlasma_Visual.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LePlasma_Visual.d" -MT"LePlasma_Visual.d" -o "LePlasma_Visual.o" "../LePlasma_Visual.cpp"
+In file included from ../LePlasma_Visual.cpp:14:0:
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:20:15: warning: ‘_stage’ defined but not used [-Wunused-variable]
+ static Stage* _stage;
+               ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:22:13: warning: ‘void MouseHandler(int, int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseHandler(int button,int state,int x,int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:23:13: warning: ‘void MouseDragHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseDragHandler(int x,int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:24:13: warning: ‘void MouseMoveHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseMoveHandler(int x,int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:26:13: warning: ‘void KeyDownHandler(unsigned char, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void KeyDownHandler(unsigned char key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:27:13: warning: ‘void KeyUpHandler(unsigned char, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void KeyUpHandler(unsigned char key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:29:13: warning: ‘void SpecialKeyDownHandler(int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void SpecialKeyDownHandler(int key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:30:13: warning: ‘void SpecialKeyUpHandler(int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void SpecialKeyUpHandler(int key, int x, int y);
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:32:13: warning: ‘L_draging’ defined but not used [-Wunused-variable]
+ static bool L_draging;
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:33:13: warning: ‘R_draging’ defined but not used [-Wunused-variable]
+ static bool R_draging;
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:34:13: warning: ‘M_draging’ defined but not used [-Wunused-variable]
+ static bool M_draging;
+             ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:36:12: warning: ‘L_startDragX’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+            ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:36:25: warning: ‘L_startDragY’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+                         ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:37:12: warning: ‘R_startDragX’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+            ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:37:25: warning: ‘R_startDragY’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+                         ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:38:12: warning: ‘M_startDragX’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+            ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:38:25: warning: ‘M_startDragY’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+                         ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:42:20: warning: ‘void _reshape(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _reshape(int w, int h);
+                    ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:43:20: warning: ‘void _display()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _display();
+                    ^
+/home/ylang/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:44:20: warning: ‘void _idle()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _idle();
+                    ^
+Finished building: ../LePlasma_Visual.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+22:36:18 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+22:57:16 **** Build of configuration Debug for project LePlasma ****
+make all 
+Building file: ../src/CSPIC.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/CSPIC.d" -MT"src/CSPIC.d" -o "src/CSPIC.o" "../src/CSPIC.cpp"
+In file included from ../src/CSPIC.cpp:21:0:
+/home/ylang/workspace/LePlasma/include/indexCache.h:49:1: warning: multi-line comment [-Wcomment]
+ //#define Cache_for_each_Particle_around(grid1,iterator,vertex,ll,mm,nn)\
+ ^
+Finished building: ../src/CSPIC.cpp
+ 
+Building target: LePlasma
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma"  ./src/CSPIC.o ./src/Case.o ./src/CaseLauncher.o ./src/Cell.o ./src/DispersionRelation.o ./src/Distributer.o ./src/Electron.o ./src/Engine.o ./src/Eular.o ./src/ExternalField.o ./src/Grid.o ./src/HostGrid.o ./src/MPIGrid.o ./src/Particle.o ./src/ParticleDistributer.o ./src/PlateWave.o ./src/Range.o ./src/RunManager.o ./src/Tensor3D.o ./src/TestFor.o ./src/UniformB.o ./src/UniformBFalse.o ./src/UniformE.o ./src/Vector3D.o ./src/Vertex.o  ./Socket/inet.o  ./LePlasma.o   
+Finished building target: LePlasma
+ 
+23:04:19 **** Build of configuration Debug for project LePlasma ****
+make all 
+Building file: ../src/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/DispersionRelation.d" -MT"src/DispersionRelation.d" -o "src/DispersionRelation.o" "../src/DispersionRelation.cpp"
+../src/DispersionRelation.cpp: In member function ‘virtual void DispersionRelation::initY()’:
+../src/DispersionRelation.cpp:182:12: warning: unused variable ‘worldX’ [-Wunused-variable]
+     double worldX=i+grid->workSpace.sx+grid->workLength()*RunManager::MPI_ID;
+            ^
+Finished building: ../src/DispersionRelation.cpp
+ 
+Building file: ../src/UniformB.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/UniformB.d" -MT"src/UniformB.d" -o "src/UniformB.o" "../src/UniformB.cpp"
+Finished building: ../src/UniformB.cpp
+ 
+Building file: ../src/UniformBFalse.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/UniformBFalse.d" -MT"src/UniformBFalse.d" -o "src/UniformBFalse.o" "../src/UniformBFalse.cpp"
+Finished building: ../src/UniformBFalse.cpp
+ 
+Building file: ../src/UniformE.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/UniformE.d" -MT"src/UniformE.d" -o "src/UniformE.o" "../src/UniformE.cpp"
+Finished building: ../src/UniformE.cpp
+ 
+Building target: LePlasma
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma"  ./src/CSPIC.o ./src/Case.o ./src/CaseLauncher.o ./src/Cell.o ./src/DispersionRelation.o ./src/Distributer.o ./src/Electron.o ./src/Engine.o ./src/Eular.o ./src/ExternalField.o ./src/Grid.o ./src/HostGrid.o ./src/MPIGrid.o ./src/Particle.o ./src/ParticleDistributer.o ./src/PlateWave.o ./src/Range.o ./src/RunManager.o ./src/Tensor3D.o ./src/TestFor.o ./src/UniformB.o ./src/UniformBFalse.o ./src/UniformE.o ./src/Vector3D.o ./src/Vertex.o  ./Socket/inet.o  ./LePlasma.o   
+Finished building target: LePlasma
+ 
+11:21:46 **** Build of configuration Debug for project LePlasma ****
+make all 
+make: Nothing to be done for 'all'.
+11:22:10 **** Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src_cal/CSPIC.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/CSPIC.d" -MT"src_cal/CSPIC.d" -o "src_cal/CSPIC.o" "../src_cal/CSPIC.cpp"
+In file included from ../src_cal/CSPIC.cpp:21:0:
+/home/ylang/workspace/LePlasma_Visual/include_cal/indexCache.h:49:1: warning: multi-line comment [-Wcomment]
+ //#define Cache_for_each_Particle_around(grid1,iterator,vertex,ll,mm,nn)\
+ ^
+Finished building: ../src_cal/CSPIC.cpp
+ 
+Building file: ../src_cal/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/DispersionRelation.d" -MT"src_cal/DispersionRelation.d" -o "src_cal/DispersionRelation.o" "../src_cal/DispersionRelation.cpp"
+../src_cal/DispersionRelation.cpp: In member function ‘virtual void DispersionRelation::initY()’:
+../src_cal/DispersionRelation.cpp:182:12: warning: unused variable ‘worldX’ [-Wunused-variable]
+     double worldX=i+grid->workSpace.sx+grid->workLength()*RunManager::MPI_ID;
+            ^
+Finished building: ../src_cal/DispersionRelation.cpp
+ 
+Building file: ../src_cal/UniformB.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/UniformB.d" -MT"src_cal/UniformB.d" -o "src_cal/UniformB.o" "../src_cal/UniformB.cpp"
+Finished building: ../src_cal/UniformB.cpp
+ 
+Building file: ../src_cal/UniformBFalse.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/UniformBFalse.d" -MT"src_cal/UniformBFalse.d" -o "src_cal/UniformBFalse.o" "../src_cal/UniformBFalse.cpp"
+Finished building: ../src_cal/UniformBFalse.cpp
+ 
+Building file: ../src_cal/UniformE.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/UniformE.d" -MT"src_cal/UniformE.d" -o "src_cal/UniformE.o" "../src_cal/UniformE.cpp"
+Finished building: ../src_cal/UniformE.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+11:23:58 **** Incremental Build of configuration Debug for project LePlasma ****
+make all 
+Building file: ../src/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/DispersionRelation.d" -MT"src/DispersionRelation.d" -o "src/DispersionRelation.o" "../src/DispersionRelation.cpp"
+../src/DispersionRelation.cpp: In member function ‘virtual void DispersionRelation::initY()’:
+../src/DispersionRelation.cpp:182:12: warning: unused variable ‘worldX’ [-Wunused-variable]
+     double worldX=i+grid->workSpace.sx+grid->workLength()*RunManager::MPI_ID;
+            ^
+Finished building: ../src/DispersionRelation.cpp
+ 
+Building target: LePlasma
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma"  ./src/CSPIC.o ./src/Case.o ./src/CaseLauncher.o ./src/Cell.o ./src/DispersionRelation.o ./src/Distributer.o ./src/Electron.o ./src/Engine.o ./src/Eular.o ./src/ExternalField.o ./src/Grid.o ./src/HostGrid.o ./src/MPIGrid.o ./src/Particle.o ./src/ParticleDistributer.o ./src/PlateWave.o ./src/Range.o ./src/RunManager.o ./src/Tensor3D.o ./src/TestFor.o ./src/UniformB.o ./src/UniformBFalse.o ./src/UniformE.o ./src/Vector3D.o ./src/Vertex.o  ./Socket/inet.o  ./LePlasma.o   
+Finished building target: LePlasma
+ 
+11:24:04 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src_cal/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/DispersionRelation.d" -MT"src_cal/DispersionRelation.d" -o "src_cal/DispersionRelation.o" "../src_cal/DispersionRelation.cpp"
+../src_cal/DispersionRelation.cpp: In member function ‘virtual void DispersionRelation::initY()’:
+../src_cal/DispersionRelation.cpp:182:12: warning: unused variable ‘worldX’ [-Wunused-variable]
+     double worldX=i+grid->workSpace.sx+grid->workLength()*RunManager::MPI_ID;
+            ^
+Finished building: ../src_cal/DispersionRelation.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+11:25:27 **** Incremental Build of configuration Debug for project LePlasma ****
+make all 
+Building file: ../src/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/DispersionRelation.d" -MT"src/DispersionRelation.d" -o "src/DispersionRelation.o" "../src/DispersionRelation.cpp"
+../src/DispersionRelation.cpp: In member function ‘virtual void DispersionRelation::initY()’:
+../src/DispersionRelation.cpp:182:12: warning: unused variable ‘worldX’ [-Wunused-variable]
+     double worldX=i+grid->workSpace.sx+grid->workLength()*RunManager::MPI_ID;
+            ^
+Finished building: ../src/DispersionRelation.cpp
+ 
+Building target: LePlasma
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma"  ./src/CSPIC.o ./src/Case.o ./src/CaseLauncher.o ./src/Cell.o ./src/DispersionRelation.o ./src/Distributer.o ./src/Electron.o ./src/Engine.o ./src/Eular.o ./src/ExternalField.o ./src/Grid.o ./src/HostGrid.o ./src/MPIGrid.o ./src/Particle.o ./src/ParticleDistributer.o ./src/PlateWave.o ./src/Range.o ./src/RunManager.o ./src/Tensor3D.o ./src/TestFor.o ./src/UniformB.o ./src/UniformBFalse.o ./src/UniformE.o ./src/Vector3D.o ./src/Vertex.o  ./Socket/inet.o  ./LePlasma.o   
+Finished building target: LePlasma
+ 
+11:25:29 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src_cal/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/DispersionRelation.d" -MT"src_cal/DispersionRelation.d" -o "src_cal/DispersionRelation.o" "../src_cal/DispersionRelation.cpp"
+../src_cal/DispersionRelation.cpp: In member function ‘virtual void DispersionRelation::initY()’:
+../src_cal/DispersionRelation.cpp:182:12: warning: unused variable ‘worldX’ [-Wunused-variable]
+     double worldX=i+grid->workSpace.sx+grid->workLength()*RunManager::MPI_ID;
+            ^
+Finished building: ../src_cal/DispersionRelation.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+11:28:21 **** Incremental Build of configuration Debug for project LePlasma ****
+make all 
+Building file: ../src/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/ylang/workspace/LePlasma/include" -I"/home/ylang/workspace/LePlasma/Socket" -I"/home/ylang/workspace/LePlasma" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/DispersionRelation.d" -MT"src/DispersionRelation.d" -o "src/DispersionRelation.o" "../src/DispersionRelation.cpp"
+Finished building: ../src/DispersionRelation.cpp
+ 
+Building target: LePlasma
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma"  ./src/CSPIC.o ./src/Case.o ./src/CaseLauncher.o ./src/Cell.o ./src/DispersionRelation.o ./src/Distributer.o ./src/Electron.o ./src/Engine.o ./src/Eular.o ./src/ExternalField.o ./src/Grid.o ./src/HostGrid.o ./src/MPIGrid.o ./src/Particle.o ./src/ParticleDistributer.o ./src/PlateWave.o ./src/Range.o ./src/RunManager.o ./src/Tensor3D.o ./src/TestFor.o ./src/UniformB.o ./src/UniformBFalse.o ./src/UniformE.o ./src/Vector3D.o ./src/Vertex.o  ./Socket/inet.o  ./LePlasma.o   
+Finished building target: LePlasma
+ 
+11:28:26 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../src_cal/DispersionRelation.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/ylang/workspace/LePlasma_Visual" -I"/home/ylang/workspace/LePlasma_Visual/include" -I"/home/ylang/workspace/LePlasma_Visual/include_cal" -I"/home/ylang/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/DispersionRelation.d" -MT"src_cal/DispersionRelation.d" -o "src_cal/DispersionRelation.o" "../src_cal/DispersionRelation.cpp"
+Finished building: ../src_cal/DispersionRelation.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/Tensor3D.o ./src_cal/TestFor.o ./src_cal/UniformB.o ./src_cal/UniformBFalse.o ./src_cal/UniformE.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGLU -lGL
+Finished building target: LePlasma_Visual
+ 
+11:28:50 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+21:00:42 **** Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+../factorial.cpp: In function ‘int main()’:
+../factorial.cpp:15:2: error: ‘cout’ was not declared in this scope
+  cout << i << endl;
+  ^
+../factorial.cpp:15:2: note: suggested alternative:
+In file included from ../factorial.cpp:8:0:
+/usr/include/c++/4.8/iostream:61:18: note:   ‘std::cout’
+subdir.mk:18: recipe for target 'factorial.o' failed
+   extern ostream cout;  /// Linked to standard output
+                  ^
+../factorial.cpp:15:15: error: ‘endl’ was not declared in this scope
+  cout << i << endl;
+               ^
+../factorial.cpp:15:15: note: suggested alternative:
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from ../factorial.cpp:8:
+/usr/include/c++/4.8/ostream:564:5: note:   ‘std::endl’
+     endl(basic_ostream<_CharT, _Traits>& __os)
+     ^
+make: *** [factorial.o] Error 1
+21:01:58 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:02:09 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:02:16 **** Build of configuration Debug for project LePlasma_Visual ****
+make all 
+make: Nothing to be done for 'all'.
+21:02:38 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:03:58 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:04:12 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:04:22 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:04:28 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:08:12 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:08:14 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:08:41 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:08:55 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+../factorial.cpp: In function ‘int main()’:
+../factorial.cpp:15:19: error: ‘long long’ invalid for ‘product’
+  long long double product = 1.0;
+                   ^
+../factorial.cpp:20:19: error: ‘long long’ invalid for ‘result’
+  long long double result;
+                   ^
+subdir.mk:18: recipe for target 'factorial.o' failed
+make: *** [factorial.o] Error 1
+21:13:06 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:13:08 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:14:08 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:14:12 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:15:29 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:15:31 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:15:48 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:16:00 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:16:33 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:16:36 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:17:07 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:18:27 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+../factorial.cpp: In function ‘int main()’:
+../factorial.cpp:31:12: error: ‘productMN’ was not declared in this scope
+  result = (productMN * pow(0.5, n))/(productM * productN);
+            ^
+../factorial.cpp:31:49: error: ‘productN’ was not declared in this scope
+  result = (productMN * pow(0.5, n))/(productM * productN);
+                                                 ^
+make: *** [factorial.o] Error 1
+subdir.mk:18: recipe for target 'factorial.o' failed
+21:18:34 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+../factorial.cpp: In function ‘int main()’:
+../factorial.cpp:31:49: error: ‘productN’ was not declared in this scope
+  result = (productNM * pow(0.5, n))/(productM * productN);
+                                                 ^
+subdir.mk:18: recipe for target 'factorial.o' failed
+make: *** [factorial.o] Error 1
+21:18:41 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+../factorial.cpp: In function ‘int main()’:
+../factorial.cpp:31:50: error: ‘productN’ was not declared in this scope
+  result = (productNM * pow(0.5, n))/(productNM * productN);
+                                                  ^
+subdir.mk:18: recipe for target 'factorial.o' failed
+make: *** [factorial.o] Error 1
+21:18:58 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:19:01 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:31:24 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+../factorial.cpp: In function ‘int main()’:
+../factorial.cpp:26:3: error: ‘productN’ was not declared in this scope
+   productN *= i;
+   ^
+../factorial.cpp:32:27: error: ‘productN’ was not declared in this scope
+  cout << "productN = " << productN << endl;
+                           ^
+../factorial.cpp:16:14: warning: unused variable ‘porductN’ [-Wunused-variable]
+  long double porductN = 1;
+              ^
+make: *** [factorial.o] Error 1
+subdir.mk:18: recipe for target 'factorial.o' failed
+21:31:38 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:31:47 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:31:50 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:33:11 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:33:14 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:33:29 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:33:32 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:36:03 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:36:06 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:36:26 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:36:29 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:36:36 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:36:38 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:36:56 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:36:57 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:37:20 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:37:22 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:37:32 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:37:34 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:37:45 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:37:47 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:37:55 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:37:58 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:38:07 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:38:09 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:38:16 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:38:18 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:38:54 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:38:57 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:41:21 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:41:22 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:56:58 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:57:00 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:57:31 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:57:37 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:57:40 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+21:57:59 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+21:58:01 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:12:05 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:12:07 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:12:51 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:12:54 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:13:23 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:13:26 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:13:52 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:13:54 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:14:03 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:14:04 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:14:13 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:14:15 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:46:35 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:46:39 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:46:57 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:46:59 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:48:14 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:48:16 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:55:03 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../factorial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"factorial.d" -MT"factorial.d" -o "factorial.o" "../factorial.cpp"
+Finished building: ../factorial.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o   
+Finished building target: Tests
+ 
+22:56:38 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+22:56:45 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+13:59:16 **** Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o ./plus.o   
+./plus.o：在函数‘main’中：
+makefile:44: recipe for target 'Tests' failed
+/home/ylang/workspace/Tests/Debug/../plus.cpp:11: `main'被多次定义
+./factorial.o:/home/ylang/workspace/Tests/Debug/../factorial.cpp:14：第一次在此定义
+collect2: error: ld returned 1 exit status
+make: *** [Tests] Error 1
+13:59:26 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./factorial.o ./plus.o   
+./plus.o：在函数‘main’中：
+/home/ylang/workspace/Tests/Debug/../plus.cpp:11: `main'被多次定义
+./factorial.o:/home/ylang/workspace/Tests/Debug/../factorial.cpp:14：第一次在此定义
+collect2: error: ld returned 1 exit status
+makefile:44: recipe for target 'Tests' failed
+make: *** [Tests] Error 1
+14:00:05 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:00:07 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:00:22 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:00:24 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:12:58 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:13:13 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:14:16 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:18:25 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:18:32 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:18:36 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:19:28 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:19:45 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:19:46 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:19:53 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:19:55 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:19:56 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:19:57 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:20:00 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:20:02 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:20:06 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:24:45 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:24:47 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:32:13 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:32:23 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:32:24 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:33:08 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:33:11 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:34:10 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:34:22 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:48:29 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:48:41 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+14:48:52 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:50:18 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:57:07 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+14:58:56 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:06:04 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+15:07:59 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:09:53 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:31:48 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+13:04:11 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+13:04:13 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+13:04:47 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+13:05:14 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+13:07:55 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+13:08:34 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+13:08:36 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+13:14:19 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+../plus.cpp: In function ‘int main(int, char**)’:
+../plus.cpp:44:26: error: ‘end’ was not declared in this scope
+  double timeS = (double)(end - start);///CLOCKS_PER_SEC;
+                          ^
+../plus.cpp:44:32: error: ‘start’ was not declared in this scope
+  double timeS = (double)(end - start);///CLOCKS_PER_SEC;
+                                ^
+../plus.cpp:44:9: warning: unused variable ‘timeS’ [-Wunused-variable]
+  double timeS = (double)(end - start);///CLOCKS_PER_SEC;
+         ^
+make: *** [plus.o] Error 1
+subdir.mk:18: recipe for target 'plus.o' failed
+13:14:20 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+../plus.cpp: In function ‘int main(int, char**)’:
+../plus.cpp:44:26: error: ‘end’ was not declared in this scope
+subdir.mk:18: recipe for target 'plus.o' failed
+  double timeS = (double)(end - start);///CLOCKS_PER_SEC;
+                          ^
+../plus.cpp:44:32: error: ‘start’ was not declared in this scope
+  double timeS = (double)(end - start);///CLOCKS_PER_SEC;
+                                ^
+../plus.cpp:44:9: warning: unused variable ‘timeS’ [-Wunused-variable]
+  double timeS = (double)(end - start);///CLOCKS_PER_SEC;
+         ^
+make: *** [plus.o] Error 1
+13:14:32 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+13:14:33 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+13:17:55 **** Build of configuration Debug for project MinusExercises ****
+make all 
+Building file: ../minus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"minus.d" -MT"minus.d" -o "minus.o" "../minus.cpp"
+Finished building: ../minus.cpp
+ 
+Building target: MinusExercises
+Invoking: Cross G++ Linker
+g++  -o "MinusExercises"  ./minus.o   
+Finished building target: MinusExercises
+ 
+13:17:57 **** Incremental Build of configuration Debug for project MinusExercises ****
+make all 
+make: Nothing to be done for 'all'.
+13:18:19 **** Incremental Build of configuration Debug for project MinusExercises ****
+make all 
+make: Nothing to be done for 'all'.
+15:03:31 **** Incremental Build of configuration Debug for project MinusExercises ****
+make all 
+Building file: ../minus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"minus.d" -MT"minus.d" -o "minus.o" "../minus.cpp"
+Finished building: ../minus.cpp
+ 
+Building target: MinusExercises
+Invoking: Cross G++ Linker
+g++  -o "MinusExercises"  ./minus.o   
+Finished building target: MinusExercises
+ 
+15:03:49 **** Incremental Build of configuration Debug for project MinusExercises ****
+make all 
+Building file: ../minus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"minus.d" -MT"minus.d" -o "minus.o" "../minus.cpp"
+Finished building: ../minus.cpp
+ 
+Building target: MinusExercises
+Invoking: Cross G++ Linker
+g++  -o "MinusExercises"  ./minus.o   
+Finished building target: MinusExercises
+ 
+15:04:05 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+Building file: ../plus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"plus.d" -MT"plus.d" -o "plus.o" "../plus.cpp"
+Finished building: ../plus.cpp
+ 
+Building target: Tests
+Invoking: Cross G++ Linker
+g++  -o "Tests"  ./plus.o   
+Finished building target: Tests
+ 
+15:04:11 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:05:49 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:17:01 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:18:09 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:18:29 **** Incremental Build of configuration Debug for project Tests ****
+make all 
+make: Nothing to be done for 'all'.
+15:44:44 **** Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:46:24 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:49:13 **** Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:49:16 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:49:50 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:49:53 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:50:53 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:50:57 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:52:57 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:52:59 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:53:47 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:53:49 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:55:23 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:55:25 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:56:55 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:56:59 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:57:09 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:57:10 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:58:39 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+15:59:32 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+15:59:34 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+16:00:14 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+Building file: ../DifficlutPlus.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"DifficlutPlus.d" -MT"DifficlutPlus.d" -o "DifficlutPlus.o" "../DifficlutPlus.cpp"
+Finished building: ../DifficlutPlus.cpp
+ 
+Building target: DifficultPlus
+Invoking: Cross G++ Linker
+g++  -o "DifficultPlus"  ./DifficlutPlus.o   
+Finished building target: DifficultPlus
+ 
+16:00:30 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+16:04:01 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+16:05:15 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.
+16:07:21 **** Incremental Build of configuration Debug for project DifficultPlus ****
+make all 
+make: Nothing to be done for 'all'.

@@ -1,0 +1,76 @@
+14:52:41 **** Incremental Build of configuration Debug for project LePlasma_Visual ****
+make all 
+Building file: ../LePlasma_Visual.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/LePlasma_Visual" -I"/home/zlstudio/workspace/LePlasma_Visual/include" -I"/home/zlstudio/workspace/LePlasma_Visual/include_cal" -I"/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"LePlasma_Visual.d" -MT"LePlasma_Visual.d" -o "LePlasma_Visual.o" "../LePlasma_Visual.cpp"
+In file included from ../LePlasma_Visual.cpp:11:0:
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:20:15: warning: ‘_stage’ defined but not used [-Wunused-variable]
+ static Stage* _stage;
+               ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:22:13: warning: ‘void MouseHandler(int, int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseHandler(int button,int state,int x,int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:23:13: warning: ‘void MouseDragHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseDragHandler(int x,int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:24:13: warning: ‘void MouseMoveHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseMoveHandler(int x,int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:26:13: warning: ‘void KeyDownHandler(unsigned char, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void KeyDownHandler(unsigned char key, int x, int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:27:13: warning: ‘void KeyUpHandler(unsigned char, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void KeyUpHandler(unsigned char key, int x, int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:29:13: warning: ‘void SpecialKeyDownHandler(int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void SpecialKeyDownHandler(int key, int x, int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:30:13: warning: ‘void SpecialKeyUpHandler(int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void SpecialKeyUpHandler(int key, int x, int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:32:13: warning: ‘L_draging’ defined but not used [-Wunused-variable]
+ static bool L_draging;
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:33:13: warning: ‘R_draging’ defined but not used [-Wunused-variable]
+ static bool R_draging;
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:34:13: warning: ‘M_draging’ defined but not used [-Wunused-variable]
+ static bool M_draging;
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:36:12: warning: ‘L_startDragX’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+            ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:36:25: warning: ‘L_startDragY’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+                         ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:37:12: warning: ‘R_startDragX’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+            ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:37:25: warning: ‘R_startDragY’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+                         ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:38:12: warning: ‘M_startDragX’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+            ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:38:25: warning: ‘M_startDragY’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+                         ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:42:20: warning: ‘void _reshape(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _reshape(int w, int h);
+                    ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:43:20: warning: ‘void _display()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _display();
+                    ^
+/home/zlstudio/workspace/LePlasma_Visual/LeFrame/include/GLEnvironment.h:44:20: warning: ‘void _idle()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _idle();
+                    ^
+Finished building: ../LePlasma_Visual.cpp
+ 
+Building target: LePlasma_Visual
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visual"  ./src_cal/CSPIC.o ./src_cal/Case.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DispersionRelation.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Engine.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/PlateWave.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/SingleParticle.o ./src_cal/Tensor3D.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Figure.o ./src/GridViewer.o ./src/Mathx.o ./src/Plot.o ./src/Visualize.o ./src/XYZIndicator.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./LePlasma_Visual.o   -lglut -lGL -lGLU
+Finished building target: LePlasma_Visual
+ 
+
+14:52:42 Build Finished (took 1s.90ms)
+

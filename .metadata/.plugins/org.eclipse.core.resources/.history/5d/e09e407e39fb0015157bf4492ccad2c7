@@ -1,0 +1,54 @@
+//============================================================================
+// Name        : ZLMPI.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <mpi.h>
+#include <omp.h>
+#include <time.h>
+using namespace std;
+
+int main(int argc, char**argv){
+
+	MPI_Init(&argc, &argv);
+
+	int l=30;
+	char a[30];
+
+	int this_rank;
+	int total_process;
+	MPI_Comm_rank(MPI_COMM_WORLD,&this_rank);
+	MPI_Comm_size(MPI_COMM_WORLD,&total_process);
+	MPI_Get_processor_name(a,&l);
+
+
+
+	//send
+	if(this_rank==0){
+		int send_to=(this_rank==total_process-1?0:this_rank+1);
+		MPI_Send(&this_rank,1,MPI_INT,send_to,0,MPI_COMM_WORLD);
+	}
+	//receive
+	int receive_msg;
+	MPI_Status recv_state;
+	int listen_from=(this_rank==0?total_process-1:this_rank-1);
+	MPI_Recv(&receive_msg,1,MPI_INT,listen_from,0,MPI_COMM_WORLD,&recv_state);
+	cout <<"Thread No."<<this_rank<<"/"<<total_process<<" process at Node "<<a<< endl;
+	cout <<omp_get_num_procs()<<" processors are availible for omp"<<endl;
+
+	if(this_rank!=0){
+		int send_to=(this_rank==total_process-1?0:this_rank+1);
+		MPI_Send(&this_rank,1,MPI_INT,send_to,0,MPI_COMM_WORLD);
+	}
+
+
+	MPI_Finalize();
+
+	return 0;
+
+
+}

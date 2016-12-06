@@ -1,0 +1,52 @@
+/* 本程序自动生成规定范围内的加法题，
+ * 并判断输入的答案的正误 */
+
+#include <iostream>
+#include <cmath>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_NUMBER 100  //题目中出现的最大整数
+#define MIN_NUMBER 0  //题目中出现的最小整数
+#define QUESTIONS_PER_TIME 4  //每次做的题数
+
+using namespace std;
+
+inline int RandInt(double min, double max){
+	return ceil((rand()*(max-min))/RAND_MAX+min);
+}
+
+int main(int argc, char**argv){
+	srand(int(time(0)));
+	int right = 0;
+	int wrong = 0;
+	clock_t start, end;
+	start = clock();
+	for (int q= 0; q < QUESTIONS_PER_TIME; q++){
+		cout << q+1 << "、 " ;
+		int a = RandInt(MIN_NUMBER, MAX_NUMBER);
+		int b = RandInt(MIN_NUMBER, MAX_NUMBER);
+		int sum = a+b;
+		while (sum > MAX_NUMBER){
+			b = RandInt(MIN_NUMBER, MAX_NUMBER);
+			sum = a + b;
+		}
+		cout << a << " + " << b << " = ";
+		int inSum;
+		cin >> inSum;
+		if (sum == inSum){
+			cout << "正确！" << endl;
+			right++;
+		}
+		else{
+			cout << "错误！正确答案是 " << sum << endl;
+			wrong++;
+		}
+	}
+	end = clock();
+	double timeS = (double)(end - start);///CLOCKS_PER_SEC;
+	cout << endl << "共 " << QUESTIONS_PER_TIME << " 道题" << endl
+			<< "正确 " << right << " 道，错误 " << wrong << " 道" << endl;
+	cout << "共用时 " << timeS << " 秒" << endl;
+	return 0;
+}

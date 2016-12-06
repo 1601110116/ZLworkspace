@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;LePlasma/ZLOMP_cal.cpp&apos; to &apos;LePlasma.cpp&apos;" description="Rename resource &apos;ZLOMP_cal.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="ZLOMP_cal.cpp" name="LePlasma.cpp" stamp="1459948192531" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;LePlasma/src/MPI_Init.cpp&apos; to &apos;MPI_Init.h&apos;" description="Rename resource &apos;MPI_Init.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/MPI_Init.cpp" name="MPI_Init.h" stamp="1460067699371" updateReferences="true"/>
+</session>

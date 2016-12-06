@@ -1,0 +1,41 @@
+/*
+ * B1PhysicsList.cpp
+ *
+ *  Created on: Dec 8, 2015
+ *      Author: zlstudio
+ */
+
+#include <iostream>
+
+#include "B1PhysicsList.hh"
+#include "G4Electron.hh"
+#include "G4Gamma.hh"
+#include "G4SystemOfUnits.hh"
+
+#include "G4PhotoElectricEffect.hh"
+#include "G4ComptonScattering.hh"
+#include "G4GammaConversion.hh"
+
+#include "G4CoulombScattering.hh"
+#include "G4eIonisation.hh"
+#include "G4eBremsstrahlung.hh"
+
+#include "G4ParticleDefinition.hh"
+#include "G4ProcessManager.hh"
+#include "G4PhysicsListHelper.hh"
+
+#include "G4EmStandardPhysics.hh"
+
+B1PhysicsList::B1PhysicsList():G4VModularPhysicsList() {
+	std::cout<<"Using User Physics"<<std::endl;
+	SetVerboseLevel(1);
+	RegisterPhysics(new G4EmStandardPhysics());
+}
+
+B1PhysicsList::~B1PhysicsList() {
+}
+
+void B1PhysicsList::SetCuts(){
+	//SetCutsWithDefault();
+	G4VUserPhysicsList::SetCuts();
+}

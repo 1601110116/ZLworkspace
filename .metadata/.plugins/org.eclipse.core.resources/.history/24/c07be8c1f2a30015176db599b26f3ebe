@@ -1,0 +1,200 @@
+//
+// ********************************************************************
+// * License and Disclaimer                                           *
+// *                                                                  *
+// * The  Geant4 software  is  copyright of the Copyright Holders  of *
+// * the Geant4 Collaboration.  It is provided  under  the terms  and *
+// * conditions of the Geant4 Software License,  included in the file *
+// * LICENSE and available at  http://cern.ch/geant4/license .  These *
+// * include a list of copyright holders.                             *
+// *                                                                  *
+// * Neither the authors of this software system, nor their employing *
+// * institutes,nor the agencies providing financial support for this *
+// * work  make  any representation or  warranty, express or implied, *
+// * regarding  this  software system or assume any liability for its *
+// * use.  Please see the license in the file  LICENSE  and URL above *
+// * for the full disclaimer and the limitation of liability.         *
+// *                                                                  *
+// * This  code  implementation is the result of  the  scientific and *
+// * technical work of the GEANT4 collaboration.                      *
+// * By using,  copying,  modifying or  distributing the software (or *
+// * any work based  on the software)  you  agree  to acknowledge its *
+// * use  in  resulting  scientific  publications,  and indicate your *
+// * acceptance of all terms of the Geant4 Software license.          *
+// ********************************************************************
+//
+// $Id: B1DetectorConstruction.cc 90623 2015-06-05 09:24:30Z gcosmo $
+//
+/// \file B1DetectorConstruction.cc
+/// \brief Implementation of the B1DetectorConstruction class
+#include "iostream"
+
+#include "B1DetectorConstruction.hh"
+
+#include "G4RunManager.hh"
+#include "G4NistManager.hh"
+
+#include "G4Element.hh"
+
+#include "G4Box.hh"
+#include "G4Tubs.hh"
+
+#include "G4Orb.hh"
+#include "G4Sphere.hh"
+#include "G4Trd.hh"
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4MaterialPropertiesTable.hh"
+
+#define THICKNESS 0.5
+
+B1DetectorConstruction::B1DetectorConstruction() :
+		G4VUserDetectorConstruction(), fScoringVolume(0) {
+}
+
+B1DetectorConstruction::~B1DetectorConstruction() {
+}
+
+G4VPhysicalVolume* B1DetectorConstruction::Construct() {
+	std::cout<<"*************Thickness : "<<THICKNESS<<std::endl;
+	G4NistManager* nist = G4NistManager::Instance();
+
+	G4double worldWidth = 1.0 * m;
+	G4double worldLength = 1.0 * m;
+	G4double worldHeight = 1.0 * m;
+
+	G4double DectectorWidth = THICKNESS/2.0 * mm;
+	G4double DectectorLength = 5.0 * cm;
+	G4double DectectorHeight = 5.0 * cm;
+
+	G4double sourceWidth = 0.25 * mm;
+	G4double sourceLength = 3.0 * cm;
+	G4double sourceHeight = 3.0 * cm;
+
+	//Shapes
+	G4Box* myWorld = new G4Box("world", worldWidth, worldLength, worldHeight);
+	G4Box* myLowBDetector = new G4Box("scintillator", DectectorWidth, DectectorLength, DectectorHeight);
+	G4Box* mySource = new G4Box("source", sourceWidth, sourceLength, sourceHeight);
+
+	//Materials
+
+	G4Material* Air = nist->FindOrBuildMaterial("G4_AIR");
+	G4Element* H = nist->FindOrBuildElement(1, false);
+	G4Element* C = nist->FindOrBuildElement(6, false);
+
+	std::cout << "Building C : " << C->GetN() << " : " << C->GetZ() << std::endl;
+
+	G4Material* Plastic = new G4Material("SCINT_Plastic", 1.032 * g / cm3, 2);
+
+	Plastic->AddElement(H, (G4int) 1103);
+	Plastic->AddElement(C, (G4int) 1000);
+
+	G4double hc = 1239.84191 * eV * nm;
+
+	G4double scint_Length = 423.0 * nm;
+
+	std::cout << "Building Plastic : Density : " << Plastic->GetDensity() << " Electric Density : " << Plastic->GetElectronDensity() << std::endl;
+
+	//SCINT
+	const G4int NUMENTRIES = 1;
+	G4double Scnt_PP[NUMENTRIES] = { hc / scint_Length };
+
+	G4double Scnt_FAST[NUMENTRIES] = { 1.0 };
+	G4double Scnt_SLOW[NUMENTRIES] = { 0.0 };
+	G4double Abs_Length[NUMENTRIES] = { 20 * cm };
+	G4double Reflect_Index[NUMENTRIES] = { 1.58 };
+
+	G4MaterialPropertiesTable* Scnt_MPT = new G4MaterialPropertiesTable();
+
+	Scnt_MPT->AddProperty("FASTCOMPONENT", Scnt_PP, Scnt_FAST, NUMENTRIES);
+	Scnt_MPT->AddProperty("SLOWCOMPONENT", Scnt_PP, Scnt_SLOW, NUMENTRIES);
+	Scnt_MPT->AddProperty("ABSLENGTH", Scnt_PP, Abs_Length, NUMENTRIES);
+	Scnt_MPT->AddProperty("RINDEX", Scnt_PP, Reflect_Index, NUMENTRIES);
+
+	//for Anth, S=1.4e4/Mev
+	Scnt_MPT->AddConstProperty("SCINTILLATIONYIELD", 1.4e3 * 0.65 / MeV);
+	Scnt_MPT->AddConstProperty("RESOLUTIONSCALE", 2.0);
+	Scnt_MPT->AddConstProperty("FASTTIMECONSTANT", 1. * ns);
+	Scnt_MPT->AddConstProperty("SLOWTIMECONSTANT", 10. * ns);
+	Scnt_MPT->AddConstProperty("YIELDRATIO", 1.0);
+
+	//Plastic->SetMaterialPropertiesTable(Scnt_MPT);
+
+	G4MaterialPropertiesTable* AIR_MPT = new G4MaterialPropertiesTable();
+
+	G4double Air_Reflect_Index[NUMENTRIES] = { 1.0 };
+	AIR_MPT->AddProperty("RINDEX", Scnt_PP, Air_Reflect_Index, NUMENTRIES);
+
+	//Air->SetMaterialPropertiesTable(AIR_MPT);
+
+	//Logic
+	G4LogicalVolume* myWorld_Logic = new G4LogicalVolume(myWorld, Air, "world");
+	G4LogicalVolume* myLowBDetector_Logic = new G4LogicalVolume(myLowBDetector, Plastic, "plastic");
+	G4LogicalVolume* mySource_Logic = new G4LogicalVolume(mySource, Air, "source");
+
+	//Placement
+
+	G4VPhysicalVolume* myWorld_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), myWorld_Logic, "world", 0, false, 0);
+	G4VPhysicalVolume* myLowBDetector_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), myLowBDetector_Logic, "plastic", myWorld_Logic, false, 0);
+	G4VPhysicalVolume* mySource_Physics = new G4PVPlacement(0, G4ThreeVector(-5.0 * cm, 0., 0.), mySource_Logic, "source", myWorld_Logic, false, 0);
+
+	//Wave Length Shift Fiber
+	std::cout << "Building WLSF Plastic" << std::endl;
+
+	G4Material* WLSF_Plastic = new G4Material("WLSF_Plastic", 1.05 * g / cm3, 2);
+
+	WLSF_Plastic->AddElement(C, 485);
+	WLSF_Plastic->AddElement(H, 482);
+
+	const G4int nEntries = 4;
+
+	//Income : 3 eV
+	//Outcome : 2.52eV
+
+	G4double PhotonEnergy[nEntries] = { 2.5 * eV, 2.75 * eV, 3 * eV, 3.25 * eV };
+
+	G4double RIndexFiber[nEntries] = { 1.60, 1.60, 1.60, 1.60 };
+	G4double AbsFiber[nEntries] = { 3.5 * m, 3.5 * m, 0.1 * mm, 0.1 * mm };
+	G4double EmissionFiber[nEntries] = {1.0,0.5,0.,0.};
+
+	G4MaterialPropertiesTable* MPTFiber = new G4MaterialPropertiesTable();
+
+	MPTFiber->AddProperty("RINDEX", PhotonEnergy, RIndexFiber, nEntries);
+	MPTFiber->AddProperty("WLSABSLENGTH", PhotonEnergy, AbsFiber, nEntries);
+	MPTFiber->AddProperty("WLSCOMPONENT", PhotonEnergy, EmissionFiber, nEntries);
+	MPTFiber->AddConstProperty("WLSTIMECONSTANT", 0.5 * ns);
+
+	WLSF_Plastic->SetMaterialPropertiesTable(MPTFiber);
+
+	G4Tubs* WLSF1 = new G4Tubs("WLSF", 0, 0.5 * mm, 6 * cm, 0, 2 * 3.1415926535897);
+	G4Tubs* WLSF2 = new G4Tubs("WLSF", 0, 0.5 * mm, 6 * cm, 0, 2 * 3.1415926535897);
+
+	G4LogicalVolume* WLSF_Logical1 = new G4LogicalVolume(WLSF1, WLSF_Plastic, "WLSF");
+
+	G4LogicalVolume* WLSF_Logical2 = new G4LogicalVolume(WLSF2, WLSF_Plastic, "WLSF");
+
+	//G4VPhysicalVolume* WLSF_Placement1=new G4PVPlacement(0, G4ThreeVector(0., 5.0*cm, 0.), WLSF_Logical1, "WLSF", myWorld_Logic, false, 0);
+	//G4VPhysicalVolume* WLSF_Placement2=new G4PVPlacement(0, G4ThreeVector(0., -5.0*cm, 0.), WLSF_Logical2, "WLSF", myWorld_Logic, false, 0);
+
+	//Back
+
+	G4Box* backBoard = new G4Box("backBoard", DectectorWidth*2, DectectorLength*1.1, DectectorHeight*1.1);
+
+	G4LogicalVolume* backBoard_Logic = new G4LogicalVolume(backBoard, Plastic, "backBoard");
+
+	//G4VPhysicalVolume* backBoard_Physics = new G4PVPlacement(0, G4ThreeVector(1.0*mm, 0., 0.), backBoard_Logic, "backBoard", myWorld_Logic, false, 0);
+
+
+
+
+	// Set Shape2 as scoring volume
+	//
+	fScoringVolume = myLowBDetector_Logic;
+
+	//
+	//always return the physical World
+	//
+	return myWorld_Physics;
+}
+

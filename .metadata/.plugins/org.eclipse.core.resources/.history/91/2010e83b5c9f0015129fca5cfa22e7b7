@@ -1,0 +1,57 @@
+/*
+ * B1PhysicsList.cpp
+ *
+ *  Created on: Dec 8, 2015
+ *      Author: zlstudio
+ */
+
+#include <iostream>
+
+#include "B1PhysicsList.hh"
+
+#include "G4EmStandardPhysics.hh"
+#include "G4Scintillation.hh"
+#include "G4ProcessManager.hh"
+
+B1PhysicsList::B1PhysicsList() :
+		G4VModularPhysicsList() {
+	std::cout << "Using User Physics" << std::endl;
+	SetVerboseLevel(2);
+	RegisterPhysics(new G4EmStandardPhysics());
+
+	//SCINT
+	G4Scintillation* theMuonScintProcess = new G4Scintillation("Scintillation");
+
+	theMuonScintProcess->SetTrackSecondariesFirst(true);
+
+	//YieldFactor
+	theMuonScintProcess->SetScintillationYieldFactor(0.8);
+
+	//theParticleIterator->reset();
+
+	while ((*theParticleIterator)()) {
+		G4ParticleDefinition* particle = theParticleIterator->value();
+		G4ProcessManager* pmanager = particle->GetProcessManager();
+		G4String particleName = particle->GetParticleName();
+
+		std::cout<<"Particle : "<<particleName<<std::endl;
+
+		if (theMuonScintProcess->IsApplicable(*particle)) {
+			if (particleName == "e-") {
+				pmanager->AddProcess(theMuonScintProcess);
+				pmanager->SetProcessOrderingToLast(theMuonScintProcess, idxAtRest);
+				pmanager->SetProcessOrderingToLast(theMuonScintProcess, idxPostStep);
+			}
+		}
+	}
+
+	std::cout<<"SCINT Registed"<<std::endl;
+}
+
+B1PhysicsList::~B1PhysicsList() {
+}
+
+void B1PhysicsList::SetCuts() {
+	//SetCutsWithDefault();
+	G4VUserPhysicsList::SetCuts();
+}

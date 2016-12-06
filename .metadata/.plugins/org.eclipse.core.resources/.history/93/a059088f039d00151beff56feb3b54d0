@@ -1,0 +1,20 @@
+/*
+ * LowBPhysicsList.cpp
+ *
+ *  Created on: Dec 8, 2015
+ *      Author: zlstudio
+ */
+#ifndef LowBPhysicsList
+#define LowBPhysicsList 1
+
+#include "LowBPhysicsList.hh"
+
+LowBPhysicsList::LowBPhysicsList() {
+	// TODO Auto-generated constructor stub
+
+}
+
+LowBPhysicsList::~LowBPhysicsList() {
+	// TODO Auto-generated destructor stub
+}
+

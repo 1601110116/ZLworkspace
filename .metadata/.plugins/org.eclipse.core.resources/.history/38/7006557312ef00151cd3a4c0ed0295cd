@@ -1,0 +1,334 @@
+/*
+ * StepForward.cpp
+
+ *
+ *  Created on: 2016-3-13
+ *      Author: pb12013004
+ */
+
+#include <StepForward.h>
+
+Grid* StepForward::grid;
+double ***StepForward::ASquare;
+Vector3D *****StepForward::gradA;
+Vector3D ****StepForward::gradASquare;
+Vector3D ****StepForward::curldA;
+Vector3D ****StepForward::curldCurldA;
+double ***StepForward::pApAj;
+
+StepForward::~StepForward(){
+
+}
+StepForward::StepForward(Grid *_grid){
+	int i, j, k, l;
+	grid = _grid;
+	ASquare = new double**[grid->gridX()];
+	double **tmpD2, *tmpD1;
+	for (i = 0; i < grid->gridX(); i++){
+		tmpD2 = new double*[grid->gridY()];
+		for (j = 0; j < grid->gridY(); j++){
+			tmpD1 = new double[grid->gridZ()];
+			for (k = 0; k < grid->gridZ(); k++){
+				tmpD1[k] = 0.0;
+			}
+			tmpD2[j] = tmpD1;
+		}
+		ASquare[i] = tmpD2;
+	}
+
+	pApAj = new double**[grid->gridX()];
+	for (i = 0; i < grid->gridX(); i++){
+		tmpD2 = new double*[grid->gridY()];
+		for (j = 0; j < grid->gridY(); j++){
+			tmpD1 = new double[grid->gridZ()];
+			for (k = 0; k < grid->gridZ(); k++){
+				tmpD1[k] = 0.0;
+			}
+			tmpD2[j] = tmpD1;
+		}
+		pApAj[i] = tmpD2;
+	}
+
+	gradA = new Vector3D****[grid->gridX()];
+	Vector3D ****tmpV4, ***tmpV3, **tmpV2;
+	for (i = 0; i < grid->gridX(); i++){
+		tmpV4 = new Vector3D***[grid->gridY()];
+		for (j = 0; j < grid->gridY(); j++){
+			tmpV3 = new Vector3D**[grid->gridZ()];
+			for (k = 0; k < grid->gridZ(); k++){
+				tmpV2 = new Vector3D*[3];
+				for (l = 0; l < 3; l++){
+					tmpV2[l] = new Vector3D(0.0 ,0.0, 0.0);
+				}
+				tmpV3[k] = tmpV2;
+			}
+			tmpV4[j] = tmpV3;
+		}
+		gradA[i] = tmpV4;
+	}
+
+	gradASquare = new Vector3D ***[grid->gridX()];
+	for (i = 0; i < grid->gridX(); i++){
+		tmpV3 = new Vector3D**[grid->gridY()];
+		for (j = 0; j < grid->gridY(); j++){
+			tmpV2 = new Vector3D*[grid->gridZ()];
+			for (k = 0; k < grid->gridZ(); k++){
+				tmpV2[k] = new Vector3D(0.0, 0.0, 0.0);
+			}
+			tmpV3[j] = tmpV2;
+		}
+		gradASquare[i] = tmpV3;
+	}
+
+	curldA = new Vector3D ***[grid->gridX()];
+	for (i = 0; i < grid->gridX(); i++){
+		tmpV3 = new Vector3D**[grid->gridY()];
+		for (j = 0; j < grid->gridY(); j++){
+			tmpV2 = new Vector3D*[grid->gridZ()];
+			for (k = 0; k < grid->gridZ(); k++){
+				tmpV2[k] = new Vector3D(0.0, 0.0, 0.0);
+			}
+			tmpV3[j] = tmpV2;
+		}
+		curldA[i] = tmpV3;
+	}
+
+	curldCurldA = new Vector3D ***[grid->gridX()];
+	for (i = 0; i < grid->gridX(); i++){
+		tmpV3 = new Vector3D**[grid->gridY()];
+		for (j = 0; j < grid->gridY(); j++){
+			tmpV2 = new Vector3D*[grid->gridZ()];
+			for (k = 0; k < grid->gridZ(); k++){
+				tmpV2[k] = new Vector3D(0.0, 0.0, 0.0);
+			}
+			tmpV3[j] = tmpV2;
+		}
+		curldCurldA[i] = tmpV3;
+	}
+
+	cout << "StepForward initialized" << endl;
+}
+
+void StepForward::setASquare(Range *range){
+	int i, j, k;
+	for (i = range->sx; i < range->ex; i++){
+		for (j = range->sy; j < range->ey; j++){
+			for (k = range->sz; k < range->ez; k++){
+				ASquare[i][j][k] = pow(grid->A_indexer[i][j][k]->x, 2)
+												+ pow(grid->A_indexer[i][j][k]->y, 2)
+												+ pow(grid->A_indexer[i][j][k]->z, 2);
+			}
+		}
+	}
+}
+
+void StepForward::setGradA(Range *range){
+	int i, j, k;
+	for (i = range->sx; i < range->ex; i++){
+		for (j = range->sy; j < range->ey; j++){
+			for (k = range->sz; k < range->ez; k++){
+				if(gradA[i][j][k]!=NULL){
+					delete[] gradA[i][j][k];
+				}
+				gradA[i][j][k] = DEC::gradd(grid->A_indexer, grid, i, j, k);
+			}
+		}
+	}
+}
+
+void StepForward::setCurldA(Range *range){
+	int i, j, k;
+	for (i = range->sx; i < range->ex; i++){
+		for (j = range->sy; j < range->ey; j++){
+			for (k = range->sz; k < range->ez; k++){
+				delete[] curldA[i][j][k];
+				curldA[i][j][k] = DEC::curld(grid->A_indexer, grid, i, j, k);
+			}
+		}
+	}
+}
+void StepForward::setCurldCurldA(Range *range){
+	int i, j, k;
+	for (i = range->sx; i < range->ex; i++){
+		for (j = range->sy; j < range->ey; j++){
+			for (k = range->sz; k < range->ez; k++){
+				delete[] curldCurldA[i][j][k];
+				curldCurldA[i][j][k] = DEC::curld(curldA, grid, i, j, k);
+			}
+		}
+	}
+}
+
+Vector3D *StepForward::rootOfLinearEquationSet(Vector3D **coefficient,
+		Vector3D *RHS){
+	Vector3D **adjacentMatrix = new Vector3D*[3];
+	double determinant = 0;
+	Vector3D *root = new Vector3D(0.0,0.0,0.0);
+	Vector3D **inverseMatrix;
+	int i;
+	for (i = 0; i < 3; i++){
+		adjacentMatrix[i] = new Vector3D(0.0, 0.0, 0.0);
+	}
+	adjacentMatrix[0]->x = coefficient[1]->y * coefficient[2]->z
+			- coefficient[1]->z * coefficient[2]->y;
+	adjacentMatrix[0]->y = -coefficient[0]->y * coefficient[2]->z
+			+ coefficient[0]->z * coefficient[2]->y;
+	adjacentMatrix[0]->z = coefficient[0]->y * coefficient[1]->z
+			- coefficient[0]->z * coefficient[1]->y;
+	adjacentMatrix[1]->x = -coefficient[1]->x * coefficient[2]->z
+			+ coefficient[1]->z * coefficient[2]->x;
+	adjacentMatrix[1]->y = coefficient[0]->x * coefficient[2]->z
+			- coefficient[0]->z * coefficient[2]->x;
+	adjacentMatrix[1]->z = -coefficient[0]->x * coefficient[1]->z
+			+ coefficient[0]->z * coefficient[1]->x;
+	adjacentMatrix[2]->x = coefficient[1]->x * coefficient[2]->y
+			- coefficient[1]->y * coefficient[2]->x;
+	adjacentMatrix[2]->y = -coefficient[0]->x * coefficient[2]->y
+			+ coefficient[0]->y * coefficient[2]->x;
+	adjacentMatrix[2]->z = coefficient[0]->x * coefficient[1]->y
+			- coefficient[0]->y * coefficient[1]->x;
+
+	determinant += coefficient[0]->x * adjacentMatrix[0]->x;
+	determinant += coefficient[1]->x * adjacentMatrix[0]->y;
+	determinant += coefficient[2]->x * adjacentMatrix[0]->z;
+	if (fabs(determinant) < 1e-16){
+		cerr << "Coefficient Matrix is sigular, unable to find solution." << endl;
+		cerr<<"Determinant: "<<determinant<<endl;
+		//exit(0);
+	}
+	inverseMatrix = adjacentMatrix;
+	for (i = 0; i < 3; i++){
+		*(inverseMatrix[i]) /= determinant;
+	}
+	root->x = (*inverseMatrix[0]) * RHS;
+	root->y = (*inverseMatrix[1]) * RHS;
+	root->z = (*inverseMatrix[2]) * RHS;
+	delete[] adjacentMatrix;
+	return root;
+}
+
+void StepForward::setGradASquare(Range *range){
+	int i, j, k;
+	for (i = range->sx; i < range->ex; i++){
+		for (j = range->sy; j < range->ey; j++){
+			for (k = range->sz; k < range->ez; k++){
+				delete gradASquare[i][j][k];
+				gradASquare[i][j][k] = DEC::gradd(ASquare, grid, i, j, k);
+			}
+		}
+	}
+}
+
+void StepForward::updateP(Range *range, double deltaT){
+	int l;
+	Vector3D **coeffient;
+	Vector3D *RHS;
+	setGradA(range);
+	setASquare(range);
+	setGradASquare(range);
+	Particle *curParticle;
+	for_each_Particle_within(grid, curParticle, range){
+		coeffient = DEC::interp1(gradA, grid, curParticle->Position->x,
+				curParticle->Position->y, curParticle->Position->z);
+		double tmp = - deltaT * (curParticle->charge / curParticle->mass);
+		for (l = 0; l < 3; l++){
+			coeffient[l] = *(*coeffient[l] * tmp) + new Vector3D(1.0, 1.0, 1.0);
+		}
+		tmp = tmp * curParticle->charge / 2;
+		RHS = *curParticle->Momentum - *(DEC::interp1(gradASquare, grid,
+				curParticle->Position->x, curParticle->Position->y, curParticle->Position->z))*tmp;
+		Vector3D *nextMomentum = rootOfLinearEquationSet(coeffient, RHS);
+		*curParticle->Momentum = *nextMomentum;
+		delete[] coeffient;
+		delete nextMomentum;
+		delete RHS;
+	}end_for_each_Particle_within(curParticle)
+}
+
+void StepForward::updateY(Range *range, double deltaT){
+	int i, j, k, l, m, n;
+	Particle *curParticle;
+	int cellX;
+	int cellY;
+	int cellZ;
+	double tmp;
+	Vector3D *tmpV;
+	setCurldA(range);
+	setCurldCurldA(range);
+	for(i = range->sx; i < range->ex; i++){
+		for (j = range->sy; j < range->ey; j++){
+			for (k = range->sz; k < range->ez; k++){
+				pApAj[i][j][k] = 1;
+				for (l = -2; l < 2; l++){
+					for (m = -2; m < 2; m++){
+						for (n = -2; n < 2; n++){
+							cellX = (i+l+grid->gridX())%grid->gridX();
+							cellY = (j+m+grid->gridY())%grid->gridY();
+							cellZ = (k+n+grid->gridZ())%grid->gridZ();
+							Range *cellRange = new Range(cellX, cellX+1, cellY, cellY+1, cellZ, cellZ+1);
+							for_each_Particle_within(grid, curParticle, cellRange){
+								tmp = DEC::interp0(pApAj, grid, curParticle->Position->x,
+										curParticle->Position->y, curParticle->Position->z) *
+												curParticle->charge * deltaT / (curParticle->mass *
+														grid->lengthX() * grid->lengthY() * grid->lengthZ());
+								tmpV = *curParticle->Momentum * tmp;
+								*(grid->Y_indexer[i][j][k]) += tmpV;
+								delete tmpV;
+								tmp = tmp * curParticle->charge;
+								tmpV = DEC::interp1(grid->A_indexer, grid, curParticle->Position->x,
+										curParticle->Position->y, curParticle->Position->z);
+								*tmpV *= tmp;
+								*(grid->Y_indexer[i][j][k]) += tmpV;
+								delete tmpV;
+							}end_for_each_Particle_within(curParticle)
+							delete cellRange;
+						}
+					}
+				}
+				tmpV = *curldCurldA[i][j][k] * deltaT;
+				*(grid->Y_indexer[i][j][k]) += tmpV;
+				delete tmpV;
+				pApAj[i][j][k] = 0;
+			}
+		}
+	}
+}
+
+void StepForward::updateX(Range *range, double deltaT){
+	Particle *curParticle;
+	double tmp;
+	Vector3D *tmpV;
+	for_each_Particle_within(grid, curParticle, range){
+		tmp = deltaT / curParticle->mass;
+		tmpV = *curParticle->Momentum * tmp;
+		*curParticle->Position += tmpV;
+		delete tmpV;
+		tmp *= -curParticle->charge;
+		tmpV = DEC::interp1(grid->A_indexer, grid, curParticle->Position->x, curParticle->Position->y,
+				curParticle->Position->z);
+		*tmpV *= tmp;
+		*curParticle->Position += tmpV;
+		delete tmpV;
+	}end_for_each_Particle_within(curParticle)
+}
+
+void StepForward::updateA(Range *range, double deltaT){
+	int i, j, k;
+	Vector3D *tmpV;
+	for(i = range->sx; i < range->ex; i++){
+		for (j = range->sy; j < range->ey; j++){
+			for (k = range->sz; k < range->ez; k++){
+				tmpV = *grid->Y_indexer[i][j][k] * deltaT;
+				*grid->A_indexer[i][j][k] += tmpV;
+				delete tmpV;
+			}
+		}
+	}
+}
+
+void StepForward::iterate(Range *range, double deltaT){
+	updateP(range, deltaT);
+	updateY(range, deltaT);
+	updateX(range, deltaT);
+	updateA(range, deltaT);
+}

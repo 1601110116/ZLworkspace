@@ -1,0 +1,16 @@
+21:04:47 **** Incremental Build of configuration Debug for project LowB1 ****
+make pre-build main-build 
+source ~/Geant4/share/Geant4-10.2.0/geant4make/geant4make.sh
+/bin/sh: 1: source: not found
+make: [pre-build] Error 127 (ignored)
+ 
+Building target: LowB1
+Invoking: GCC C++ Linker
+g++ -L/home/zlstudio/Geant4/lib -o "LowB1"  ./lowBexec.o   
+./lowBexec.o: In function `__static_initialization_and_destruction_0':
+/home/zlstudio/Geant4/include/Geant4/CLHEP/Random/Randomize.h:62: undefined reference to `CLHEP::HepRandom::createInstance()'
+collect2: error: ld returned 1 exit status
+make: *** [LowB1] Error 1
+
+21:04:47 Build Finished (took 159ms)
+

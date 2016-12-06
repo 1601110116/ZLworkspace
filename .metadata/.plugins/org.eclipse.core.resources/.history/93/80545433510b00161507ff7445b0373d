@@ -1,0 +1,30 @@
+//============================================================================
+// Name        : OMPTEST.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <omp.h>
+#include <math.h>
+using namespace std;
+
+int main() {
+
+	int a=9;
+
+	double t0=omp_get_wtime();
+
+	for (int i = 0; i < 1e8; ++i) {
+		a=a%4;
+		a+=4;
+	}
+
+
+	cout<<"a="<<a<<endl;
+
+	cout<<"Total Time:"<<(omp_get_wtime()-t0)*1000<<endl;
+	return 0;
+}

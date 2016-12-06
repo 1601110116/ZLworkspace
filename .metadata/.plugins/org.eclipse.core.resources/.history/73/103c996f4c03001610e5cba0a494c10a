@@ -1,0 +1,161 @@
+//============================================================================
+// Name        : Transmitter.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <inet.h>
+#include <pthread.h>
+using namespace std;
+
+#define Nodes 4
+
+int reportPort[Nodes];
+int hostPort;
+
+pthread_t recv_thread_handler,send_thread_handler;
+pthread_mutex_t S_mutex,R_mutex;
+
+void* recv_thread(void *p);
+void* send_thread(void *p);
+
+bool recvParticles(int src);
+bool sendParticles();
+
+double* LeBuffer;
+int particles;
+int dest;
+
+int main() {
+
+	pthread_mutex_init(&R_mutex,NULL);
+	pthread_mutex_init(&S_mutex,NULL);
+
+	pthread_mutex_lock(&S_mutex);
+
+	pthread_create(&recv_thread_handler,NULL,&recv_thread,NULL);
+	pthread_create(&send_thread_handler,NULL,&send_thread,NULL);
+
+	pthread_join(recv_thread_handler,NULL);
+
+}
+
+void* recv_thread(void* p){
+	int inSocket=openListening(TRANSMITTER_IN_PORT);
+
+	while(true){
+		//Smart Align: let the cline ID the same as MPI ID
+		int swap;
+		int MPI_ID;
+
+		for (int i = 0; i < Nodes; ++i) {
+			swap=acceptSocket(inSocket);
+
+			int chk=recv(swap,&MPI_ID,4,0);
+			while(chk<=0){
+				cout<<"Node recv error"<<endl;
+			}
+			cout<<"Node "<<MPI_ID<<" online"<<endl;
+
+			//Align port array with MPI ID
+			reportPort[MPI_ID]=swap;
+
+		}
+
+
+		//Start
+
+		bool workersOnline=true;
+
+		while(workersOnline){
+
+			for (int i = 0; i < Nodes; ++i) {
+				workersOnline=recvParticles(i);
+				if(!workersOnline)break;
+			}
+
+		}
+	}
+}
+
+void* send_thread(void* p){
+	int outSocket=openListening(TRANSMITTER_OUT_PORT);
+	while(true){
+		//Smart Align: let the cline ID the same as MPI ID
+
+		hostPort=acceptSocket(outSocket);
+
+		cout<<"Host online"<<endl;
+
+		//Start
+
+		bool workersOnline=true;
+
+		while(workersOnline){
+
+			workersOnline=sendParticles();
+			if(!workersOnline)break;
+		}
+
+		cout<<"Host offline"<<endl;
+	}
+}
+bool recvParticles(int src){
+	int n,Len;
+
+	if(!Recv(reportPort[src],&n,4))return false;
+
+	Len=n*6;
+
+	double* buffer=new double[Len];
+
+	Recv(reportPort[src],buffer,Len*sizeof(double));
+
+	pthread_mutex_lock(&R_mutex);
+
+	//Swap buffer
+
+	dest=src;
+
+	particles=n;
+
+	LeBuffer=buffer;
+
+	pthread_mutex_unlock(&S_mutex);
+
+
+	return true;
+
+}
+
+bool sendParticles(){
+
+	//Transmit
+
+	pthread_mutex_lock(&S_mutex);
+
+	send_data(hostPort,dest);
+
+	send_data(hostPort,particles);
+
+	int realLength=particles*6*sizeof(double);
+
+	int chk=send(hostPort,LeBuffer,realLength,0);
+
+	if(chk<realLength){
+		cout<<"Fuck!"<<chk<<" : "<<realLength<<endl;
+		return false;
+	}
+
+	cout<<"send to: "<<dest<<" n="<<particles<<endl;
+
+	delete LeBuffer;
+
+	pthread_mutex_unlock(&R_mutex);
+
+	return true;
+
+}

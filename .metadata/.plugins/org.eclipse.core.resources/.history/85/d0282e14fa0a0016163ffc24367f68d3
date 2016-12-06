@@ -1,0 +1,292 @@
+/*
+ * Visualize.cpp
+ *
+ *  Created on: Mar 10, 2016
+ *      Author: zlstudio
+ */
+
+#include "Visualize.h"
+
+#define DRAWCELLS 1
+
+bool isHostView=false;
+
+#define GridViewSizeX 500
+#define GridViewSizeY 500
+
+#define ExViewW 470
+#define ExViewH 400
+
+#define dt 1
+
+
+double cell_size=20;
+
+double Distance=20;
+
+double scale=1;
+
+int Exdx=0;
+double Ex_size=1;
+double dt_range=ExViewW;
+vector<double> ExRecord;
+vector<double> ExShow;
+double ExMax=0;
+
+
+Visualize::Visualize(Grid* grid,int ID):Stage("Node",250*ID+200,300,250,500),
+		GridViewPort()
+{
+	GridViewPort.x=GridViewPort.y=10;
+
+	GridViewPort.graphics.drawRect(0,0,GridViewSizeX,GridViewSizeY);
+	aimGrid=grid;
+
+	rx=90;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	idleFn=NULL;
+}
+
+Visualize::Visualize(Grid* grid):Stage("Node",400,300,1000,600),
+		GridViewPort(),
+		ExPlot(ExViewW,ExViewH,"x-asix","y-asix")
+{
+	GridViewPort.x=GridViewPort.y=10;
+
+	GridViewPort.graphics.lineStyle(0,0x0099ff,1);
+	GridViewPort.graphics.drawRect(0,0,GridViewSizeX,GridViewSizeY);
+
+	ExPlot.x=20+GridViewSizeX;
+	ExPlot.y=10;
+	ExPlot.setCoordinate(Range(0,dt_range,-5,5,0,0));
+
+	//Temporary range set
+	ExPlot.width=ExPlot.Width;
+	ExPlot.height=ExPlot.Height;
+	GridViewPort.width=GridViewSizeX;
+	GridViewPort.height=GridViewSizeY;
+
+
+	addChild(GridViewPort);
+	addChild(ExPlot);
+
+
+	aimGrid=grid;
+
+	rx=90;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	idleFn=NULL;
+}
+
+Visualize::Visualize(HostGrid* grid):Stage("Node",400,300,1000,600),
+		GridViewPort(),
+		ExPlot(ExViewW,ExViewH,"x-asix","y-asix")
+{
+	GridViewPort.x=GridViewPort.y=10;
+
+	GridViewPort.graphics.drawRect(0,0,GridViewSizeX,GridViewSizeY);
+
+	ExPlot.x=20+GridViewSizeX;
+	ExPlot.y=10;
+	ExPlot.setCoordinate(Range(0,dt_range,-5,5,0,0));
+
+	addChild(GridViewPort);
+	addChild(ExPlot);
+
+
+	aimGrid=grid;
+	Hostgrid=grid;
+
+	rx=90;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	idleFn=NULL;
+
+	isHostView=true;
+}
+
+Visualize::~Visualize() {
+	// TODO Auto-generated destructor stub
+}
+
+void Visualize::idle(){
+
+	if(isHostView){
+		Hostgrid->askReport();
+	}else{
+		idleFn();
+	}
+
+	drawGrid();
+	drawParticles();
+
+	double Ex;
+
+	Vertex* v;
+	for_each_Vertex(aimGrid,v){
+		Ex+=fabs(v->Y.x);
+	}end_for_each_Vertex
+
+	ExRecord.push_back(Ex);
+	ExShow.push_back(log10(fabs(Ex/ExRecord[0])));
+
+	ExPlot.trackData1D(ExShow);
+
+	//if(fabs(ExRecord[n])>ExMax&&fabs(ExRecord[n])<10)ExMax=fabs(ExRecord[n]);
+
+}
+
+void Visualize::drawGrid(){
+
+	glColor3f(.1, .1, .1);
+
+	glLoadIdentity();
+	glTranslated(GridViewSizeX/2,stageHeight-GridViewSizeY/2,0);
+
+	seeFrom(Distance,ry,rx);
+
+#if(DRAWCELLS)
+	Cell* cell_iterator;
+
+	for_each_Cell(aimGrid,cell_iterator){
+		glLoadIdentity();
+		glTranslated(GridViewSizeX/2,stageHeight-GridViewSizeY/2,0);
+
+		seeFrom(Distance,ry,rx);
+
+		glTranslated(-aimGrid->gridX()*cell_size/2,-aimGrid->gridY()*cell_size/2,-aimGrid->gridZ()*cell_size/2);
+
+		glTranslated(cell_iterator->x()*cell_size+cell_size/2,cell_iterator->y()*cell_size+cell_size/2,cell_iterator->z()*cell_size+cell_size/2);
+		glutWireCube(cell_size);
+	}end_for_each_Cell
+#endif
+
+	glColor3f(.2, .3, .2);
+
+	glLoadIdentity();
+	glTranslated(GridViewSizeX/2,stageHeight-GridViewSizeY/2,0);
+
+	seeFrom(Distance,ry,rx);
+	glTranslated(-aimGrid->gridX()*cell_size/2,-aimGrid->gridY()*cell_size/2,-aimGrid->gridZ()*cell_size/2);
+
+	glBegin(GL_LINE_LOOP);
+
+	glVertex3d(0,0,0);
+	glVertex3d(aimGrid->gridX()*cell_size,0,0);
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,0);
+	glVertex3d(0,aimGrid->gridY()*cell_size,0);
+
+	glEnd();
+
+
+	glBegin(GL_LINE_LOOP);
+
+	glVertex3d(0,0,aimGrid->gridZ()*cell_size);
+	glVertex3d(aimGrid->gridX()*cell_size,0,aimGrid->gridZ()*cell_size);
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+	glVertex3d(0,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+
+	glEnd();
+
+	glBegin(GL_LINES);
+
+	glVertex3d(0,0,0);
+	glVertex3d(0,0,aimGrid->gridZ()*cell_size);
+
+	glVertex3d(aimGrid->gridX()*cell_size,0,0);
+	glVertex3d(aimGrid->gridX()*cell_size,0,aimGrid->gridZ()*cell_size);
+
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,0);
+	glVertex3d(aimGrid->gridX()*cell_size,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+
+	glVertex3d(0,aimGrid->gridY()*cell_size,0);
+	glVertex3d(0,aimGrid->gridY()*cell_size,aimGrid->gridZ()*cell_size);
+
+	glEnd();
+
+}
+
+
+void Visualize::drawParticles(){
+	glColor3f(1.0, 0., 0.);
+
+	glBegin(GL_POINTS);
+
+	Particle* particle_iterator;
+	Vector3D pos;
+
+	for_each_Particle(aimGrid,particle_iterator){
+		pos=particle_iterator->Position*(cell_size);
+
+		glVertex3d(pos.x,pos.y,pos.z);
+
+	}end_for_each_Particle(particle_iterator);
+
+	glEnd();
+
+}
+
+bool GridDragging=false;
+bool ExDragging=false;
+
+void Visualize::LeftDrag(int sx,int sy,int ex,int ey){
+	if(GridDragging){
+		rx=srx+ex-sx;
+		ry=sry+ey-sy;
+		if(ry>=90)ry=90;
+		if(ry<=-90)ry=-90;
+	}else if(ExDragging){
+		Exdx=srx+(sy-ey)*0.01;
+		Ex_size=sry*(1+(sy-ey)*0.01);
+		if(Ex_size<1e-12)Ex_size=1e-12;
+		if(Exdx>0)Exdx=0;
+		ExPlot.setCoordinate(Range(0,dt_range,-5,5,0,0));
+	}
+}
+void Visualize::LeftButtonDown(int x, int y){
+	if(GridViewPort.hitTest(x,y)){
+		srx=rx;
+		sry=ry;
+		GridDragging=true;
+	}else if(ExPlot.hitTest(x,y)){
+		srx=Exdx;
+		sry=Ex_size;
+		ExDragging=true;
+	}
+}
+
+void Visualize::LeftButtonUp(int x,int y){
+	ExDragging=false;
+	GridDragging=false;
+}
+
+void Visualize::reshape(int w,int h){
+
+}
+
+void Visualize::mouseWheelHandler(int x, int y){
+	double delta=1.05;
+	if(GridViewPort.hitTest(x,y)){
+		cell_size*=delta;
+	}else if(ExPlot.hitTest(x,y)){
+		dt_range*=delta;
+		ExPlot.setCoordinate(Range(0,dt_range,-5,5,0,0));
+	}
+}
+void Visualize::WheelDown(int x, int y){
+	double delta=0.95;
+	if(GridViewPort.hitTest(x,y)){
+		cell_size*=delta;
+	}else if(ExPlot.hitTest(x,y)){
+		dt_range*=delta;
+		ExPlot.setCoordinate(Range(0,dt_range,-5,5,0,0));
+	}
+}

@@ -1,0 +1,8 @@
+20:52:58 **** Incremental Build of configuration Default for project ZL_CSPIC ****
+make 
+mpicc -DWEIGHT_3X3 *.c-I/usr/local/include -I/include-L/usr/local/lib -lhdf5 -llua -fopenmp -O3 -ffast-math  -lm -o a.out 
+gcc: error: *.c-I/usr/local/include: No such file or directory
+make: *** [a.out] Error 1
+
+20:52:58 Build Finished (took 149ms)
+

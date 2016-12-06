@@ -1,0 +1,40 @@
+//============================================================================
+// Name        : ZLMPI.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <mpi.h>
+#include <omp.h>
+#include <time.h>
+using namespace std;
+
+int main(int argc, char**argv){
+
+	MPI_Init(&argc, &argv);
+
+	int this_rank;
+	int total_process;
+	MPI_Comm_rank(MPI_COMM_WORLD,&this_rank);
+	MPI_Comm_size(MPI_COMM_WORLD,&total_process);
+
+
+	cout <<"This is thread No."<<this_rank<<" of"<<total_process<<" process"<< endl;
+
+#pragma omp parallel
+	{
+#pragma omp critical
+		cout<<"Sub thread "<<omp_get_thread_num()<<"in "<<this_rank<<endl;
+	}
+
+
+
+	MPI_Finalize();
+
+	return 0;
+
+
+}

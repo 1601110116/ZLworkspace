@@ -1,0 +1,18 @@
+/*
+ * Figure.cpp
+ *
+ *  Created on: Apr 28, 2016
+ *      Author: zlstudio
+ */
+
+#include <src/Figure.h>
+
+Figure::Figure() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Figure::~Figure() {
+	// TODO Auto-generated destructor stub
+}
+

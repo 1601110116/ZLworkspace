@@ -1,0 +1,91 @@
+/*
+ * Grid.cpp
+ *
+ *  Created on: Mar 3, 2016
+ *      Author: zlstudio
+ */
+
+#include <Grid.h>
+
+Grid::Grid(int x,int y,int z,double scale) {
+	// TODO Auto-generated constructor stub
+	initGrid3D(x,y,z);
+	_scale=scale;
+}
+
+Grid::~Grid() {
+}
+
+void Grid::initGrid3D(int x,int y,int z){
+
+
+	VertexContainer=new Vertex***[x];
+
+	for (int i = 0; i < x; ++i) {
+		Vertex*** d2=new Vertex**[z];
+		for (int j = 0; j < y; ++j) {
+			Vertex** d1=new Vertex*[y];
+			for (int k = 0; k < z; ++k) {
+				Vertex* d0=new Vertex();
+				d1[k]=d0;
+			}
+			d2[j]=d1;
+		}
+		VertexContainer[i]=d2;
+	}
+
+	//priod condition
+
+	CellContainer=new Cell***[x];
+
+	for (int i = 0; i < x; ++i) {
+		Cell*** d2=new Cell**[y];
+		for (int j = 0; j < y; ++j) {
+			Cell** d1=new Cell*[z];
+			for (int k = 0; k < z; ++k) {
+				Cell* d0=new Cell();
+				d1[k]=d0;
+			}
+			d2[j]=d1;
+		}
+		CellContainer[i]=d2;
+	}
+
+	_x=x;
+	_y=y;
+	_z=z;
+}
+
+bool Grid::addPartical(Partical* p){
+	int cellNumberX=p->Position->x/_scale;
+	int cellNumberY=p->Position->y/_scale;
+	int cellNumberZ=p->Position->z/_scale;
+
+	if(cell(cellNumberX,cellNumberY,cellNumberZ)->pushParitcal(p)){
+		_partical_amount++;
+		return true;
+	}
+	return false;
+}
+
+int Grid::particals(){
+	return _partical_amount;
+}
+
+Cell* Grid::cell(int a,int b ,int c){
+	return CellContainer[a][b][c];
+}
+Vertex* Grid::vertex(int a, int b, int c){
+	return VertexContainer[a][b][c];
+}
+
+int Grid::lengthX(){
+	return _x;
+}
+
+int Grid::lengthY(){
+	return _y;
+}
+int Grid::lengthZ(){
+	return _z;
+}

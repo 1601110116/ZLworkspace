@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;LowB/include/LowBMaterials.h&apos; to &apos;LowBMaterials.hh&apos;" description="Rename resource &apos;LowBMaterials.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="include/LowBMaterials.h" name="LowBMaterials.hh" stamp="1458049734206" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;LowB/src/LowBMaterials.cpp&apos; to &apos;LowBMaterials.cc&apos;" description="Rename resource &apos;LowBMaterials.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/LowBMaterials.cpp" name="LowBMaterials.cc" stamp="1458049764300" updateReferences="true"/>
+</session>

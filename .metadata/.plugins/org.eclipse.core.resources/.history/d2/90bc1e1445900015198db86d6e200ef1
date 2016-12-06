@@ -1,0 +1,14 @@
+#include "G4RunManager.hh"
+#include "LowBDetectorConstruction.hh"
+#include "LowBPhysicsList.hh"
+#include "LowBPrimaryGeneratorAction.hh"
+
+
+int main(){
+	// 构造缺省 run manager
+	G4RunManager* runManager = new G4RunManager;
+
+
+	delete runManager;
+	return 0;
+}

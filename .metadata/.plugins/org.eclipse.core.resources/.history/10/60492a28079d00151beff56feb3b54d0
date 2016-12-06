@@ -1,0 +1,29 @@
+/*
+ * LowBPhysicsList.cpp
+ *
+ *  Created on: Dec 8, 2015
+ *      Author: zlstudio
+ */
+
+
+#include "LowBPhysicsList.hh"
+#include "G4Electron.hh"
+#include "G4SystemOfUnits"
+
+LowBPhysicsList::LowBPhysicsList() {
+	// TODO Auto-generated constructor stub
+
+}
+
+LowBPhysicsList::~LowBPhysicsList() {
+	// TODO Auto-generated destructor stub
+}
+
+virtual void LowBPhysicsList::ConstructParticle(){
+	G4Electron::ElectronDefinition();
+}
+
+virtual void LowBPhysicsList::SetCuts(){
+	//SetCutsWithDefault();
+	defaultCutValue = 1.0*mm;
+}

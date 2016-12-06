@@ -1,0 +1,7 @@
+22:20:08 **** Build of configuration Default for project LowB ****
+make all 
+GNUmakefile:13: /home/zlstudio/Geant4/share/Geant4-10.2.0/config/binmake.gmk: No such file or directory
+make: *** No rule to make target `/home/zlstudio/Geant4/share/Geant4-10.2.0/config/binmake.gmk'.  Stop.
+
+22:20:09 Build Finished (took 56ms)
+

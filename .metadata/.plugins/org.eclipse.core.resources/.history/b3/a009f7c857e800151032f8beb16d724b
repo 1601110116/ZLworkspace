@@ -1,0 +1,70 @@
+/*
+ * Eular.cpp
+ *
+ *  Created on: Mar 6, 2016
+ *      Author: zlstudio
+ */
+
+#include <Eular.h>
+
+
+void Eular::nextStep(Grid* grid,double dt){
+	Partical*  partical_iterator;
+	for_each_Partical(grid,partical_iterator)
+	grid->moveParticalTo(partical_iterator,*(partical_iterator->Position)-new Vector3D(dt,0,0));
+	end_for_each_Partical(partical_iterator);
+
+	//grid->showGridMap();
+}
+
+void Eular::nextStep2(Grid* grid,double dt){
+	Partical*  partical_iterator,*partical_iterator2;
+
+	for_each_Partical(grid,partical_iterator){
+
+		Vector3D* speed=new Vector3D(0,0,0);
+		double distance;
+
+		for_each_Partical(grid,partical_iterator2){
+
+			if(partical_iterator2!=partical_iterator){
+				distance=*(partical_iterator2->Position)>>partical_iterator->Position;
+				*(speed)+= *(*partical_iterator->Position-partical_iterator2->Position)/(distance*distance);
+			}
+
+		}end_for_each_Partical(partical_iterator2);
+
+		*(speed)*=dt;
+
+		*partical_iterator->Momentum=speed;
+
+	}end_for_each_Partical(partical_iterator);
+
+
+	for_each_Partical(grid,partical_iterator){
+
+		grid->moveParticalTo(partical_iterator,*partical_iterator->Position+partical_iterator->Momentum);
+
+	}end_for_each_Partical(partical_iterator);
+
+	//grid->showGridMap();
+}
+
+void Eular::nextStep3(Grid* grid, double dt){
+
+	Partical*  partical_iterator,*partical_iterator2,*center;
+
+	int sx=center->cell->x()-1;
+	if(sx<0)sx+=grid->gridX();
+
+	for (int i = 0; i < grid->gridX(); ++i) {
+		for (int j = 0; j < grid->gridY(); ++j) {
+			for (int k = 0; k < grid->gridZ(); ++k) {
+				partical_iterator2=grid->cell(i,j,k)->firstPartical();
+				while(partical_iterator2!=0){
+
+				}
+			}
+		}
+	}
+}

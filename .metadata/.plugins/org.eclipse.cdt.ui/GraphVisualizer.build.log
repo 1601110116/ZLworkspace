@@ -1,0 +1,22 @@
+22:03:50 **** Incremental Build of configuration Debug for project GraphVisualizer ****
+make all 
+Building file: ../src/GraphReader.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/GraphVisualizer/LeFrame/include" -I"/home/zlstudio/workspace/GraphVisualizer/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/GraphReader.d" -MT"src/GraphReader.d" -o "src/GraphReader.o" "../src/GraphReader.cpp"
+../src/GraphReader.cpp: In constructor ‘GraphReader::GraphReader()’:
+../src/GraphReader.cpp:51:22: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11 [enabled by default]
+  Graph.setCoordinate(PlotRange{0,W,-0.00001,0.00001});
+                      ^
+../src/GraphReader.cpp:51:52: warning: narrowing conversion of ‘((GraphReader*)this)->GraphReader::W’ from ‘int’ to ‘double’ inside { } is ill-formed in C++11 [-Wnarrowing]
+  Graph.setCoordinate(PlotRange{0,W,-0.00001,0.00001});
+                                                    ^
+Finished building: ../src/GraphReader.cpp
+ 
+Building target: GraphVisualizer
+Invoking: Cross G++ Linker
+g++  -o "GraphVisualizer"  ./src/GraphReader.o ./src/Mathx.o ./src/Plot.o  ./LeFrame/src/DisplayObject.o ./LeFrame/src/EventDispatcher.o ./LeFrame/src/EventListener.o ./LeFrame/src/GLEnvironment.o ./LeFrame/src/GLEventManager.o ./LeFrame/src/Graphics.o ./LeFrame/src/Rect.o ./LeFrame/src/Sprite.o ./LeFrame/src/Stage.o ./LeFrame/src/TextField.o  ./GraphVisualizer.o   -lGL -lGLU -lglut
+Finished building target: GraphVisualizer
+ 
+
+22:03:50 Build Finished (took 417ms)
+

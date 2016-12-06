@@ -1,0 +1,49 @@
+/*
+ * LowBPhysicsList.cpp
+ *
+ *  Created on: Dec 8, 2015
+ *      Author: zlstudio
+ */
+
+
+#include "LowBPhysicsList.hh"
+#include "G4Electron.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4CoulombScattering.hh"
+#include "G4eIonisation.hh"
+#include "G4eBremsstrahlung.hh"
+
+LowBPhysicsList::LowBPhysicsList() {
+	// TODO Auto-generated constructor stub
+
+}
+
+LowBPhysicsList::~LowBPhysicsList() {
+	// TODO Auto-generated destructor stub
+}
+
+virtual void LowBPhysicsList::ConstructParticle(){
+	G4Electron::ElectronDefinition();
+}
+
+virtual void LowBPhysicsList::ConstructProcess(){
+	AddTransportation();
+
+}
+
+virtual void LowBPhysicsList::SetCuts(){
+	//SetCutsWithDefault();
+	defaultCutValue = 1.0*mm;
+}
+
+void LowBPhysicsList::ConstructEM()
+{
+	//Get the process manager for e
+	G4ParticleDefinition* particle = G4Electron::ElectronDefinition();
+	G4ProcessManager* pmanager = particle->GetProcessManager();
+	// Construct processes for e
+	G4eIonisation * theIonisation = new G4eIonisation();
+	G4eBremsstrahlung
+	// Register processes to gamma's process manager
+	pmanager->AddContinuousProcess();
+}

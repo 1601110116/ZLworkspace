@@ -1,0 +1,132 @@
+/*
+ * Eular.cpp
+ *
+ *  Created on: Mar 6, 2016
+ *      Author: zlstudio
+ */
+
+#include <Eular.h>
+
+inline void delayMS(int length){
+	struct timespec sleeper, dummy ;
+	sleeper.tv_sec  = (time_t)(length / 1000) ;
+	sleeper.tv_nsec = (long)(length % 1000) * 1000000 ;
+	nanosleep (&sleeper, &dummy) ;
+}
+
+void Eular::nextStep(Range* range,double dt){
+	Particle*  particle_iterator;
+	for_each_Particle(grid,particle_iterator)
+	grid->moveParticleTo(particle_iterator,*(particle_iterator->Position)-new Vector3D(dt,0,0));
+	end_for_each_Particle(particle_iterator);
+
+	//grid->showGridMap();
+}
+
+void Eular::nextStep2(Range* range,double dt){
+	Particle*  particle_iterator,*particle_iterator2;
+
+	for_each_Particle(grid,particle_iterator){
+
+		Vector3D* speed=new Vector3D(0,0,0);
+		double distance;
+
+		for_each_Particle(grid,particle_iterator2){
+
+			if(particle_iterator2!=particle_iterator){
+				distance=*(particle_iterator2->Position)>>particle_iterator->Position;
+				*(speed)+= *(*particle_iterator->Position-particle_iterator2->Position)/(distance*distance*distance/particle_iterator->charge/particle_iterator2->charge);
+			}
+
+		}end_for_each_Particle(particle_iterator2);
+
+		*(speed)*=dt/particle_iterator->mass;
+
+		*particle_iterator->Momentum+=speed;
+
+	}end_for_each_Particle(particle_iterator);
+
+
+	for_each_Particle(grid,particle_iterator){
+
+		grid->moveParticleTo(particle_iterator,*particle_iterator->Position+*particle_iterator->Momentum*dt);
+
+	}end_for_each_Particle(particle_iterator);
+
+}
+
+void Eular::nextStep3(Range* range,double dt){
+
+	Particle  *particle_iterator2,*center;
+
+	for_each_Particle(grid,center){
+		Vector3D* speed=new Vector3D(0,0,0);
+		double distance;
+
+		int range=1;
+
+		int sx=center->cell->x()-range;
+		int sy=center->cell->y()-range;
+		int sz=center->cell->z()-range;
+
+		if(sx<0)sx+=grid->gridX();
+		if(sy<0)sy+=grid->gridY();
+		if(sz<0)sz+=grid->gridZ();
+
+		int ex=sx+range+range;
+		int ey=sy+range+range;
+		int ez=sz+range+range;
+
+		if(ex>=grid->gridX())ex-=grid->gridX();
+		if(ey>=grid->gridY())ey-=grid->gridY();
+		if(ez>=grid->gridZ())ez-=grid->gridZ();
+
+		for (int i = sx; i !=ex; i=(i+1)%grid->gridX()) {
+			for (int j = sy; j !=ey; j=(j+1)%grid->gridY()) {
+				for (int k = sz; k != ez; k=(k+1)%grid->gridZ()) {
+					particle_iterator2=grid->cell(i,j,k)->firstParticle();
+					while(particle_iterator2!=0){
+
+						if(particle_iterator2!=center){
+							distance=*(particle_iterator2->Position)>>center->Position;
+							*(speed)+= *(*center->Position-particle_iterator2->Position)/(distance*distance);
+						}
+
+						particle_iterator2=particle_iterator2->nextParticle;
+					}
+				}
+			}
+		}
+		*(speed)*=dt;
+		*center->Momentum=speed;
+
+	}end_for_each_Particle(center)
+
+	for_each_Particle(grid,center){
+
+		grid->moveParticleTo(center,*center->Position+center->Momentum);
+
+	}end_for_each_Particle(center);
+}
+
+void Eular::nextStep4(Range* range,double dt){
+	Particle*  particle_iterator;
+
+	for_each_Particle_within(grid,particle_iterator,r){
+
+		*particle_iterator->Momentum+=*grid->vertex(i,j,k)->A*dt;
+
+	}end_for_each_Particle_within(particle_iterator);
+
+
+	for_each_Particle_within(grid,particle_iterator,r){
+
+		grid->moveParticleTo(particle_iterator,*particle_iterator->Position+*particle_iterator->Momentum*dt);
+
+	}end_for_each_Particle_within(particle_iterator);
+
+
+
+}
+
+

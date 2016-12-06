@@ -1,0 +1,160 @@
+/*
+ * CaseLauncher.cpp
+
+ *
+ *  Created on: 2016-4-12
+ *      Author: lyt
+ */
+
+#include <CaseLauncher.h>
+
+inline double Random(double min, double max){
+	return (rand()*(max-min))/RAND_MAX+min;
+}
+
+CaseLauncher::CaseLauncher(){
+
+}
+CaseLauncher::~CaseLauncher(){
+
+}
+
+double CaseLauncher::gaussRand(double expectation, double variance){
+	static double V1, V2, S;
+	static int phase = 0;
+	double X;
+
+	if (phase == 0) {
+		do{
+			double U1 = (double)rand() / RAND_MAX;
+			double U2 = (double)rand() / RAND_MAX;
+
+			V1 = 2 * U1 - 1;
+			V2 = 2 * U2 - 1;
+			S = V1 * V1 + V2 * V2;
+		}  while(S >= 1 || S == 0);
+
+		X = V1 * sqrt(-2 * log(S) / S);
+	} else
+		X = V2 * sqrt(-2 * log(S) / S);
+
+	phase = 1 - phase;
+
+	X = X * variance + expectation;
+	return X;
+}
+
+Vector3D CaseLauncher::uniformPosition(Grid *grid){
+	return Vector3D(
+			Random(0,grid->lengthX()),
+			Random(0,grid->lengthY()),
+			Random(0,grid->lengthZ())
+	);
+}
+
+Vector3D CaseLauncher::zeroPosition(Grid *grid){
+	return Vector3D(0.000001, 0.000001, 0.000001);
+}
+Vector3D * CaseLauncher::setMaxwellVelocity(Grid *grid, double thermalVelocity, double averageVelocityX,
+		double averageVelocityY, double averageVelocityZ){
+
+	double variance = thermalVelocity * thermalVelocity / 2;
+	Vector3D *velocity = new Vector3D[grid->particles()];
+	int number;
+	for (number = 0;number < grid->particles(); number++){
+		velocity[number] = Vector3D(
+				gaussRand(averageVelocityX, variance),
+				gaussRand(averageVelocityY, variance),
+				gaussRand(averageVelocityZ, variance)
+		);
+	}
+	return velocity;
+}
+
+void CaseLauncher::distributeParticle(Grid *grid, Particle *particle, int amount){
+	int i;
+	for (i = 0; i < amount; i++){
+		Particle *newParticle = particle->clone();
+		newParticle->Position = uniformPosition(grid);
+		grid->addParticle(newParticle);
+	}
+}
+
+void CaseLauncher::initA(Grid *grid, Vector3D *velocity){
+	Particle *curParticle;
+	int l, m, n;
+	double cr;  //speed of light multiplies the distance between the source point and the field point
+	int number = 0;
+	Vector3D cd;  //current density created by given particle
+
+	for_each_Particle(grid, curParticle){
+		cd = velocity[number] * curParticle->charge;
+		for (l = curParticle->cell->x() - 1; l <= curParticle->cell->x() + 2; l++){
+			for (m = curParticle->cell->y() - 1; m <= curParticle->cell->y() + 2; m++){
+				for (n = curParticle->cell->z() - 1; n <= curParticle->cell->z() + 2; n++){
+					cr = sqrt((pow(curParticle->Position.x - l, 2) + pow(curParticle->Position.y - m, 2)
+							 + pow(curParticle->Position.z - n, 2)) * grid->scale()) * LIGHT_SPEED;
+					grid->vertex(l, m, n)->A += (cd / cr);
+				}
+			}
+		}
+		number++;
+	}end_for_each_Particle(curParticle)
+}
+
+void CaseLauncher::initP(Grid *grid, Vector3D *velocity){
+	Particle *curParticle;
+	int number = 0;
+	Vector3D v1, v2;
+	for_each_Particle(grid, curParticle){
+		curParticle->Momentum = velocity[number] * curParticle->mass + DEC::interp1(grid->A_indexer, grid,
+				curParticle->Position.x, curParticle->Position.y, curParticle->Position.z)  * (curParticle->charge / LIGHT_SPEED);
+		number++;
+		std::cout << "P0 = " << curParticle->Momentum.toString() << endl;
+	} end_for_each_Particle(curParticle)
+}
+
+void CaseLauncher::initY(Grid *grid){
+	int number = 0;
+	Particle *curParticle;
+	int l, m, n;
+	Vector3D r;  //pointing from source point to field point
+	double lengthR;  //the length of r
+	for_each_Particle(grid, curParticle){
+		for (l = curParticle->cell->x() - 1; l <= curParticle->cell->x() + 2; l++){
+			for (m = curParticle->cell->y() - 1; m <= curParticle->cell->y() + 2; m++){
+				for (n = curParticle->cell->z() - 1; n <= curParticle->cell->z() + 2; n++){
+					r = Vector3D(l, m, n) - curParticle->Position;
+					lengthR = sqrt(r.x * r.x + r.y * r.y + r.z * r.z);
+					grid->vertex(l, m, n)->Y = r * (curParticle->charge * (-LIGHT_SPEED) / pow(lengthR, 3));//E = Qr/r^3, A = -cE
+				}
+			}
+		}
+		number++;
+	}end_for_each_Particle(curParticle)
+}
+
+void CaseLauncher::initCase(Grid *grid, Vector3D *velocity){
+	initA(grid, velocity);
+	initP(grid, velocity);
+	initY(grid);
+}
+
+void CaseLauncher::launchCase(Grid *grid){
+	distributeParticle(grid, new Electron(), 80);
+	Vector3D *velocity = setMaxwellVelocity(grid,0, 0.1*LIGHT_SPEED, 0, 0);
+	int i;
+	for (i = 0; i < grid->particles(); i++){
+	}
+	initCase(grid, velocity);
+}
+
+void CaseLauncher::MPIlaunchCase(Grid *grid,int n){
+	distributeParticle(grid, new Electron(), 80);
+	Vector3D *velocity = setMaxwellVelocity(grid,0, 0.1*LIGHT_SPEED, 0, 0);
+	int i;
+	for (i = 0; i < grid->particles(); i++){
+	}
+	initCase(grid, velocity);
+}
+

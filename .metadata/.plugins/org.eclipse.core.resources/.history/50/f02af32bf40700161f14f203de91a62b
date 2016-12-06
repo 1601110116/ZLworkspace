@@ -1,0 +1,125 @@
+//============================================================================
+// Name        : ZLMPI.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <mpi.h>
+#include <omp.h>
+#include <time.h>
+using namespace std;
+
+int main(int argc, char**argv){
+
+	int works=2000000002;
+
+	MPI_Init(&argc, &argv);
+
+	int total_process;
+	int l=30;
+	char name[30];
+
+	double u[3]={1.1,2.2,3.3};
+
+	int this_rank;
+	MPI_Comm_rank(MPI_COMM_WORLD,&this_rank);
+	MPI_Comm_size(MPI_COMM_WORLD,&total_process);
+	MPI_Get_processor_name(name,&l);
+
+	//locate
+
+	int prevNode=(this_rank==0?total_process-1:this_rank-1);
+	int nextNode=(this_rank==total_process-1?0:this_rank+1);
+
+	//send
+	if(this_rank==0){
+		MPI_Send(u,3,MPI_DOUBLE,nextNode,0,MPI_COMM_WORLD);
+	}
+
+	//receive
+	double receive_msg[3];
+	MPI_Status recv_state;
+	MPI_Recv(receive_msg,6,MPI_DOUBLE,prevNode,0,MPI_COMM_WORLD,&recv_state);
+
+	cout <<"Node"<<this_rank<<"/"<<total_process<<" at "<<name<<" has "<<omp_get_num_procs()<<" threads"<< endl;
+
+	if(this_rank!=0){
+		MPI_Send(u,3,MPI_DOUBLE,nextNode,0,MPI_COMM_WORLD);
+	}
+
+
+
+	int dev=works/total_process;
+	int left=works%total_process;
+
+
+	double a=0;
+	int b=0;
+	int step=1;
+
+	double t0=omp_get_wtime();
+
+
+	int div[total_process+1];
+
+	div[0]=0;
+
+	for (int i = 1; i <= total_process; ++i) {
+		div[i]=div[i-1]+dev+(i<=left);
+	}
+
+#pragma omp parallel
+	{
+		double ax=0;
+		int bx=0;
+#pragma omp for
+		for (int i = div[this_rank]; i < div[this_rank+1]; ++i) {
+			ax+=step;
+			bx+=step;
+		}
+#pragma omp critical
+		{
+			a+=ax;
+			b+=bx;
+		}
+	}
+
+	cout<<"a="<<a<<", b="<<b<<endl;
+
+	cout<<"Node "<<this_rank<<": Total Time="<<(omp_get_wtime()-t0)*1000<<"ms"<<endl;
+
+	if(this_rank==0){
+		cout<<"Main Thread Waiting for Merge..."<<endl;
+		double receive_msg_a;
+		int receive_msg_b;
+		MPI_Status recv_state;
+		for (int i = 1; i < total_process; ++i) {
+			MPI_Recv(&receive_msg_a,1,MPI_DOUBLE,i,17171,MPI_COMM_WORLD,&recv_state);
+			MPI_Recv(&receive_msg_b,1,MPI_INT,i,17172,MPI_COMM_WORLD,&recv_state);
+
+			cout<<"Main Thread Get Result from "<<i<<", its a="<<receive_msg_a<<endl;
+			//Merge
+
+			a+=receive_msg_a;
+			b+=receive_msg_b;
+		}
+
+		cout<<"Finally a="<<a<<", b="<<b<<endl;
+		cout<<"Total Time="<<(omp_get_wtime()-t0)*1000<<"ms"<<endl;
+
+	}else{
+		cout<<"Thread "<<this_rank<<" Submitting for Merge...a="<<a<<endl;
+		MPI_Send(&a,1,MPI_DOUBLE,0,17171,MPI_COMM_WORLD);
+		MPI_Send(&b,1,MPI_INT,0,17172,MPI_COMM_WORLD);
+		cout<<"Thread "<<this_rank<<" Submitted"<<endl;
+	}
+
+	MPI_Finalize();
+
+	return 0;
+
+
+}

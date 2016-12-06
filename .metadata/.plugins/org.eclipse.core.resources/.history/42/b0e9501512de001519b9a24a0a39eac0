@@ -1,0 +1,9 @@
+
+LIBS = -L/usr/local/lib -lhdf5 -llua
+OBJS = *.c
+INCLUDES=-I/usr/local/include
+INCLUDES2=-I/include
+DEFINES=-DWEIGHT_3X3
+a.out:${OBJS}
+	mpicc ${DEFINES} ${OBJS} ${INCLUDES} ${INCLUDES2}${LIBS} -fopenmp -O3 -ffast-math  -lm -o a.out 
+

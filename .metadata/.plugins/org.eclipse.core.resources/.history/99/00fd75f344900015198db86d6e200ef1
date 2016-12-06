@@ -1,0 +1,31 @@
+#include "G4RunManager.hh"
+#include "G4UImanager.hh"
+#include "LowBDetectorConstruction.hh"
+#include "LowBPhysicsList.hh"
+#include "LowBPrimaryGeneratorAction.hh"
+
+
+int main(){
+	// 构造缺省 run manager
+	G4RunManager* runManager = new G4RunManager;
+
+	// 设置必须的初始化类
+	runManager->SetUserInitialization(new LowBDetectorConstruction);
+	runManager->SetUserInitialization(new LowBPhysicsList);
+	// 设置必须的用户行为类
+	runManager->SetUserAction(new LowBPrimaryGeneratorAction);
+	// 初始化 G4 内核
+	runManager->initialize();
+
+	// 获取指向 UI manager 的指针并设置 verbosities
+	G4UImanager* UI = G4UImanager::GetUIpointer();
+	UI->ApplyCommand("/run/verbose 1");
+	UI->ApplyCommand("/event/verbose 1");
+	UI->ApplyCommand("/tracking/verbose 1");
+	// 启动一个 run
+	int numberOfEvent = 3;
+	runManager->BeamOn(numberOfEvent);
+	// 任务结束
+	delete runManager;
+	return 0;
+}

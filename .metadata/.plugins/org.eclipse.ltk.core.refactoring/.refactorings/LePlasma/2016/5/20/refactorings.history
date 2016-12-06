@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;LePlasma/src/MPIRunManager.cpp&apos; to &apos;RunManager.cpp&apos;" description="Rename resource &apos;MPIRunManager.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/MPIRunManager.cpp" name="RunManager.cpp" stamp="1463046880491" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;LePlasma/include/MPIRunManager.h&apos; to &apos;RunManager.h&apos;" description="Rename resource &apos;MPIRunManager.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="include/MPIRunManager.h" name="RunManager.h" stamp="1463046888704" updateReferences="true"/>
+</session>

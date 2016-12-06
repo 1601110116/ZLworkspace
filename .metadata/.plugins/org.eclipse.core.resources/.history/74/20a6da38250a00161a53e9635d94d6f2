@@ -1,0 +1,133 @@
+/*
+ * Graphics.cpp
+ *
+ *  Created on: Apr 23, 2016
+ *      Author: zlstudio
+ */
+
+#include <Graphics.h>
+
+inline void setColor(Color color){
+	unsigned char r,g,b;
+	phraseColor(color,r,g,b);
+	glColor3ub(r,g,b);
+}
+
+Graphics::Graphics() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Graphics::~Graphics() {
+	// TODO Auto-generated destructor stub
+}
+
+///Drawers
+
+void Graphics::lineStyle(int width,unsigned int color,double alpha){
+	unsigned char r,g,b;
+	unsigned char a=alpha*255;
+	phraseColor(color,r,g,b);
+
+	lineStyles.push_back(LineStyle{width,r,g,b,a});
+}
+
+void Graphics::clear(){
+	//stroke includes no pointer. So no delete is needed
+	strokes.clear();
+	lineStyles.clear();
+}
+
+void Graphics::drawRect(double x,double y,double width,double height){
+
+	strokes.push_back(Stroke{x,-y,true});
+	strokes.push_back(Stroke{x+width,-y});
+	strokes.push_back(Stroke{x+width,-y-height});
+	strokes.push_back(Stroke{x,-y-height});
+}
+
+void Graphics::drawRect(const Rect &rect){
+
+	strokes.push_back(Stroke{rect.x,-rect.y,true});
+	strokes.push_back(Stroke{rect.x+rect.width,-rect.y});
+	strokes.push_back(Stroke{rect.x+rect.width,-rect.y-rect.height});
+	strokes.push_back(Stroke{rect.x,-rect.y-rect.height});
+}
+
+void Graphics::moveTo(double x,double y){
+
+	strokes.push_back(Stroke{x,-y,true});
+
+}
+
+void Graphics::lineTo(double x,double y){
+
+	strokes.push_back(Stroke{x,-y});
+
+}
+
+////Temporary Text Agent
+
+/* There are 7 bitmap fonts available in GLUT. They are
+    GLUT_BITMAP_8_BY_13
+    GLUT_BITMAP_9_BY_15
+    GLUT_BITMAP_TIMES_ROMAN_10
+    GLUT_BITMAP_TIMES_ROMAN_24
+    GLUT_BITMAP_HELVETICA_10
+    GLUT_BITMAP_HELVETICA_12
+    GLUT_BITMAP_HELVETICA_18 */
+void Graphics::textStyle(Color color){
+	phraseColor(color,TextColor[0],TextColor[1],TextColor[2]);
+}
+void Graphics::printAt(int x,int y,const char* text){
+
+	string s(text);
+
+	texts.push_back(Text{s,GLUT_BITMAP_HELVETICA_12,x,y,TextColor[0],TextColor[1],TextColor[2]});
+
+}
+
+void Graphics::printAt(int x,int y,string s){
+	texts.push_back(Text{s,GLUT_BITMAP_HELVETICA_12,x,y,TextColor[0],TextColor[1],TextColor[2]});
+}
+
+
+///Central Drawer
+void Graphics::draw(){
+	//draw text
+	for (int i = 0; i < texts.size(); ++i) {
+		glColor3ub(
+				texts[i].r,
+				texts[i].g,
+				texts[i].b
+		);
+		glRasterPos2f(texts[i].x,-texts[i].y-12);
+		for (int j = 0; j < texts[i].text.size(); ++j) {
+			glutBitmapCharacter(texts[i].font, texts[i].text[j]);
+		}
+	}
+
+	//draw lines
+
+	int styleIndex=0;
+
+	glBegin(GL_LINE_STRIP);
+	for (int i = 0; i < strokes.size(); ++i) {
+		if(strokes[i].start&&i!=0){
+			glEnd();
+			glBegin(GL_LINE_STRIP);
+		}
+		if(strokes[i].changeStyle){
+			glColor4ub(
+					lineStyles[styleIndex].r,
+					lineStyles[styleIndex].g,
+					lineStyles[styleIndex].b,
+					lineStyles[styleIndex].a
+			);
+			styleIndex++;
+		}
+		glVertex2d(strokes[i].x,strokes[i].y);
+	}
+	glEnd();
+
+}

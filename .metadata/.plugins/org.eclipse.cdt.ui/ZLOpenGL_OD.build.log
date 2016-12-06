@@ -1,0 +1,15 @@
+15:24:44 **** Incremental Build of configuration Debug for project ZLOpenGL_OD ****
+make all 
+Building file: ../src/OpenGL_Interactive.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/OpenGL_Interactive.d" -MT"src/OpenGL_Interactive.d" -o "src/OpenGL_Interactive.o" "../src/OpenGL_Interactive.cpp"
+Finished building: ../src/OpenGL_Interactive.cpp
+ 
+Building target: ZLOpenGL_OD
+Invoking: Cross G++ Linker
+g++  -o "ZLOpenGL_OD"  ./src/OpenGL_Interactive.o ./src/Rect.o ./src/Visualize.o ./src/ZLOpenGL_OD.o   -lGL -lGLU -lglut
+Finished building target: ZLOpenGL_OD
+ 
+
+15:24:44 Build Finished (took 467ms)
+

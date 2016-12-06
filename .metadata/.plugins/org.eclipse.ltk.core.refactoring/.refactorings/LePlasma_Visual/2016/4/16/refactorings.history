@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LePlasma_Visual/LePlasma_Visual.h&apos; to &apos;LePlasma.h&apos;" description="Rename resource &apos;LePlasma_Visual.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="LePlasma_Visual.h" name="LePlasma.h" stamp="1460810974657" updateReferences="true"/>
+</session>

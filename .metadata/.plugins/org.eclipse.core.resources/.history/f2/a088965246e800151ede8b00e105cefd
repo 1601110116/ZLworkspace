@@ -1,0 +1,24 @@
+/*
+ * RunManager.h
+ *
+ *  Created on: Mar 6, 2016
+ *      Author: zlstudio
+ */
+
+#ifndef RUNMANAGER_H_
+#define RUNMANAGER_H_
+
+#include<Grid.h>
+#include<GL/glut.h>
+
+class RunManager {
+	public:
+		RunManager();
+		virtual ~RunManager();
+
+		static void stepNext(Grid* grid, void (*Method)(Grid*,double),  double deltaT);
+
+
+};
+
+#endif /* RUNMANAGER_H_ */

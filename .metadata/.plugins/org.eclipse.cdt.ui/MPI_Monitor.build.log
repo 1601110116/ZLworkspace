@@ -1,0 +1,15 @@
+14:48:08 **** Incremental Build of configuration Debug for project MPI_Monitor ****
+make all 
+Building file: ../src/MPI_Monitor.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/LePlasma/Socket" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/MPI_Monitor.d" -MT"src/MPI_Monitor.d" -o "src/MPI_Monitor.o" "../src/MPI_Monitor.cpp"
+Finished building: ../src/MPI_Monitor.cpp
+ 
+Building target: MPI_Monitor
+Invoking: Cross G++ Linker
+g++  -o "MPI_Monitor"  ./src/MPI_Monitor.o  ./Socket/inet.o   
+Finished building target: MPI_Monitor
+ 
+
+14:48:09 Build Finished (took 212ms)
+

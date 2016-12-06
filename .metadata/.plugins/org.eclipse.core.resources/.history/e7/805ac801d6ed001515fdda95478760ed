@@ -1,0 +1,109 @@
+/*
+ * Visualize.cpp
+ *
+ *  Created on: Mar 10, 2016
+ *      Author: zlstudio
+ */
+
+#include "Visualize.h"
+
+double cell_size=5;
+
+Visualize::Visualize(Grid* grid):OpenGL_Interactive("Test Process",300,300,600,600) {
+	aimGrid=grid;
+
+	rx=0;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	scale=25;
+
+	idleFn=NULL;
+}
+
+Visualize::~Visualize() {
+	// TODO Auto-generated destructor stub
+}
+
+void Visualize::idle(){
+
+	idleFn();
+
+	display();
+
+}
+
+void Visualize::init(){
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+
+	glMatrixMode(GL_PROJECTION);
+
+	glOrtho(-30, 30, -30, 30, -30, 30);
+
+	glMatrixMode(GL_MODELVIEW);
+
+	gluLookAt(0, 0, 200, 0, 0, 0, 0, 1, 0);
+
+}
+
+void Visualize::display(){
+	glClear(GL_COLOR_BUFFER_BIT);
+	glLoadIdentity();
+
+	rotationY(rx);
+	rotationX(ry);
+
+	glColor3f(1.0, 0, 0);
+
+
+
+	Particle* particle_iterator;
+
+	Cell* cell_iterator;
+
+	for_each_Cell(aimGrid,cell_iterator){
+		glLoadIdentity();
+		rotationY(rx);
+		rotationX(ry);
+		glTranslated(cell_iterator->x()*cell_size+cell_size/2,cell_iterator->y()*cell_size+cell_size/2,cell_iterator->z()*cell_size+cell_size/2);
+		glutWireCube(cell_size);
+	}end_for_each_Cell
+
+	for_each_Particle(aimGrid,particle_iterator){
+		Vector3D* pos=*(particle_iterator->Position)*(cell_size/aimGrid->scale());
+
+		pos->x/=aimGrid->scale();
+		pos->y/=aimGrid->scale();
+		pos->z/=aimGrid->scale();
+
+		pos+=new Vector3D(-scale/2,-scale/2,-scale/2);
+
+		glLoadIdentity();
+		rotationY(rx);
+		rotationX(ry);
+		glTranslated(pos->x,pos->y,pos->z);
+		glutSolidCube(0.1);
+	}end_for_each_Particle(particle_iterator);
+
+	glEnd();
+
+	glFlush();
+
+	glutSwapBuffers();
+
+}
+
+void Visualize::LeftDrag(int sx,int sy,int ex,int ey){
+	rx=srx+ex-sx;
+	ry=sry+ey-sy;
+	display();
+}
+void Visualize::LeftButtonDown(int x, int y){
+	srx=rx;
+	sry=ry;
+}
+
+void Visualize::reshape(int w,int h){
+
+}

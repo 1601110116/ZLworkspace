@@ -1,0 +1,98 @@
+//============================================================================
+// Name        : ZLOMP.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <omp.h>
+
+#include <Vector3D.h>
+#include <Cell.h>
+#include <Electron.h>
+#include <Grid.h>
+#include <ParticleDistributer.h>
+#include <ExternalField.h>
+#include <RunManager.h>
+#include <Eular.h>
+#include <RunManager.h>
+#include <StepForward.h>
+
+
+#include <Visualize.h>
+
+using namespace std;
+
+int main() {
+
+	double dt=0.0001;
+
+
+	Grid* grid=new Grid(5,5,5,0.2,true);
+
+	ParticleDistributer::Distributer_Random(grid,new Electron(),10000);
+
+	//ExternalField::setExternalField(grid);
+//
+//	Electron *e1=new Electron();
+//	e1->Position=new Vector3D(0.5,0.5,0.5);
+//	e1->Momentum=new Vector3D(0,1.2,0);
+//	e1->mass=1;
+//
+//	Electron *e2=new Electron();
+//	e2->Position=new Vector3D(0.3,0.5,0.5);
+//	e2->Momentum=new Vector3D(0,-1,0);
+//	e2->mass=10;
+//	e2->charge=1;
+//
+//
+//	grid->addParticle(e1);
+//	grid->addParticle(e2);
+//
+//	cout<<"Grid Test: particles="<<grid->particles()<<endl;
+//
+//	grid->showGridMap();
+
+//	Cell* cell1=grid->cell(1,2,3);
+//
+//	Particle* e1=cell1->firstParticle();
+//
+//	cout<<"Particle Test:"<<e1->name<<" m="<<e1->mass<<"; e= "<<e1->charge<<endl;
+//
+//	cout<<"Moving Particle Test:"<<e1->name<<" at Cell"<<e1->cell->toString()<<"; X="<<e1->Position->toString()<<endl;
+//
+//	grid->moveParticleTo(e1,new Vector3D(1,1,0.5));
+//
+//	cout<<"Moving Particle Test:"<<e1->name<<" at Cell"<<e1->cell->toString()<<"; X="<<e1->Position->toString()<<endl;
+//
+//	RunManager::stepNext(grid,Eular::nextStep,0.1);
+
+//	Vertex* vertex1=grid->vertex(1,2,3);
+//	*(vertex1->A)+=new Vector3D(4,5,6);
+//
+//	cout<<"Indexer Test: "<<grid->A_indexer[1][2][3]->toString()<<endl;
+//
+//	Vector3D* a=new Vector3D(1,2,3);
+//	Vector3D* b=new Vector3D(2,3,4);
+//
+//	cout<<"a="<<a->toString()<<endl<<"b="<<b->toString()<<endl;
+//	cout<<"Vector Test: a*3="<<((*a)*3)->toString()<<"; a*b="<<*a*b<<endl;
+
+//	StepForward* step=new StepForward(grid);
+
+
+
+	new StepForward(grid);
+
+	RunManager* run=new RunManager(grid,StepForward::iterate,dt);
+
+	Visualize* stage=new Visualize(grid);
+
+	stage->idleFn=run->stepNext;
+
+	InitStage(stage);
+
+	return 0;
+}

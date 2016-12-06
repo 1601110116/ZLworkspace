@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+lineNumberRuler=true
+org.eclipse.cdt.ui.occurrenceIndicationColor=144,196,255
+org.eclipse.cdt.ui.writeOccurrenceIndicationColor=133,189,255
+overviewRuler_migration=migrated_3.1
+spellingEnabled=false
+spellingEngine=org.eclipse.jdt.internal.ui.text.spelling.DefaultSpellingEngine
+tabWidth=8
+writeOccurrenceIndicationColor=255,202,94

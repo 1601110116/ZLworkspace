@@ -1,0 +1,190 @@
+/*
+ * Grid.cpp
+ *
+ *  Created on: Mar 3, 2016
+ *      Author: zlstudio
+ */
+
+#include <Grid.h>
+
+Grid::Grid(int x,int y,int z,double scale, bool period) {
+	// TODO Auto-generated constructor stub
+	initGrid3D(x,y,z);
+	_scale=scale;
+	_period=period;
+
+	if(period)cout<<"Period ";
+	cout<<"Grid initialized, size: "<<x<<"*"<<y<<"*"<<z<<endl;
+}
+
+Grid::~Grid() {
+}
+
+void Grid::initGrid3D(int x,int y,int z){
+
+
+	VertexContainer=new Vertex***[x];
+	A_indexer=new Vector3D***[x];
+
+	for (int i = 0; i < x; ++i) {
+		Vertex*** d2=new Vertex**[z];
+		Vector3D*** d2_A=new Vector3D**[z];
+		for (int j = 0; j < y; ++j) {
+			Vertex** d1=new Vertex*[y];
+			Vector3D** d1_A=new Vector3D*[y];
+			for (int k = 0; k < z; ++k) {
+				Vertex* d0=new Vertex(i,j,k);
+				d1[k]=d0;
+				d1_A[k]=d0->A;
+
+			}
+			d2[j]=d1;
+			d2_A[j]=d1_A;
+		}
+		VertexContainer[i]=d2;
+		A_indexer[i]=d2_A;
+	}
+
+	//priod condition
+
+	CellContainer=new Cell***[x];
+
+	for (int i = 0; i < x; ++i) {
+		Cell*** d2=new Cell**[y];
+		for (int j = 0; j < y; ++j) {
+			Cell** d1=new Cell*[z];
+			for (int k = 0; k < z; ++k) {
+				Cell* d0=new Cell(i,j,k);
+				d1[k]=d0;
+			}
+			d2[j]=d1;
+		}
+		CellContainer[i]=d2;
+	}
+
+	_x=x;
+	_y=y;
+	_z=z;
+	_partical_amount=0;
+}
+
+bool Grid::addPartical(Partical* p){
+	int cell_x=p->Position->x/_scale;
+	int cell_y=p->Position->y/_scale;
+	int cell_z=p->Position->z/_scale;
+
+	if(_period){
+		p->Position->x-=cell_x/_x*lengthX();
+		p->Position->y-=cell_y/_y*lengthY();
+		p->Position->z-=cell_z/_z*lengthZ();
+
+		cell_x%=_x;
+		cell_y%=_y;
+		cell_z%=_z;
+	}
+
+	if(cell(cell_x,cell_y,cell_z)->pushParitcal(p)){
+		_partical_amount++;
+
+		return true;
+	}
+
+	cerr<<"Warning from Grid : Adding Partical Failed!"<<endl;
+
+	return false;
+}
+
+bool Grid::moveParticalTo(Partical* p, Vector3D* location){
+	if(p->cell!=NULL){
+
+		int cell_x=location->x/_scale;
+		int cell_y=location->y/_scale;
+		int cell_z=location->z/_scale;
+
+		if(_period){
+			location->x-=cell_x/_x*lengthX();
+			location->y-=cell_y/_y*lengthY();
+			location->z-=cell_z/_z*lengthZ();
+
+			cell_x%=_x;
+			cell_y%=_y;
+			cell_z%=_z;
+		}
+
+		if(cell(cell_x,cell_y,cell_z)==p->cell){
+			return true;
+		}
+		if(!p->cell->withdrawPartical(p)){
+			return false;
+		}
+
+		p->Position=location;
+
+		if(cell(cell_x,cell_y,cell_z)->pushParitcal(p)){
+			return true;
+		}
+	}
+	cerr<<"Warning from Grid : Moving Partical Failed!"<<endl;
+
+	return false;
+}
+
+int Grid::particals(){
+	return _partical_amount;
+}
+
+Cell* Grid::cell(int a,int b ,int c){
+	if(a<_x&&b<_y&&c<_z&&a>=0&&b>=0&&c>=0){
+		return CellContainer[a][b][c];
+	}else{
+		cerr<<"Warning from Grid : Requesting unexisted Cell at ("<<a<<","<<b<<","<<c<<")"<<endl;
+		return NULL;
+	}
+}
+Vertex* Grid::vertex(int a, int b, int c){
+	if(a<_x&&b<_y&&c<_z&&a>=0&&b>=0&&c>=0){
+		return VertexContainer[a][b][c];
+	}else{
+		cerr<<"Warning from Grid : Requesting unexisted Vertex at ("<<a<<","<<b<<","<<c<<")"<<endl;
+		return NULL;
+	}
+}
+
+double Grid::lengthX(){
+	return _x*_scale;
+}
+
+double Grid::lengthY(){
+	return _y*_scale;
+}
+double Grid::lengthZ(){
+	return _z*_scale;
+}
+
+int Grid::gridX(){
+	return _x;
+}
+
+int Grid::gridY(){
+	return _y;
+}
+int Grid::gridZ(){
+	return _z;
+}
+
+double Grid::scale(){
+	return _scale;
+}
+void Grid::showGridMap(){
+	cout<<endl<<"Grid Map: "<<_x<<"*"<<_y<<"*"<<_z<<endl<<"cells:"<<endl;
+	for (int i = 0; i < _x; ++i) {
+		for (int j = 0; j < _y; ++j) {
+			for (int k = 0; k < _z; ++k) {
+				Cell* _cell=cell(i,j,k);
+				cout<<_cell->length()<<"\t";
+			}
+			cout<<endl;
+		}
+		cout<<endl;
+	}
+}

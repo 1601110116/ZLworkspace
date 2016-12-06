@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 1 resources to &apos;test&apos;" description="Move 1 resources to &apos;test&apos;" destination="/test" element1="/ZLOMP/include/Vector3D.h" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1458635074386" updateReferences="true"/>
+</session>

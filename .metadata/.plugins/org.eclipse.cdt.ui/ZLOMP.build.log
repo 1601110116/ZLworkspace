@@ -1,0 +1,15 @@
+13:50:47 **** Incremental Build of configuration Debug for project ZLOMP ****
+make -j4 all 
+Building file: ../src_cal/RunManager.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP/include" -I"/home/zlstudio/workspace/ZLOMP/OpenGL" -I"/home/zlstudio/workspace/ZLOMP/include_cal" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src_cal/RunManager.d" -MT"src_cal/RunManager.d" -o "src_cal/RunManager.o" "../src_cal/RunManager.cpp"
+Finished building: ../src_cal/RunManager.cpp
+ 
+Building target: ZLOMP
+Invoking: Cross G++ Linker
+g++ -fopenmp -o "ZLOMP"  ./src_cal/Cell.o ./src_cal/DEC.o ./src_cal/Electron.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/Matrix3D.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/StepForward.o ./src_cal/Tensor3D.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Visualize.o  ./OpenGL/OpenGL_Interactive.o  ./ZLOMP.o   -lGL -lGLU -lglut
+Finished building target: ZLOMP
+ 
+
+13:50:48 Build Finished (took 366ms)
+

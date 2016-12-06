@@ -1,0 +1,140 @@
+/*
+ * RunManager.cpp
+ *
+ *  Created on: Mar 6, 2016
+ *      Author: zlstudio
+ */
+
+#include <MPIRunManager.h>
+
+MPIGrid* MPIRunManager::grid=NULL;
+double MPIRunManager::deltaT=0.0;
+void (*MPIRunManager::Method)(const Range&, double)=NULL;
+int MPIRunManager::MPI_ID=0;
+Range* MPIRunManager::ranges;
+
+static int n=0;
+static double dt1=0;
+static double dt2=0;
+static double dt3=0;
+
+MPIRunManager::MPIRunManager(MPIGrid* _grid,void (*_Method)(const Range &,double),double _dt) {
+	// TODO Auto-generated constructor stub
+	grid=_grid;
+	Method=_Method;
+	deltaT=_dt;
+
+	Init_Parallel();
+}
+
+MPIRunManager::~MPIRunManager() {
+	// TODO Auto-generated destructor stub
+}
+
+void MPIRunManager::stepNext(){
+
+	n++;
+
+	double t=omp_get_wtime();
+
+#pragma omp parallel
+	{
+		Method(ranges[omp_get_thread_num()],deltaT);
+	}
+
+	dt1+=(omp_get_wtime()-t)*1000;
+
+	t=omp_get_wtime();
+
+	grid->refreshParticleLocation();
+
+	dt2+=(omp_get_wtime()-t)*1000;
+
+#if REPORT
+
+	t=omp_get_wtime();
+
+	grid->reportToHost();
+
+	dt3+=(omp_get_wtime()-t)*1000;
+
+#endif
+
+	if(MPI_ID==0&&n>=10){
+		cout<<"ID: "<<MPI_ID<<" Time:\tCal\t"<<dt1/n<<" ms\tArr:\t"<<dt2/n<<" ms\t Report:\t"<<dt3/n<<endl;
+		dt1=dt2=dt3=n=0;
+	}
+}
+
+/*****INIT MPI*****/
+void MPIRunManager::Init_Prarllel(int &totalNodes,int &thisID){
+
+	int l=30;
+	char name[30];
+	MPI_Comm_rank(MPI_COMM_WORLD,&thisID);
+	MPI_Comm_size(MPI_COMM_WORLD,&totalNodes);
+	MPI_Get_processor_name(name,&l);
+
+	int prevNode=(thisID==0?totalNodes-1:thisID-1);
+	int nextNode=(thisID==totalNodes-1?0:thisID+1);
+
+	if(thisID==0)MPI_Send(&thisID,1,MPI_INT,nextNode,0,MPI_COMM_WORLD);
+	int receive_msg;
+	MPI_Status recv_state;
+	MPI_Recv(&receive_msg,1,MPI_INT,prevNode,0,MPI_COMM_WORLD,&recv_state);
+
+	cout <<"Greeting from Node"<<thisID<<"/"<<totalNodes<<" at "<<name<<endl;
+
+	if(thisID!=0)MPI_Send(&thisID,1,MPI_INT,nextNode,0,MPI_COMM_WORLD);
+
+	MPI_ID=thisID;
+}
+
+/*****INIT OMP*****/
+void MPIRunManager::Init_Parallel(){
+	int processes;
+
+#pragma omp parallel
+	{
+#pragma omp single
+		processes=omp_get_num_threads();
+	}
+
+	cout<<"Node "<<MPI_ID<<" has "<<processes<<" threads"<< endl;
+
+#if(CUT==CUTX)
+	if(grid->workLength()%processes!=0)cerr<<"Warning: Grid size does not match CPU architecture!"<<endl;
+	int divide=(grid->workLength())/processes;
+#elif(CUT==CUTY)
+	if(grid->gridY()%processes!=0)cerr<<"Warning: Grid size does not match CPU architecture!"<<endl;
+	int divide=grid->gridY()/processes;
+#elif(CUT==CUTZ)
+	if(grid->gridZ()%processes!=0)cerr<<"Warning: Grid size does not match CPU architecture!"<<endl;
+	int divide=grid->gridZ()/processes;
+#endif
+
+	ranges=new Range[processes]();
+
+#pragma omp parallel
+	{
+		int i=omp_get_thread_num();
+#if(CUT==CUTX)
+		ranges[i]=Range(2+divide*i,2+(i+1)*divide,0,grid->gridY(),0,grid->gridZ());
+#elif(CUT==CUTY)
+		ranges[i]=Range(2,grid->gridX()-2,i*divide,(i+1)*divide,0,grid->gridZ());
+#elif(CUT==CUTZ)
+		ranges[i]=Range(2,grid->gridX()-2,0,grid->gridY(),i*divide,(i+1)*divide);
+#endif
+	}
+
+
+}
+
+string MPIRunManager::toString(){
+	ostringstream tmpchar;
+
+	tmpchar<<"Node "<<MPI_ID<<endl;
+
+	return tmpchar.str();
+}
+

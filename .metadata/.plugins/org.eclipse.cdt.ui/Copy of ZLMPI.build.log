@@ -1,0 +1,19 @@
+15:27:12 **** Build of configuration Debug for project Copy of ZLMPI ****
+make all 
+Building file: ../src/ZLMPI.cpp
+Invoking: Cross G++ Compiler
+mpiCC -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/ZLMPI.d" -MT"src/ZLMPI.d" -o "src/ZLMPI.o" "../src/ZLMPI.cpp"
+../src/ZLMPI.cpp: In function ‘int main(int, char**)’:
+../src/ZLMPI.cpp:17:9: warning: unused variable ‘t0’ [-Wunused-variable]
+  double t0=omp_get_wtime();
+         ^
+Finished building: ../src/ZLMPI.cpp
+ 
+Building target: Copy of ZLMPI
+Invoking: Cross G++ Linker
+mpiCC -fopenmp -o "Copy of ZLMPI"  ./src/ZLMPI.o   
+Finished building target: Copy of ZLMPI
+ 
+
+15:27:13 Build Finished (took 575ms)
+

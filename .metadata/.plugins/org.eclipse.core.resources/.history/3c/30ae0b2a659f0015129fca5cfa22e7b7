@@ -1,0 +1,132 @@
+//
+// ********************************************************************
+// * License and Disclaimer                                           *
+// *                                                                  *
+// * The  Geant4 software  is  copyright of the Copyright Holders  of *
+// * the Geant4 Collaboration.  It is provided  under  the terms  and *
+// * conditions of the Geant4 Software License,  included in the file *
+// * LICENSE and available at  http://cern.ch/geant4/license .  These *
+// * include a list of copyright holders.                             *
+// *                                                                  *
+// * Neither the authors of this software system, nor their employing *
+// * institutes,nor the agencies providing financial support for this *
+// * work  make  any representation or  warranty, express or implied, *
+// * regarding  this  software system or assume any liability for its *
+// * use.  Please see the license in the file  LICENSE  and URL above *
+// * for the full disclaimer and the limitation of liability.         *
+// *                                                                  *
+// * This  code  implementation is the result of  the  scientific and *
+// * technical work of the GEANT4 collaboration.                      *
+// * By using,  copying,  modifying or  distributing the software (or *
+// * any work based  on the software)  you  agree  to acknowledge its *
+// * use  in  resulting  scientific  publications,  and indicate your *
+// * acceptance of all terms of the Geant4 Software license.          *
+// ********************************************************************
+//
+// $Id: B1DetectorConstruction.cc 90623 2015-06-05 09:24:30Z gcosmo $
+//
+/// \file B1DetectorConstruction.cc
+/// \brief Implementation of the B1DetectorConstruction class
+
+#include "B1DetectorConstruction.hh"
+
+#include "G4RunManager.hh"
+#include "G4NistManager.hh"
+#include "G4Box.hh"
+#include "G4Cons.hh"
+#include "G4Orb.hh"
+#include "G4Sphere.hh"
+#include "G4Trd.hh"
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4MaterialPropertiesTable.hh"
+
+B1DetectorConstruction::B1DetectorConstruction() :
+		G4VUserDetectorConstruction(), fScoringVolume(0) {
+}
+
+B1DetectorConstruction::~B1DetectorConstruction() {
+}
+
+G4VPhysicalVolume* B1DetectorConstruction::Construct() {
+	G4NistManager* nist = G4NistManager::Instance();
+
+	G4double worldWidth = 1.0 * m;
+	G4double worldLength = 1.0 * m;
+	G4double worldHeight = 1.0 * m;
+
+	G4double DectectorWidth = 20 * mm;
+	G4double DectectorLength = 5.0 * cm;
+	G4double DectectorHeight = 5.0 * cm;
+
+	G4double sourceWidth = 0.5 * mm;
+	G4double sourceLength = 3.0 * cm;
+	G4double sourceHeight = 3.0 * cm;
+
+	//Shapes
+	G4Box* myWorld = new G4Box("world", worldWidth, worldLength, worldHeight);
+	G4Box* myLowBDetector = new G4Box("scintillator", DectectorWidth, DectectorLength, DectectorHeight);
+	G4Box* mySource = new G4Box("source", sourceWidth, sourceLength, sourceHeight);
+
+	//Materials
+
+	G4Material* Air = nist->FindOrBuildMaterial("G4_AIR");
+	G4Material* Plastic = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+	//G4Material* Plastic = nist->FindOrBuildMaterial("G4_LEAD_OXIDE");
+
+	//SCINT
+	const G4int NUMENTRIES = 1;
+	G4double Scnt_PP[NUMENTRIES] = { 6.0 * eV};
+
+	G4double Scnt_FAST[NUMENTRIES] = { 1.0 };
+	G4double Scnt_SLOW[NUMENTRIES] = { 0.0};
+	G4double Abs_Length[NUMENTRIES] = { 1.0*m };
+	G4double Reflect_Index[NUMENTRIES] = { 1.3 };
+
+	G4MaterialPropertiesTable* Scnt_MPT = new G4MaterialPropertiesTable();
+
+	Scnt_MPT->AddProperty("FASTCOMPONENT", Scnt_PP, Scnt_FAST, NUMENTRIES);
+	Scnt_MPT->AddProperty("SLOWCOMPONENT", Scnt_PP, Scnt_SLOW, NUMENTRIES);
+	Scnt_MPT->AddProperty("ABSLENGTH", Scnt_PP, Abs_Length, NUMENTRIES);
+	Scnt_MPT->AddProperty("RINDEX",Scnt_PP,Reflect_Index,NUMENTRIES);
+
+	Scnt_MPT->AddConstProperty("SCINTILLATIONYIELD", 10. / MeV);
+	Scnt_MPT->AddConstProperty("RESOLUTIONSCALE", 2.0);
+	Scnt_MPT->AddConstProperty("FASTTIMECONSTANT", 1. * ns);
+	Scnt_MPT->AddConstProperty("SLOWTIMECONSTANT", 10. * ns);
+	Scnt_MPT->AddConstProperty("YIELDRATIO", 0.8);
+
+
+	Plastic->SetMaterialPropertiesTable(Scnt_MPT);
+
+
+	G4MaterialPropertiesTable* AIR_MPT = new G4MaterialPropertiesTable();
+
+	G4double Air_Reflect_Index[NUMENTRIES] = { 1.0 };
+	AIR_MPT->AddProperty("REFLECTIVITY",Scnt_PP, Air_Reflect_Index, NUMENTRIES);
+
+	Air->SetMaterialPropertiesTable(AIR_MPT);
+
+
+	//Logic
+	G4LogicalVolume* myWorld_Logic = new G4LogicalVolume(myWorld, Air, "world");
+	G4LogicalVolume* myLowBDetector_Logic = new G4LogicalVolume(myLowBDetector, Plastic, "plastic");
+	G4LogicalVolume* mySource_Logic = new G4LogicalVolume(mySource, Air, "source");
+
+	//Placement
+
+	G4VPhysicalVolume* myWorld_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), myWorld_Logic, "world", 0, false, 0);
+	G4VPhysicalVolume* myLowBDetector_Physics = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), myLowBDetector_Logic, "plastic", myWorld_Logic, false, 0);
+	G4VPhysicalVolume* mySource_Physics = new G4PVPlacement(0, G4ThreeVector(-5.0 * cm, 0., 0.), mySource_Logic, "source", myWorld_Logic, false, 0);
+
+	// Set Shape2 as scoring volume
+	//
+	fScoringVolume = myLowBDetector_Logic;
+
+	//
+	//always return the physical World
+	//
+	return myWorld_Physics;
+}
+

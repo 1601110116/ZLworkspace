@@ -1,0 +1,7 @@
+19:50:18 **** Incremental Build of configuration Default for project exb1 ****
+make all 
+GNUmakefile:17: ../../../config/binmake.gmk: No such file or directory
+make: *** No rule to make target `../../../config/binmake.gmk'.  Stop.
+
+19:50:18 Build Finished (took 75ms)
+

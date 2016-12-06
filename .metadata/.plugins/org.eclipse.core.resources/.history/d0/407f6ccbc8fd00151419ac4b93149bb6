@@ -1,0 +1,183 @@
+/*
+ * GridManager.cpp
+ *
+ *  Created on: Apr 6, 2016
+ *      Author: zlstudio
+ */
+
+#include <MPIGrid.h>
+
+
+
+////////|exL|shL|----|shR|exR|///////
+
+MPIGrid::MPIGrid(int w,int h,int l,int _nodes,int thisID):
+Grid(w/_nodes+4,h,l,true),
+nodes(_nodes),thisNode(thisID),
+_worldwidth(w),_worldheight(h),_worldlength(l),
+workLength(_worldwidth/nodes),storeLength(workLength+4),
+externalLeft(0,2,0,_worldheight,0,_worldlength),
+sharedLeft(2,4,0,_worldheight,0,_worldlength),
+sharedRight(storeLength-4,storeLength-2,0,_worldheight,0,_worldlength),
+externalRight(storeLength-2,storeLength,0,_worldheight,0,_worldlength)
+{
+
+	//Init MPI cal grid
+	if(_worldwidth%nodes!=0)cerr<<"Warning: Grid size does not match Network architecture!"<<endl;
+
+	//Prev & Next & This
+	prevNode=(thisNode==0?nodes-1:thisNode-1);
+	nextNode=(thisNode==nodes-1?0:thisNode+1);
+
+	distributer=new Distributer(_nodes,thisID,this);
+	particleSwap=new Cell();
+}
+
+MPIGrid::~MPIGrid() {
+	// TODO Auto-generated destructor stub
+}
+
+void MPIGrid::refreshParticleLocation(){
+	syncVertex();
+	syncParticles();
+}
+
+void MPIGrid::syncVertex(){
+
+	/////shared Right====>external Left
+	if(!(thisNode%2))sendVertexes(nextNode,sharedRight);
+
+	recvVertexes(prevNode,externalLeft);
+
+	if(thisNode%2)sendVertexes(nextNode,sharedRight);
+
+	/////shared Left====>external Right
+	if(!(thisNode%2))sendVertexes(prevNode,sharedLeft);
+
+	recvVertexes(nextNode,externalRight);
+
+	if(thisNode%2)sendVertexes(prevNode,sharedLeft);
+
+}
+
+void MPIGrid::syncParticles(){
+	Particle* p,*p_swap;
+
+	int rightBoundary=storeLength-2;
+
+	for_each_Particle(this,p){
+
+		if(p->cell!=NULL){
+
+			int cell_x=floor(p->Position.x);
+			int cell_y=floor(p->Position.y);
+			int cell_z=floor(p->Position.z);
+
+			if(_period){
+				cell_x=p->Position.x-=getPeriod(cell_x,_worldwidth);
+				cell_y=p->Position.y-=getPeriod(cell_y,_worldheight);
+				cell_z=p->Position.z-=getPeriod(cell_z,_worldlength);
+			}
+
+			if(cell_x>rightBoundary||cell_x<2){
+				///Out of boundary --> to be sent
+
+				//destination:
+				int related=floor((p->Position.x-2)/workLength);
+				int dest=related+thisNode;
+				dest+=(dest<0)*nodes;
+
+
+				p_swap=p;
+
+				p=p->nextParticle;
+
+				p_swap->cell->withdrawParticle(p_swap);
+
+				--_particle_amount;
+
+				//Trans-coord
+				p_swap->Position.x-=(dest-thisNode)*workLength;
+
+				//pack up
+				distributer->pack(p_swap,dest);
+
+			}else if(cell(cell_x,cell_y,cell_z)!=p->cell){
+				///Inside this Grid, but in a different cell
+
+				p_swap=p;
+
+				p=p->nextParticle;
+
+				p_swap->cell->withdrawParticle(p_swap);
+
+				particleSwap->pushParticle(p_swap);
+
+				//cell(cell_x,cell_y,cell_z)->pushParticle(p);
+			}else{
+				///then the particle need not changing cell
+				p=p->nextParticle;
+			}
+		}else{
+			cerr<<"Warning from Grid : Particle with no cell pointer exists!"<<endl;
+			exit(0);
+		}
+
+	}end_for_each_Particle_raw;
+
+	for_each_Particle_in_Cell(particleSwap,p){
+
+		p_swap=p;
+
+		p=p->nextParticle;
+
+		particleSwap->withdrawParticle(p_swap);
+		cell(p_swap->Position.x,p_swap->Position.y,p_swap->Position.z)->pushParticle(p_swap);
+
+	}end_for_each_Particle_in_Cell_raw;
+
+	////Particals will be packed for each Node.
+	////X & P are going to be packed, 6 doubles for each particle
+	distributer->assembleAndDispatch();
+
+}
+
+void MPIGrid::sendVertexes(int dest,const Range& r){
+
+
+
+	Vertex* vertex;
+
+	int V=r.Volumn()*6;
+
+	buffer_init(sendBuffer,V);
+
+	for_each_Vertex_within(this,vertex,r){
+
+		buffer_Write_Vector3D(sendBuffer,vertex->A);
+		buffer_Write_Vector3D(sendBuffer,vertex->Y);
+
+	}end_for_each_Vertex_within
+
+	buffer_send_to(sendBuffer,dest,SYNC_VERTEX);
+
+}
+
+void MPIGrid::recvVertexes(int source,const Range& r){
+	Vertex* vertex;
+
+	int V=r.Volumn()*6;
+
+	buffer_init(recvBuffer,V);
+
+	buffer_recv_from(recvBuffer,source,SYNC_VERTEX);
+
+	for_each_Vertex_within(this,vertex,r){
+
+		buffer_Read_Vector3D(recvBuffer,vertex->A);
+		buffer_Read_Vector3D(recvBuffer,vertex->Y);
+
+	}end_for_each_Vertex_within
+
+}
+

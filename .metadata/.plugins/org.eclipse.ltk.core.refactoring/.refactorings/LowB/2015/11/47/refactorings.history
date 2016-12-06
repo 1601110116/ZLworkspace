@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LowB/LowB.cc&apos; to &apos;LowBExec.cc&apos;" description="Rename resource &apos;LowB.cc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="LowB.cc" name="LowBExec.cc" stamp="1448117406279" updateReferences="true"/>
+</session>

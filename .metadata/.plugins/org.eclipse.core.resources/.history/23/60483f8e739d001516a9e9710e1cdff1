@@ -1,0 +1,71 @@
+
+#include "LowBDetectorConstruction.hh"
+
+#include "G4RunManager.hh"
+#include "G4NistManager.hh"
+#include "G4Box.hh"
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4SystemOfUnits.hh"
+
+
+LowBDetectorConstruction::LowBDetectorConstruction()
+: G4VUserDetectorConstruction(),
+  fScoringVolume(0)
+{ }
+
+
+LowBDetectorConstruction::~LowBDetectorConstruction()
+{ }
+
+
+G4VPhysicalVolume* LowBDetectorConstruction::Construct()
+{  
+
+	G4NistManager* nist=G4NistManager::Instance();
+
+	G4double worldWidth=1.0*m;
+	G4double worldLength=1.0*m;
+	G4double worldHeight=1.0*m;
+
+	G4double DectectorWidth=0.5*mm;
+	G4double DectectorLength=5.0*cm;
+	G4double DectectorHeight=5.0*cm;
+
+	G4double sourceWidth=0.5*mm;
+	G4double sourceLength=4.0*cm;
+	G4double sourceHeight=4.0*cm;
+
+
+	//Shapes
+	G4Box* myWorld=new G4Box("world",worldWidth,worldLength,worldHeight);
+	G4Box* myLowBDetector=new G4Box("scintillator",DectectorWidth,DectectorLength,DectectorHeight);
+	G4Box* mySource=new G4Box("source",sourceWidth,sourceLength,sourceHeight);
+
+	//Materials
+
+	G4Material* Air=nist->FindOrBuildMaterial("G4_AIR");
+	G4Material* Plastic=nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+
+	//Logic
+	G4LogicalVolume* myWorld_Logic=new G4LogicalVolume(myWorld,Air,"world");
+	G4LogicalVolume* myLowBDetector_Logic=new G4LogicalVolume(myLowBDetector,Plastic,"plastic");
+	G4LogicalVolume* mySource_Logic=new G4LogicalVolume(myLowBDetector,Air,"source");
+
+	//Placement
+
+	G4VPhysicalVolume* myWorld_Physics=new G4PVPlacement(0,G4ThreeVector(0.,0.,0.),myWorld_Logic,"world",0,false,0);
+	G4VPhysicalVolume* myLowBDetector_Physics=new G4PVPlacement(0,G4ThreeVector(0.,0.,0.),myLowBDetector_Logic,"plastic",myWorld_Logic,false,0);
+	G4VPhysicalVolume* mySource_Physics=new G4PVPlacement(0,G4ThreeVector(-5.0*cm,0.,0.),mySource_Logic,"source",myWorld_Logic,false,0);
+
+
+	// Set Shape2 as scoring volume
+	//
+	fScoringVolume = myLowBDetector_Logic;
+
+	//
+	//always return the physical World
+	//
+	return myWorld_Physics;
+}
+

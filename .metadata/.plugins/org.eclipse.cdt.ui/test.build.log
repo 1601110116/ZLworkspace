@@ -1,0 +1,15 @@
+21:52:50 **** Incremental Build of configuration Debug for project test ****
+make all 
+Building file: ../TEST.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/test" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"TEST.d" -MT"TEST.d" -o "TEST.o" "../TEST.cpp"
+Finished building: ../TEST.cpp
+ 
+Building target: test
+Invoking: Cross G++ Linker
+g++  -o "test"  ./TEST.o ./Vector3D.o ./inet.o   
+Finished building target: test
+ 
+
+21:52:51 Build Finished (took 272ms)
+

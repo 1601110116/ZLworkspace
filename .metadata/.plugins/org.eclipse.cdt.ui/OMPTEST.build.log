@@ -1,0 +1,20 @@
+16:08:15 **** Build of configuration Debug for project OMPTEST ****
+make all 
+Building file: ../src/OMPTEST.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -pg -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/OMPTEST.d" -MT"src/OMPTEST.d" -o "src/OMPTEST.o" "../src/OMPTEST.cpp"
+Finished building: ../src/OMPTEST.cpp
+ 
+Building file: ../src/Vector3D.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -pg -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Vector3D.d" -MT"src/Vector3D.d" -o "src/Vector3D.o" "../src/Vector3D.cpp"
+Finished building: ../src/Vector3D.cpp
+ 
+Building target: OMPTEST
+Invoking: Cross G++ Linker
+g++ -fopenmp -o "OMPTEST"  ./src/OMPTEST.o ./src/Vector3D.o   
+Finished building target: OMPTEST
+ 
+
+16:08:16 Build Finished (took 425ms)
+

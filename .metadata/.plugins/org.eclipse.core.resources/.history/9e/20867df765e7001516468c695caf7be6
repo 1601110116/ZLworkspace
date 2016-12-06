@@ -1,0 +1,73 @@
+//============================================================================
+// Name        : ZLOMP.cpp
+// Author      : ZL
+// Version     :
+// Copyright   : ZL-CSPIC
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <omp.h>
+
+#include <Vector3D.h>
+#include <Cell.h>
+#include <Electron.h>
+#include <Grid.h>
+#include <ParticalDistributer.h>
+#include <RunManager.h>
+#include <Eular.h>
+
+#include <Visualize.h>
+
+using namespace std;
+
+int main() {
+
+
+	//omp_set_num_threads(2);
+
+#pragma omp parallel
+	{
+#pragma omp critical//for output to same location, critical is essential
+		cout << "Greeting from thread"<<omp_get_thread_num()<<"/"<<omp_get_num_threads()<<endl; // prints !!!Hello World!!!
+	}
+
+	Grid* grid=new Grid(5,5,5,0.2,true);
+
+	ParticalDistributer::Distributer_Random(grid,new Electron(),10);
+
+	cout<<"Grid Test: particals="<<grid->particals()<<endl;
+
+	grid->showGridMap();
+
+//	Cell* cell1=grid->cell(1,2,3);
+//
+//	Partical* e1=cell1->firstPartical();
+//
+//	cout<<"Partical Test:"<<e1->name<<" m="<<e1->mass<<"; e= "<<e1->charge<<endl;
+//
+//	cout<<"Moving Partical Test:"<<e1->name<<" at Cell"<<e1->cell->toString()<<"; X="<<e1->Position->toString()<<endl;
+//
+//	grid->moveParticalTo(e1,new Vector3D(1,1,0.5));
+//
+//	cout<<"Moving Partical Test:"<<e1->name<<" at Cell"<<e1->cell->toString()<<"; X="<<e1->Position->toString()<<endl;
+//
+//	RunManager::stepNext(grid,Eular::nextStep,0.1);
+
+//	Vertex* vertex1=grid->vertex(1,2,3);
+//	*(vertex1->A)+=new Vector3D(4,5,6);
+//
+//	cout<<"Indexer Test: "<<grid->A_indexer[1][2][3]->toString()<<endl;
+//
+//	Vector3D* a=new Vector3D(1,2,3);
+//	Vector3D* b=new Vector3D(2,3,4);
+//
+//	cout<<"a="<<a->toString()<<endl<<"b="<<b->toString()<<endl;
+//	cout<<"Vector Test: a*3="<<((*a)*3)->toString()<<"; a*b="<<*a*b<<endl;
+//
+	Visualize* stage=new Visualize(grid);
+
+	InitStage(stage);
+
+	return 0;
+}

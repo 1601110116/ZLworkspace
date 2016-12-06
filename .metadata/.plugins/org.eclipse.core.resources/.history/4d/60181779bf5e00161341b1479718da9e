@@ -1,0 +1,7 @@
+#include <iostream>
+#include <cmath>
+#include <stdlib.h>
+
+inline double Random(double min, double max){
+	return (rand()*(max-min))/RAND_MAX+min;
+}

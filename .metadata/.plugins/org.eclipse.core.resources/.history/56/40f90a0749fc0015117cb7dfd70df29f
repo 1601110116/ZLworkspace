@@ -1,0 +1,43 @@
+/*
+ * Distributer.cpp
+ *
+ *  Created on: Apr 6, 2016
+ *      Author: zlstudio
+ */
+
+#include "Distributer.h"
+
+Distributer::Distributer(int _routes,int _thisroute,int _nodewidth){
+	routes=_routes;
+	thisRoute=_thisroute;
+	nodewidth=_nodewidth;
+
+	sendBuffer=new double*[_routes];
+
+	particleBuffer=new Cell[_routes]();
+
+}
+
+Distributer::~Distributer() {
+}
+
+void Distributer::pack(Particle *p){
+	//destination:
+	int dest=((int(p->Position.x)-2)/nodewidth+thisRoute)%routes;
+	particleBuffer[dest]->pushParticle(p);
+
+}
+
+void Distributer::assemble(){
+	Particle* p;
+	for (int i = 0; i < routes; ++i) {
+
+		buffer_init(buffer,particleBuffer[i]->length());
+
+		sendBuffer[i]=buffer;
+		for_each_Particle_in_Cell(particleBuffer[i],p){
+			buffer_Write_Vector3D(buffer,p->Position);
+		}
+
+	}
+}

@@ -1,0 +1,139 @@
+/*
+ * Visualize.cpp
+ *
+ *  Created on: Mar 10, 2016
+ *      Author: zlstudio
+ */
+
+#include "Visualize.h"
+
+double cell_size=5;
+
+double Distance=20;
+
+double PI=3.1416;
+
+double scale=1;
+
+Visualize::Visualize(Grid* grid):OpenGL_Interactive("Test Process",300,300,600,600) {
+	aimGrid=grid;
+
+	rx=0;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	idleFn=NULL;
+}
+
+Visualize::~Visualize() {
+	// TODO Auto-generated destructor stub
+}
+
+void Visualize::idle(){
+
+	idleFn();
+
+	display();
+
+}
+
+void Visualize::init(){
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+
+	glMatrixMode(GL_PROJECTION);
+
+	glOrtho(-Distance*2, Distance*2, -Distance*2, Distance*2, -Distance*2, Distance*2);
+
+	glMatrixMode(GL_MODELVIEW);
+
+	cout<<"init"<<endl;
+
+}
+
+void Visualize::display(){
+
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glColor3f(.3, .3, .3);
+
+	glLoadIdentity();
+
+	gluLookAt(Distance*cos(rx/180*PI)*cos(ry/180*PI),Distance*sin(ry/180*PI),  Distance*sin(rx/180*PI)*cos(ry/180*PI), 0, 0, 0, -cos(rx/180*PI)*sin(ry/180*PI),cos(ry/180*PI),  -sin(rx/180*PI)*sin(ry/180*PI));
+
+	Particle* particle_iterator;
+
+	Cell* cell_iterator;
+
+	for_each_Cell(aimGrid,cell_iterator){
+		glLoadIdentity();
+
+		gluLookAt(Distance*cos(rx/180*PI)*cos(ry/180*PI),Distance*sin(ry/180*PI),  Distance*sin(rx/180*PI)*cos(ry/180*PI), 0, 0, 0, -cos(rx/180*PI)*sin(ry/180*PI),cos(ry/180*PI),  -sin(rx/180*PI)*sin(ry/180*PI));
+		glTranslated(-aimGrid->gridX()*cell_size/2,-aimGrid->gridY()*cell_size/2,-aimGrid->gridZ()*cell_size/2);
+
+		glTranslated(cell_iterator->x()*cell_size+cell_size/2,cell_iterator->y()*cell_size+cell_size/2,cell_iterator->z()*cell_size+cell_size/2);
+		glutWireCube(cell_size);
+	}end_for_each_Cell
+
+
+	glColor3f(1.0, 0., 0.);
+	for_each_Particle(aimGrid,particle_iterator){
+		Vector3D* pos=*(particle_iterator->Position)*(cell_size/aimGrid->scale());
+		glLoadIdentity();
+		gluLookAt(Distance*cos(rx/180*PI)*cos(ry/180*PI),Distance*sin(ry/180*PI),  Distance*sin(rx/180*PI)*cos(ry/180*PI), 0, 0, 0, -cos(rx/180*PI)*sin(ry/180*PI),cos(ry/180*PI),  -sin(rx/180*PI)*sin(ry/180*PI));
+		glTranslated(-aimGrid->gridX()*cell_size/2,-aimGrid->gridY()*cell_size/2,-aimGrid->gridZ()*cell_size/2);
+
+		glTranslated(pos->x,pos->y,pos->z);
+		glutSolidCube(0.1);
+	}end_for_each_Particle(particle_iterator);
+
+
+	glFlush();
+
+	glutSwapBuffers();
+
+}
+
+void Visualize::LeftDrag(int sx,int sy,int ex,int ey){
+	rx=srx+ex-sx;
+	ry=sry+ey-sy;
+	if(ry>=90)ry=90;
+	if(ry<=-90)ry=-90;
+	display();
+}
+void Visualize::LeftButtonDown(int x, int y){
+	srx=rx;
+	sry=ry;
+}
+
+void Visualize::reshape(int w,int h){
+	glLoadIdentity();
+	glMatrixMode(GL_PROJECTION);
+
+	glOrtho(-1, 1, -1, 1, -1, 1);
+
+	glMatrixMode(GL_MODELVIEW);
+	display();
+	cout<<"reshape"<<endl;
+}
+
+void Visualize::WheelUp(int x, int y){
+	scale=1.01;
+	glLoadIdentity();
+	glMatrixMode(GL_PROJECTION);
+
+	glOrtho(-scale, scale, -scale, scale, -scale, scale);
+
+	glMatrixMode(GL_MODELVIEW);
+	display();
+}
+void Visualize::WheelDown(int x, int y){
+	scale=0.99;
+	glLoadIdentity();
+	glMatrixMode(GL_PROJECTION);
+
+	glOrtho(-scale, scale, -scale, scale, -scale, scale);
+
+	glMatrixMode(GL_MODELVIEW);
+	display();
+}

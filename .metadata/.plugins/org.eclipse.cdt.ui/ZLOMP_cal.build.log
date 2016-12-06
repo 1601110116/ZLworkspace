@@ -1,0 +1,90 @@
+13:50:36 **** Build of configuration Debug for project ZLOMP_cal ****
+make -j4 all 
+Building file: ../src/Eular.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Eular.d" -MT"src/Eular.d" -o "src/Eular.o" "../src/Eular.cpp"
+Building file: ../src/Electron.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Electron.d" -MT"src/Electron.d" -o "src/Electron.o" "../src/Electron.cpp"
+Building file: ../src/DEC.cpp
+Building file: ../src/Cell.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/DEC.d" -MT"src/DEC.d" -o "src/DEC.o" "../src/DEC.cpp"
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Cell.d" -MT"src/Cell.d" -o "src/Cell.o" "../src/Cell.cpp"
+Finished building: ../src/Cell.cpp
+ 
+Building file: ../src/ExternalField.cpp
+Finished building: ../src/Electron.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/ExternalField.d" -MT"src/ExternalField.d" -o "src/ExternalField.o" "../src/ExternalField.cpp"
+ 
+Building file: ../src/Grid.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Grid.d" -MT"src/Grid.d" -o "src/Grid.o" "../src/Grid.cpp"
+Finished building: ../src/Eular.cpp
+ 
+Finished building: ../src/DEC.cpp
+ 
+Building file: ../src/Matrix3D.cpp
+Invoking: Cross G++ Compiler
+Building file: ../src/Particle.cpp
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Matrix3D.d" -MT"src/Matrix3D.d" -o "src/Matrix3D.o" "../src/Matrix3D.cpp"
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Particle.d" -MT"src/Particle.d" -o "src/Particle.o" "../src/Particle.cpp"
+Finished building: ../src/Matrix3D.cpp
+ 
+Building file: ../src/ParticleDistributer.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/ParticleDistributer.d" -MT"src/ParticleDistributer.d" -o "src/ParticleDistributer.o" "../src/ParticleDistributer.cpp"
+Finished building: ../src/ExternalField.cpp
+ 
+Building file: ../src/Range.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Range.d" -MT"src/Range.d" -o "src/Range.o" "../src/Range.cpp"
+Finished building: ../src/Grid.cpp
+ 
+Building file: ../src/RunManager.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/RunManager.d" -MT"src/RunManager.d" -o "src/RunManager.o" "../src/RunManager.cpp"
+Finished building: ../src/Particle.cpp
+ 
+Building file: ../src/StepForward.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/StepForward.d" -MT"src/StepForward.d" -o "src/StepForward.o" "../src/StepForward.cpp"
+Finished building: ../src/Range.cpp
+ 
+Building file: ../src/Tensor3D.cpp
+Invoking: Cross G++ Compiler
+Finished building: ../src/ParticleDistributer.cpp
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Tensor3D.d" -MT"src/Tensor3D.d" -o "src/Tensor3D.o" "../src/Tensor3D.cpp"
+ 
+Building file: ../src/Vector3D.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Vector3D.d" -MT"src/Vector3D.d" -o "src/Vector3D.o" "../src/Vector3D.cpp"
+Finished building: ../src/RunManager.cpp
+ 
+Building file: ../src/Vertex.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Vertex.d" -MT"src/Vertex.d" -o "src/Vertex.o" "../src/Vertex.cpp"
+Finished building: ../src/StepForward.cpp
+ 
+Building file: ../ZLOMP_cal.cpp
+Invoking: Cross G++ Compiler
+g++ -I"/home/zlstudio/workspace/ZLOMP_cal/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"ZLOMP_cal.d" -MT"ZLOMP_cal.d" -o "ZLOMP_cal.o" "../ZLOMP_cal.cpp"
+Finished building: ../src/Tensor3D.cpp
+ 
+Finished building: ../src/Vector3D.cpp
+ 
+Finished building: ../src/Vertex.cpp
+ 
+Finished building: ../ZLOMP_cal.cpp
+ 
+Building target: ZLOMP_cal
+Invoking: Cross G++ Linker
+g++ -fopenmp -o "ZLOMP_cal"  ./src/Cell.o ./src/DEC.o ./src/Electron.o ./src/Eular.o ./src/ExternalField.o ./src/Grid.o ./src/Matrix3D.o ./src/Particle.o ./src/ParticleDistributer.o ./src/Range.o ./src/RunManager.o ./src/StepForward.o ./src/Tensor3D.o ./src/Vector3D.o ./src/Vertex.o  ./ZLOMP_cal.o   
+Finished building target: ZLOMP_cal
+ 
+
+13:50:38 Build Finished (took 1s.530ms)
+

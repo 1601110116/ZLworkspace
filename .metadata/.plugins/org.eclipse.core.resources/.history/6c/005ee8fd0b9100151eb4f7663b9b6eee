@@ -1,0 +1,15 @@
+/*
+ * LowBexec.cpp
+ *
+ *  Created on: Nov 22, 2015
+ *      Author: zlstudio
+ */
+
+#include "G4RunManager.hh"
+
+
+int main(){
+
+	std::cout<<"RunManager Generated"<<std::endl;
+
+}

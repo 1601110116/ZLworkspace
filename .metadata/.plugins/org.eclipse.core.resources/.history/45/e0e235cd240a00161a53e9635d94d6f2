@@ -1,0 +1,31 @@
+/*
+ * DisplayObject.h
+ *
+ *  Created on: Apr 24, 2016
+ *      Author: zlstudio
+ */
+
+#ifndef LEFRAME_DISPLAYOBJECT_H_
+#define LEFRAME_DISPLAYOBJECT_H_
+
+#include <AScompat.h>
+#include <UIContainer.h>
+#include <Rect.h>
+#include <Graphics.h>
+#include <vector>
+
+using namespace std;
+
+class DisplayObject :public UIContainer,Rect{
+	public:
+		DisplayObject();
+		virtual ~DisplayObject();
+
+		Graphics graphics;
+
+	protected:
+		void drawChildren();
+
+};
+
+#endif /* LEFRAME_DISPLAYOBJECT_H_ */

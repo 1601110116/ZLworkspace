@@ -1,0 +1,226 @@
+/*
+ * Figure.cpp
+ *
+ *  Created on: Apr 28, 2016
+ *      Author: zlstudio
+ */
+
+#include <src/Figure.h>
+
+Figure::Figure() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Figure::~Figure() {
+	// TODO Auto-generated destructor stub
+}
+
+package Figure
+{
+
+	import fl.controls.CheckBox;
+
+	import imageEncoder.PNGEncoder;
+
+	public class Figure extends Sprite
+	{
+
+		public static var AutoRotate:Boolean=true;
+
+		private const AUTO_ROTATE_SPEED:Number=0.0175;
+
+
+		private var title:TitleText=new TitleText();
+		private var box:Shape=new Shape();
+		private var describe:MultilineText=new MultilineText(true);
+		private var exportButton:RichButton=new RichButton();
+		public var Height:int,Width:int;
+		public var content:*;
+		private var xlabel:AxisTickText;
+		private var ylabel:AxisTickText;
+
+		private var autoRotate:CheckBox=new CheckBox();
+		private var project3D:CheckBox=new CheckBox();
+		private var XYZIndicator:AxisXYZIndicator;
+
+		private var at:int;
+
+		public function Figure(nam:String="",link:*=null)
+		{
+
+			addChild(box);
+
+			content=link;
+
+			title.text=nam;
+			title.y=2;
+			addChild(title);
+
+			describe.x=2;
+			addChild(describe);
+
+			addChild(exportButton);
+			exportButton.label="Export"
+			exportButton.addEventListener(MouseEvent.CLICK,export_plot);
+
+			if(link!=null){
+				if(link.constructor==Plot3D){
+
+					XYZIndicator=new AxisXYZIndicator(link.xlabel,link.ylabel,link.zlabel);
+					addChild(XYZIndicator);
+
+					autoRotate.label="Auto Rotate";
+					project3D.label="Project Depth";
+					project3D.selected=true;
+					project3D.addEventListener(MouseEvent.CLICK,function (e):void{
+						(link as Plot3D).project=project3D.selected;
+					});
+
+					autoRotate.addEventListener(MouseEvent.CLICK,function (e):void{
+						if(autoRotate.selected){
+							at=getTimer();
+							AutoRotate=true;
+							link.addEventListener(Event.ENTER_FRAME,rotating);
+						}else{
+							AutoRotate=false;
+							link.removeEventListener(Event.ENTER_FRAME,rotating);
+						}
+					});
+
+					if(AutoRotate){
+						link.addEventListener(Event.ENTER_FRAME,rotating);
+						autoRotate.selected=true;
+					}
+
+					addEventListener(Event.REMOVED_FROM_STAGE,function (e):void{
+						trace("terminate");
+						link.removeEventListener(Event.ENTER_FRAME,rotating);
+					});
+
+					var sdragx:Number,sdragy:Number;
+					var sPhi:Number,sTheta:Number;
+					addEventListener(Event.ADDED_TO_STAGE,function (e):void{
+						stage.addEventListener(MouseEvent.MOUSE_DOWN,function (e):void{
+							if(link.hitTestPoint(mouseX,mouseY)){
+								sdragx=mouseX;
+								sdragy=mouseY;
+								sPhi=link.Phi;
+								sTheta=link.Theta;
+								stage.addEventListener(MouseEvent.MOUSE_MOVE,draging);
+								stage.addEventListener(MouseEvent.MOUSE_UP,endDraging);
+							}
+						})
+					});
+
+					function draging(e):void{
+						link.Phi=sPhi+(mouseX-sdragx)/content.Width*Math.PI;
+						link.Theta=sTheta+(mouseY-sdragy)/content.Height*Math.PI;
+					}
+					function endDraging(e):void{
+						stage.removeEventListener(MouseEvent.MOUSE_MOVE,draging);
+						stage.removeEventListener(MouseEvent.MOUSE_UP,endDraging);
+					}
+				}else{
+					xlabel=new AxisTickText();
+					ylabel=new AxisTickText();
+					xlabel.text=link.xlabel;
+					ylabel.text=link.ylabel;
+					ylabel.antiAliasType=AntiAliasType.NORMAL;
+					addChild(xlabel);
+					addChild(ylabel);
+				}
+				addChild(link);
+
+				setSize(link.Width+170,link.Height+120,false);
+			}
+
+		}
+		private function rotating(e):void{
+			content.Phi+=AUTO_ROTATE_SPEED;
+		}
+		protected function export_plot(event:MouseEvent):void
+		{
+			exportButton.visible=false;
+
+			if(content.constructor==Plot3D){
+				autoRotate.visible=false;
+				project3D.visible=false;
+			}else{
+				content.mouseTracker.visible=false;
+			}
+
+			var Graph_save:BitmapData=new BitmapData(Width,Height,true,0xFFFFFFFF);
+			Graph_save.draw(this);
+			var saveFile:FileReference = new FileReference();
+			var encodedImage:ByteArray;
+			encodedImage=PNGEncoder.encode(Graph_save);
+			try
+			{
+				saveFile.save(encodedImage,title.text +".png");
+			}
+			catch(error:Error)
+			{
+				saveFile.save(encodedImage,"Export.png");
+			}
+
+			exportButton.visible=true;
+			if(content.constructor==Plot3D){
+				autoRotate.visible=true;
+				project3D.visible=true;
+			}else{
+				content.mouseTracker.visible=true;
+			}
+		}
+		public function appendDescription(str:String):void{
+			if(describe.text.length>0){
+				describe.appendText("\n");
+			}
+			describe.appendText(str);
+			describe.y=Height-describe.textHeight-5;
+		}
+		public function clearDescription():void{
+			describe.text="";
+		}
+		public function setSize(w:int,h:int,plotRedraw=true):void{
+			Width=w;
+			Height=h;
+
+			exportButton.x=Width-110;
+			exportButton.y=Height-30;
+
+			describe.width=Width-120;
+			describe.y=Height-describe.textHeight-5;
+
+			if(plotRedraw)content.setSize(Width-170,Height-120);
+
+			title.x=30+(content.Width-title.width)/2;
+
+			if(content.constructor==Plot3D){
+				LayoutManager.setVerticalLayout(this,LayoutManager.LAYOUT_ALIGN_TOP,Width-130,30,10,
+					content.legend,
+					autoRotate,
+					project3D
+				);
+				XYZIndicator.x=60;
+				XYZIndicator.y=content.Height;
+				content.x=30+content.Width/2;
+				content.y=30+content.Height/2;
+				(content as Plot3D).setCanvas(-content.Width/2,-content.Height/2,content.Width,content.Height);
+			}else{
+				content.x=30;
+				content.y=30;
+				LayoutManager.setVerticalLayout(this,LayoutManager.LAYOUT_ALIGN_TOP,Width-130,30,10,
+					content.legend,
+					content.mouseTracker
+				);
+				xlabel.y=45+content.Height;
+				xlabel.x=30+content.Width/2-xlabel.width/2;
+
+				ylabel.x=10;
+				ylabel.y=30+content.Height/2+ylabel.height/2;
+				ylabel.rotationZ=-90;
+			}
+		}
+	}
+}

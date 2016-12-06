@@ -1,0 +1,26 @@
+#include "LowBDetectorConstruction.hh"
+
+#include "G4RunManager.hh"
+#include "G4NistManager.hh"
+#include "G4Box.hh"
+#include "G4Cons.hh"
+#include "G4Orb.hh"
+#include "G4Sphere.hh"
+#include "G4Trd.hh"
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4SystemOfUnits.hh"
+
+
+LowBDetectorConstruction::LowBDetectorConstruction():G4VUserDetectorConstruction(),fScoringVolume(0){ }
+
+LowBDetectorConstruction::~LowBDetectorConstruction(){ }
+
+G4VPhysicalVolume* LowBDetectorConstruction::Construct(){
+	
+	//Cubic world
+	G4double worldsize = 50*cm;
+	G4Box* solidWorld = new G4Box("World",world_size, world_size, world_size);
+}
+
+

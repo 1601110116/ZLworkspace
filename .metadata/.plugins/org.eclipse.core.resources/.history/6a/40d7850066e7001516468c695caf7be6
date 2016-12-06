@@ -1,0 +1,85 @@
+/*
+ * Visualize.cpp
+ *
+ *  Created on: Mar 10, 2016
+ *      Author: zlstudio
+ */
+
+#include "Visualize.h"
+
+Visualize::Visualize(Grid* grid):OpenGL_Interactive("Test Process",300,300,600,600) {
+	aimGrid=grid;
+
+	rx=0;
+	ry=0;
+	srx=0;
+	sry=0;
+
+	scale=25;
+}
+
+Visualize::~Visualize() {
+	// TODO Auto-generated destructor stub
+}
+
+void Visualize::idle(){
+	delayMS(20);
+
+	Eular::nextStep2(aimGrid,-0.001);
+
+	display();
+
+}
+
+void Visualize::init(){
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+
+	glMatrixMode(GL_PROJECTION);
+
+	glOrtho(-30, 30, -30, 30, -30, 30);
+
+	glMatrixMode(GL_MODELVIEW);
+
+	gluLookAt(0, 0, 200, 0, 0, 0, 0, 1, 0);
+
+}
+
+void Visualize::display(){
+	glClear(GL_COLOR_BUFFER_BIT);
+	glLoadIdentity();
+
+	rotationY(rx);
+	rotationX(ry);
+
+	glColor3f(1.0, 0, 0);
+
+	glutWireCube(25);
+
+	Partical* partical_iterator;
+
+	for_each_Partical(aimGrid,partical_iterator)
+		Vector3D* pos=*(*(partical_iterator->Position)*scale)+new Vector3D(-scale/2,-scale/2,-scale/2);
+		glLoadIdentity();
+		rotationY(rx);
+		rotationX(ry);
+		glTranslated(pos->x/aimGrid->lengthX(),pos->y/aimGrid->lengthY(),pos->z/aimGrid->lengthZ());
+		glutSolidCube(0.1);
+	end_for_each_Partical(partical_iterator);
+
+	glEnd();
+
+	glFlush();
+
+	glutSwapBuffers();
+
+}
+
+void Visualize::LeftDrag(int sx,int sy,int ex,int ey){
+	rx=srx+ex-sx;
+	ry=sry+ey-sy;
+	display();
+}
+void Visualize::LeftButtonDown(int x, int y){
+	srx=rx;
+	sry=ry;
+}

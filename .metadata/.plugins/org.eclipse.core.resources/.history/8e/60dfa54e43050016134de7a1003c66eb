@@ -1,0 +1,90 @@
+/*
+ * RunManager.cpp
+ *
+ *  Created on: Mar 6, 2016
+ *      Author: zlstudio
+ */
+
+#include <RunManager.h>
+
+Grid* RunManager::grid=NULL;
+double RunManager::deltaT=0.0;
+void (*RunManager::Method)(const Range&, double)=NULL;
+Range* RunManager::ranges;
+
+static int n=0;
+static double dt1=0;
+static double dt2=0;
+
+RunManager::RunManager(Grid* _grid,void (*_Method)(const Range &,double),double _dt) {
+	// TODO Auto-generated constructor stub
+	grid=_grid;
+	Method=_Method;
+	deltaT=_dt;
+	Init_Prarllel();
+}
+
+RunManager::~RunManager() {
+	// TODO Auto-generated destructor stub
+}
+
+void RunManager::stepNext(){
+
+	n++;
+
+	double t=omp_get_wtime();
+
+#pragma omp parallel
+	{
+		Method(ranges[omp_get_thread_num()],deltaT);
+	}
+
+	dt1+=(omp_get_wtime()-t)*1000;
+
+	t=omp_get_wtime();
+
+	grid->refreshParticleLocation();
+
+	dt2+=(omp_get_wtime()-t)*1000;
+
+	if(n>=10){
+		cout<<"Time:\tCal\t"<<dt1/n<<" ms\tArr:\t"<<dt2/n<<" ms"<<endl;
+		dt1=dt2=n=0;
+	}
+
+}
+
+void RunManager::Init_Prarllel(){
+
+	int processes=omp_get_num_procs();
+
+#if(CUT==CUTX)
+	if(grid->gridX()%processes!=0)cerr<<"Warning: Grid size does not match CPU architecture!"<<endl;
+	int divide=(grid->gridX())/processes;
+#elif(CUT==CUTY)
+	if(grid->gridY()%processes!=0)cerr<<"Warning: Grid size does not match CPU architecture!"<<endl;
+	int divide=grid->gridY()/processes;
+#elif(CUT==CUTZ)
+	if(grid->gridZ()%processes!=0)cerr<<"Warning: Grid size does not match CPU architecture!"<<endl;
+	int divide=grid->gridZ()/processes;
+#endif
+
+	ranges=new Range[processes]();
+
+	cout<<"Initiating Parallelled Process, core online: "<<processes<<endl;
+#pragma omp parallel
+	{
+		int i=omp_get_thread_num();
+#pragma omp critical//for output to same location, critical is essential
+		cout << "Greeting from thread"<<i<<"/"<<processes<<endl;
+
+#if(CUT==CUTX)
+		ranges[i]=Range(2+divide*i,2+(i+1)*divide,0,grid->gridY(),0,grid->gridZ());
+#elif(CUT==CUTY)
+		ranges[i]=Range(2,grid->gridX()-2,i*divide,(i+1)*divide,0,grid->gridZ());
+#elif(CUT==CUTZ)
+		ranges[i]=Range(2,grid->gridX()-2,0,grid->gridY(),i*divide,(i+1)*divide);
+#endif
+	}
+
+}

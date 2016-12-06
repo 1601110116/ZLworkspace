@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LePlasma_Visual/ZLOMP.cpp&apos; to &apos;LePlasma_Visual.cpp&apos;" description="Rename resource &apos;ZLOMP.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="ZLOMP.cpp" name="LePlasma_Visual.cpp" stamp="1460067269989" updateReferences="true"/>
+</session>

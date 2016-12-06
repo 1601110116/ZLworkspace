@@ -1,0 +1,65 @@
+16:51:53 **** Incremental Build of configuration Debug for project LePlasma_Visualizer ****
+make all 
+Building file: /home/zlstudio/workspace/LePlasma_Visual/src/Visualize.cpp
+Invoking: Cross G++ Compiler
+mpic++ -I"/home/zlstudio/workspace/LePlasma_Visual/OpenGL" -I"/home/zlstudio/workspace/LePlasma/Socket" -I"/home/zlstudio/workspace/LePlasma/include" -I"/home/zlstudio/workspace/LePlasma_Visualizer" -I"/home/zlstudio/workspace/LePlasma_Visual/include" -O0 -g3 -Wall -c -fmessage-length=0 -fopenmp -MMD -MP -MF"src/Visualize.d" -MT"src/Visualize.d" -o "src/Visualize.o" "/home/zlstudio/workspace/LePlasma_Visual/src/Visualize.cpp"
+In file included from /home/zlstudio/workspace/LePlasma_Visual/include/Visualize.h:11:0,
+                 from /home/zlstudio/workspace/LePlasma_Visual/src/Visualize.cpp:8:
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:85:28: warning: ‘_stage’ defined but not used [-Wunused-variable]
+ static OpenGL_Interactive* _stage;
+                            ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:87:13: warning: ‘void MouseHandler(int, int, int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseHandler(int button,int state,int x,int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:88:13: warning: ‘void MouseDragHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseDragHandler(int x,int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:89:13: warning: ‘void MouseMoveHandler(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static void MouseMoveHandler(int x,int y);
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:91:13: warning: ‘L_draging’ defined but not used [-Wunused-variable]
+ static bool L_draging;
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:92:13: warning: ‘R_draging’ defined but not used [-Wunused-variable]
+ static bool R_draging;
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:93:13: warning: ‘M_draging’ defined but not used [-Wunused-variable]
+ static bool M_draging;
+             ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:95:12: warning: ‘L_startDragX’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+            ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:95:25: warning: ‘L_startDragY’ defined but not used [-Wunused-variable]
+ static int L_startDragX,L_startDragY;
+                         ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:96:12: warning: ‘R_startDragX’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+            ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:96:25: warning: ‘R_startDragY’ defined but not used [-Wunused-variable]
+ static int R_startDragX,R_startDragY;
+                         ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:97:12: warning: ‘M_startDragX’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+            ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:97:25: warning: ‘M_startDragY’ defined but not used [-Wunused-variable]
+ static int M_startDragX,M_startDragY;
+                         ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:101:20: warning: ‘void _reshape(int, int)’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _reshape(int w, int h);
+                    ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:102:20: warning: ‘void _display()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _display();
+                    ^
+/home/zlstudio/workspace/LePlasma_Visual/OpenGL/OpenGL_Interactive.h:103:20: warning: ‘void _idle()’ declared ‘static’ but never defined [-Wunused-function]
+ static inline void _idle();
+                    ^
+Finished building: /home/zlstudio/workspace/LePlasma_Visual/src/Visualize.cpp
+ 
+Building target: LePlasma_Visualizer
+Invoking: Cross G++ Linker
+mpic++ -fopenmp -o "LePlasma_Visualizer"  ./src_cal/CSPIC.o ./src_cal/CaseLauncher.o ./src_cal/Cell.o ./src_cal/DEC.o ./src_cal/Distributer.o ./src_cal/Electron.o ./src_cal/Eular.o ./src_cal/ExternalField.o ./src_cal/Grid.o ./src_cal/HostGrid.o ./src_cal/MPIGrid.o ./src_cal/MPIRunManager.o ./src_cal/Matrix3D.o ./src_cal/Particle.o ./src_cal/ParticleDistributer.o ./src_cal/Range.o ./src_cal/RunManager.o ./src_cal/StepForward.o ./src_cal/Tensor3D.o ./src_cal/Vector3D.o ./src_cal/Vertex.o  ./src/Mathx.o ./src/Plot.o ./src/Visualize.o  ./Socket/inet.o  ./OpenGL/Graphics.o ./OpenGL/OpenGL_Interactive.o ./OpenGL/Rect.o ./OpenGL/Sprite.o  ./LePlasma_Visualizer.o   -lGL -lGLU -lglut
+Finished building target: LePlasma_Visualizer
+ 
+
+16:51:54 Build Finished (took 561ms)
+
