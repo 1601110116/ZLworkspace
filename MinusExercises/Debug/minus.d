@@ -1,0 +1,1 @@
+minus.d: ../minus.cpp

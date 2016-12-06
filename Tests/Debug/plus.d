@@ -1,0 +1,1 @@
+plus.d: ../plus.cpp

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/LePlasma.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LePlasma.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Vector3D.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Engine.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ParticleDistributer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Case.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UniformE.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UniformB.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/MPIGrid.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UniformBFalse.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Tensor3D.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/HostGrid.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Eular.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ExternalField.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Cell.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Particle.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Electron.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/CaseLauncher.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/CSPIC.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/TestFor.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/DispersionRelation.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Grid.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Vertex.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Distributer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Range.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/RunManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/PlateWave.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/DispersionRelation.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/ExternalField.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Vertex.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/HostGrid.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Engine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Cell.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/indexCache.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/PhysicalParameters.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Eular.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Particle.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/CSPIC.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Electron.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Range.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/ParticleDistributer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Vector3D.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/UniformB.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/TestFor.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/UniformE.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/CaseLauncher.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/RunManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Buffer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Grid.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Distributer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/PlateWave.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Tensor3D.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/UniformBFalse.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Case.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/MPIGrid.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Socket/inet.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Socket/inet.cpp" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

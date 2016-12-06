@@ -1,0 +1,33 @@
+import flash.events.Event;
+import flash.events.MouseEvent;
+==>#include <Events.h>
+
+extends
+==>:public
+
+public class
+==>class
+
+package{}
+==>remove
+
+;sort functions and variables
+
+public/public const ==> #define
+public static
+
+public:
+protected:
+private:
+
+
+public/private/protected
+==>unify
+
+var $name :Class
+==>Class $name
+
+Number==>double
+
+
+
